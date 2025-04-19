@@ -1,0 +1,38 @@
+{
+    "Nu": {
+      "nombre": "Nu Colombia",
+      "tasaEA": 0.13,
+      "capitalizacion": "diaria"
+    },
+    "Uala": {
+      "nombre": "Ualá",
+      "tasaEA": 0.12,
+      "capitalizacion": "diaria"
+    },
+    "Lulo": {
+      "nombre": "Lulo Bank",
+      "tasaEA": 0.10,
+      "capitalizacion": "mensual"
+    },
+    "Nequi": {
+      "nombre": "Nequi (Meta Ahorro)",
+      "tasaEA": 0.07,
+      "capitalizacion": "mensual"
+    },
+    "Daviplata": {
+      "nombre": "Daviplata Ahorro",
+      "tasaEA": 0.06,
+      "capitalizacion": "mensual"
+    },
+    "Bancolombia": {
+      "nombre": "Bancolombia CDT",
+      "tasaEA": 0.085,
+      "capitalizacion": "mensual"
+    },
+    "BancoBogota": {
+      "nombre": "Banco de Bogotá CDT",
+      "tasaEA": 0.09,
+      "capitalizacion": "mensual"
+    }
+  }
+  

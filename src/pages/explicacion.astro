@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <div class="max-w-3xl mx-auto px-4 py-8 text-gray-800">
+    <h1 class="text-3xl font-bold mb-6 text-indigo-700">¿Cómo se calculan los rendimientos?</h1>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-2">1. Tasa Efectiva Anual (EA)</h2>
+      <p class="mb-2">
+        En Colombia, las cuentas de ahorro de alto rendimiento suelen usar la <strong>Tasa Efectiva Anual (EA)</strong>,
+        que indica cuánto crecerá tu dinero en un año si los intereses se capitalizan (es decir, se reinvierten) en cada período.
+      </p>
+      <p>
+        Para convertirla a otros períodos:
+      </p>
+      <ul class="list-disc pl-6 mt-2 space-y-1">
+        <li><strong>Tasa mensual:</strong> \( (1 + EA)^{1/12} - 1 \)</li>
+        <li><strong>Tasa diaria:</strong> \( (1 + EA)^{1/365} - 1 \)</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-2">2. Capitalización</h2>
+      <p class="mb-2">
+        Algunos bancos aplican intereses <strong>mensualmente</strong> (como Lulo Bank), mientras que otros lo hacen <strong>diariamente</strong> (como Nu y Ualá).
+      </p>
+      <p class="mb-2">
+        Esto afecta la frecuencia con la que se suman los intereses al capital, y por tanto el crecimiento total.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-indigo-50 p-4 rounded-xl shadow-sm">
+          <h3 class="font-bold mb-2">Ejemplo - Capitalización Mensual</h3>
+          <p class="text-sm">
+            Si inviertes $1.000.000 a una tasa EA del 12%:<br />
+            Tasa mensual ≈ 0.949%<br />
+            En el primer mes, ganas: $9.490<br />
+            Ese total se usa para calcular el segundo mes, y así sucesivamente.
+          </p>
+        </div>
+        <div class="bg-indigo-50 p-4 rounded-xl shadow-sm">
+          <h3 class="font-bold mb-2">Ejemplo - Capitalización Diaria</h3>
+          <p class="text-sm">
+            Con capitalización diaria (ej. Nu), los intereses se calculan cada día:<br />
+            Tasa diaria ≈ 0.0302%<br />
+            Si tienes $1.000.000, al primer día ganas $302.<br />
+            Al siguiente día, se calcula sobre $1.000.302.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-2">3. Retención en la fuente</h2>
+      <p class="mb-2">
+        En 2025, si tus rendimientos superan los <strong>$2.739 COP diarios</strong>, se aplica una
+        <strong>retención del 7%</strong> sobre los intereses ganados.
+      </p>
+      <p class="mb-2">
+        Esta retención solo aplica sobre los <strong>rendimientos</strong>, no sobre tu capital. Si ganas menos de $2.739 diarios en intereses, <strong>no se aplica</strong>.
+      </p>
+
+      <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-4 text-sm rounded-lg">
+        <p><strong>Ejemplo:</strong> Si tu ganancia diaria promedio es $3.000 COP, entonces:</p>
+        <ul class="list-disc pl-6 mt-2">
+          <li>Aplica retención: 7%</li>
+          <li>Retención total mensual: $3.000 x 30 x 7% = $6.300 COP</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-2">4. Fórmula del Interés Compuesto</h2>
+      <p class="mb-2">
+        La fórmula básica usada es:
+      </p>
+      <div class="bg-gray-100 p-4 rounded-lg font-mono text-sm mt-2">
+        Monto final = Monto inicial × (1 + tasa) ^ períodos
+      </div>
+      <p class="mt-2">
+        Donde la tasa depende del período (mensual o diaria), y el número de períodos corresponde a meses o días según el banco.
+      </p>
+    </section>
+  </div>
+</Layout>
