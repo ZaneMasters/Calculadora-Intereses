@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import bankOptions from '../utils/bankOptions.json';
 import { useCalculatorLogic } from '../hooks/useCalculatorLogic';
 
@@ -15,14 +16,28 @@ export default function Calculator({ onResult }) {
     calcularResultados();
   };
 
+  const handleLimpiar = () => {
+    limpiar();
+    if (onResult) {
+      onResult(null);
+    }
+  };
+
+  useEffect(() => {
+    if (resultados && onResult) {
+      onResult(resultados);
+    }
+  }, [resultados, onResult]);
+
   return (
-    <div className="bg-white shadow p-6 rounded-lg w-full max-w-xl mx-auto">
-      <h2 className="text-xl font-bold mb-4 text-indigo-600">Calculadora de Rendimientos</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="bg-white shadow-xl p-8 rounded-xl w-full max-w-2xl mx-auto border border-gray-200">
+      <h2 className="text-2xl font-bold mb-6 text-indigo-700 text-center">Calculadora de Rendimientos Financieros</h2>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label className="block mb-1 font-semibold">Banco</label>
+          <label className="block mb-1 font-semibold text-gray-700">🏦 Banco</label>
           <select
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded focus:ring-indigo-500 focus:border-indigo-500"
             value={inputs.banco}
             onChange={(e) => handleInputChange('banco', e.target.value)}
           >
@@ -33,10 +48,10 @@ export default function Calculator({ onResult }) {
         </div>
 
         <div>
-          <label className="block mb-1 font-semibold">Monto Inicial ($)</label>
+          <label className="block mb-1 font-semibold text-gray-700">💰 Monto Inicial ($)</label>
           <input
             type="text"
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded focus:ring-indigo-500 focus:border-indigo-500"
             value={inputs.monto}
             onChange={(e) => handleInputChange('monto', e.target.value)}
             placeholder="Ej: 1,000,000"
@@ -44,10 +59,10 @@ export default function Calculator({ onResult }) {
         </div>
 
         <div>
-          <label className="block mb-1 font-semibold">Plazo (meses)</label>
+          <label className="block mb-1 font-semibold text-gray-700">📅 Plazo (meses)</label>
           <input
             type="number"
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded focus:ring-indigo-500 focus:border-indigo-500"
             min={1}
             max={60}
             value={inputs.meses}
@@ -55,17 +70,17 @@ export default function Calculator({ onResult }) {
           />
         </div>
 
-        <div className="flex gap-4 mt-4">
+        <div className="flex gap-4 mt-6">
           <button
             type="submit"
-            className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
+            className="bg-indigo-700 text-white px-6 py-2 rounded hover:bg-indigo-800 transition"
           >
             Calcular
           </button>
           <button
             type="button"
-            className="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400"
-            onClick={limpiar}
+            className="bg-gray-200 text-gray-800 px-6 py-2 rounded hover:bg-gray-300 transition"
+            onClick={handleLimpiar}
           >
             Limpiar
           </button>
@@ -73,15 +88,16 @@ export default function Calculator({ onResult }) {
       </form>
 
       {resultados && (
-        <div className="bg-indigo-50 rounded mt-6 text-sm text-gray-700 space-y-2">
-          <p><strong>Intereses totales:</strong> ${Number(resultados.interesesTotales.toFixed(2)).toLocaleString()}</p>
-          <p><strong>Total final:</strong> ${Number(resultados.totalFinal.toFixed(2)).toLocaleString()}</p>
-          <p><strong>Rendimiento mensual:</strong> ${Number(resultados.interesesMensuales.toFixed(2)).toLocaleString()}</p>
+        <div className="mt-8 bg-gray-50 border-t border-gray-200 pt-6 px-4 rounded-lg shadow-sm text-gray-700 text-sm space-y-3">
+          <p><strong>📈 Tasa efectiva anual:</strong> {resultados.tasaEA ? `${(resultados.tasaEA * 100).toFixed(2)}%` : 'No disponible'}</p>
+          <p><strong>💵 Intereses totales:</strong> ${Number(resultados.interesesTotales.toFixed(2)).toLocaleString()}</p>
+          <p><strong>💰 Total final:</strong> ${Number(resultados.totalFinal.toFixed(2)).toLocaleString()}</p>
+          <p><strong>📆 Rendimiento mensual:</strong> ${Number(resultados.interesesMensuales.toFixed(2)).toLocaleString()}</p>
           {resultados.interesesDiarios && (
-            <p><strong>Rendimiento diario:</strong> ${Number(resultados.interesesDiarios.toFixed(2)).toLocaleString()}</p>
+            <p><strong>📅 Rendimiento diario:</strong> ${Number(resultados.interesPrimerDia.toFixed(2)).toLocaleString()}</p>
           )}
           <p className={resultados.aplicaRete ? 'text-red-600 font-semibold' : 'text-green-600 font-semibold'}>
-            {resultados.aplicaRete ? 'Aplica retención en la fuente' : 'No aplica retención en la fuente'}
+            {resultados.aplicaRete ? '⚠️ Aplica retención en la fuente' : '✅ No aplica retención en la fuente'}
           </p>
         </div>
       )}

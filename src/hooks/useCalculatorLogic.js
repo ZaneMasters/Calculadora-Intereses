@@ -35,6 +35,7 @@ export function useCalculatorLogic() {
     const montoInicial = unformat(monto);
     const periodos = capitalizacion === 'diaria' ? meses * 30 : meses;
 
+    // Convertimos la Tasa Efectiva Anual a Tasa Nominal Diaria o Mensual
     const tasaPeriodo = capitalizacion === 'diaria'
       ? Math.pow(1 + tasaEA, 1 / 365) - 1
       : Math.pow(1 + tasaEA, 1 / 12) - 1;
@@ -53,13 +54,21 @@ export function useCalculatorLogic() {
     const interesesTotales = capital - montoInicial;
     const aplicaRete = interesesTotales / meses > RETE_FUENTE_LIMITE_2025;
 
+    // Nuevo: interés del primer día real (no promedio)
+    const interesPrimerDia = capitalizacion === 'diaria'
+      ? montoInicial * tasaPeriodo
+      : null;
+
     setResultados({
       crecimiento,
       interesesTotales,
       totalFinal: capital,
       interesesMensuales: interesesTotales / meses,
       interesesDiarios: capitalizacion === 'diaria' ? interesesTotales / (meses * 30) : null,
-      aplicaRete
+      interesPrimerDia,
+      aplicaRete,
+      tasaPeriodo,
+      tasaEA
     });
   };
 
