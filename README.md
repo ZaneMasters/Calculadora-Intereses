@@ -1,48 +1,66 @@
-# Astro Starter Kit: Basics
+# 💰 Calculadora de Rendimientos Financieros
 
-```sh
-npm create astro@latest -- --template basics
-```
+¡Bienvenido al proyecto **Calculadora de Rendimientos**! Esta aplicación web te permite simular y comparar los rendimientos de inversiones en diferentes bancos colombianos, ayudándote a tomar decisiones financieras informadas.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+![Estado del Proyecto](https://img.shields.io/badge/Estado-En_Desarrollo-yellow)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 Descripción del Proyecto
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+Este proyecto es una herramienta interactiva diseñada para calcular las ganancias potenciales de una inversión a plazo fijo (CDT u otros instrumentos). Los usuarios pueden ingresar el monto a invertir, el plazo en meses y seleccionar una entidad financiera para ver:
 
-## 🚀 Project Structure
+- **Tasa Efectiva Anual (E.A.)** ofrecida por el banco.
+- **Rendimientos totales** al final del periodo.
+- **Ganancia mensual y diaria** estimada.
+- **Retención en la Fuente:** Indicador automático de si la inversión está sujeta a impuestos.
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🛠️ Tecnologías Utilizadas
+
+El proyecto está construido con un stack moderno y eficiente:
+
+- **[Astro](https://astro.build/):** Framework web para contenido rápido y optimizado.
+- **[React](https://react.dev/):** Biblioteca para construir interfaces de usuario interactivas (utilizada en los componentes de la calculadora).
+- **[Tailwind CSS](https://tailwindcss.com/):** Framework de utilidad para un diseño rápido y responsivo.
+- **[Recharts](https://recharts.org/):** Biblioteca de gráficos para visualizar la proyección de crecimiento de la inversión.
+
+## 📂 Estructura del Proyecto
 
 ```text
 /
 ├── public/
 │   └── favicon.svg
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── components/       # Componentes React (Calculadora, Gráficos, Tablas)
+│   ├── layouts/          # Plantillas de diseño Astro
+│   ├── pages/            # Rutas y páginas de la aplicación
+│   ├── utils/            # Lógica de cálculo y configuraciones
+│   └── hooks/            # Hooks personalizados (useCalculatorLogic)
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🧞 Comandos
 
-## 🧞 Commands
+Todos los comandos se ejecutan desde la raíz del proyecto en tu terminal:
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
+| Comando                   | Acción                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm install`             | Instala las dependencias del proyecto            |
+| `npm run dev`             | Inicia el servidor de desarrollo en `localhost:4321` |
+| `npm run build`           | Construye el sitio para producción en `./dist/`  |
+| `npm run preview`         | Previsualiza la versión construida localmente    |
 
-## 👀 Want to learn more?
+## 👣 Primeros Pasos
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1.  **Clona el repositorio** (si aún no lo has hecho).
+2.  Instala las dependencias:
+    ```bash
+    npm install
+    ```
+3.  Ejecuta el servidor de desarrollo:
+    ```bash
+    npm run dev
+    ```
+4.  Abre tu navegador en `http://localhost:4321` para ver la aplicación.
+
+## 🤝 Contribución
+
+¡Las contribuciones son bienvenidas! Si tienes ideas para mejorar la calculadora o añadir más bancos, no dudes en abrir un *issue* o enviar un *pull request*.

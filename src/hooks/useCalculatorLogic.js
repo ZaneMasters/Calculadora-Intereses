@@ -37,7 +37,7 @@ export function useCalculatorLogic() {
 
     // Convertimos la Tasa Efectiva Anual a Tasa Nominal Diaria o Mensual
     const tasaPeriodo = capitalizacion === 'diaria'
-      ? Math.pow(1 + tasaEA, 1 / 365) - 1
+      ? Math.pow(1 + tasaEA, 1 / 365) - 1 //en uala-lulo es 365 dias, y en Nu es 360
       : Math.pow(1 + tasaEA, 1 / 12) - 1;
 
     let crecimiento = [];

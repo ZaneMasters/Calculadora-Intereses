@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import bankOptions from '../utils/bankOptions.json';
 import { useCalculatorLogic } from '../hooks/useCalculatorLogic';
 
@@ -11,13 +11,26 @@ export default function Calculator({ onResult }) {
     resultados
   } = useCalculatorLogic();
 
+  const [errorMonto, setErrorMonto] = useState('');
+  const [showResults, setShowResults] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const monto = parseFloat(inputs.monto.replace(/,/g, ''));
+    if (isNaN(monto) || monto <= 1000) {
+      setErrorMonto('El monto debe ser mayor a $1,000');
+      setShowResults(false);
+      return;
+    }
+
+    setErrorMonto('');
     calcularResultados();
   };
 
   const handleLimpiar = () => {
     limpiar();
+    setErrorMonto('');
+    setShowResults(false);
     if (onResult) {
       onResult(null);
     }
@@ -26,6 +39,9 @@ export default function Calculator({ onResult }) {
   useEffect(() => {
     if (resultados && onResult) {
       onResult(resultados);
+      // Hacer visible el bloque de resultados con animación
+      setShowResults(false);
+      setTimeout(() => setShowResults(true), 50); // delay para activar transición
     }
   }, [resultados, onResult]);
 
@@ -56,6 +72,7 @@ export default function Calculator({ onResult }) {
             onChange={(e) => handleInputChange('monto', e.target.value)}
             placeholder="Ej: 1,000,000"
           />
+          {errorMonto && <p className="text-red-600 text-sm mt-1">{errorMonto}</p>}
         </div>
 
         <div>
@@ -88,7 +105,11 @@ export default function Calculator({ onResult }) {
       </form>
 
       {resultados && (
-        <div className="mt-8 bg-gray-50 border-t border-gray-200 pt-6 px-4 rounded-lg shadow-sm text-gray-700 text-sm space-y-3">
+        <div
+          className={`mt-8 bg-gray-50 border-t border-gray-200 pt-6 px-4 rounded-lg shadow-sm text-gray-700 text-sm space-y-3 transform transition-all duration-700 ease-out
+            ${showResults ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
+          `}
+        >
           <p><strong>📈 Tasa efectiva anual:</strong> {resultados.tasaEA ? `${(resultados.tasaEA * 100).toFixed(2)}%` : 'No disponible'}</p>
           <p><strong>💵 Intereses totales:</strong> ${Number(resultados.interesesTotales.toFixed(2)).toLocaleString()}</p>
           <p><strong>💰 Total final:</strong> ${Number(resultados.totalFinal.toFixed(2)).toLocaleString()}</p>
