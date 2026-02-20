@@ -6,25 +6,63 @@ import "../styles/global.css";
   <head>
     <meta charset="UTF-8" />
     <title>Calculadora de Rendimientos</title>
+    <meta name="description" content="Calcula y compara los rendimientos de tus inversiones en diferentes bancos de Colombia." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-gray-50 text-gray-800 font-sans min-h-screen bg-svg">
-    <header class="bg-white shadow mb-8">
-      <div class="max-w-4xl mx-auto px-4 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <h1 class="text-2xl font-bold text-indigo-600">Calculadora de Ahorro</h1>
-        <nav class="mt-4 sm:mt-0 space-x-4 text-sm text-indigo-700">
-          <a href="/" class="hover:underline">Calculadora</a>
-          <a href="/explicacion" class="hover:underline">¿Cómo se calcula?</a>
-        </nav>
+  <body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col antialiased">
+    <div class="fixed inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#6366f1_100%)] opacity-20"></div>
+
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/70 border-b border-slate-200 shadow-sm transition-all duration-300">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4">
+          <div class="flex items-center gap-2">
+            <span class="text-3xl">💸</span>
+            <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+              Calculadora de Rendimientos
+            </h1>
+          </div>
+          <nav class="mt-4 sm:mt-0 flex gap-6 text-sm font-medium text-slate-600">
+            <a href="/" class="hover:text-indigo-600 transition-colors duration-200">Calculadora</a>
+            <a href="/explicacion" class="hover:text-indigo-600 transition-colors duration-200">¿Cómo funciona?</a>
+          </nav>
+        </div>
       </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4">
+    <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
       <slot />
     </main>
 
-    <footer class="mt-12 py-6 text-center text-sm text-gray-500">
-      © 2025 Calculadora Interés Compuesto. Hecho para Colombia 🇨🇴
+    <footer class="bg-white border-t border-slate-200 mt-auto">
+      <div class="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <p class="text-center text-sm text-slate-500">
+          © {new Date().getFullYear()} Calculadora de Interés Compuesto. Hecho con ❤️ para Colombia 🇨🇴
+        </p>
+      </div>
     </footer>
   </body>
 </html>
+
+<style is:global>
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+</style>

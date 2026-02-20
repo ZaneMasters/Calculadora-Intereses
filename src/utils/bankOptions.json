@@ -1,38 +1,45 @@
 {
-    "Nu": {
-      "nombre": "Nu Colombia",
-      "tasaEA": 0.0925,
-      "capitalizacion": "diaria"
-    },
-    "Uala": {
-      "nombre": "Ualá",
-      "tasaEA": 0.11,
-      "capitalizacion": "diaria"
-    },
-    "Lulo": {
-      "nombre": "Lulo Bank",
-      "tasaEA": 0.095,
-      "capitalizacion": "mensual"
-    },
-    "Nequi": {
-      "nombre": "Nequi (Meta Ahorro)",
-      "tasaEA": 0.07,
-      "capitalizacion": "mensual"
-    },
-    "Daviplata": {
-      "nombre": "Daviplata Ahorro",
-      "tasaEA": 0.06,
-      "capitalizacion": "mensual"
-    },
-    "Bancolombia": {
-      "nombre": "Bancolombia CDT",
-      "tasaEA": 0.085,
-      "capitalizacion": "mensual"
-    },
-    "BancoBogota": {
-      "nombre": "Banco de Bogotá CDT",
-      "tasaEA": 0.09,
-      "capitalizacion": "mensual"
-    }
+  "Nu": {
+    "nombre": "Nu Colombia (Cajitas)",
+    "tasaEA": 0.0875,
+    "capitalizacion": "diaria"
+  },
+  "Uala": {
+    "nombre": "Ualá",
+    "tasaEA": 0.005,
+    "capitalizacion": "diaria",
+    "nota": "Rango 5%–10.5% E.A. según uso de tarjeta"
+  },
+  "Lulo": {
+    "nombre": "Lulo Bank",
+    "tasaEA": 0.075,
+    "capitalizacion": "mensual",
+    "nota": "Rango 7.5%–9.25% E.A. según producto"
+  },
+  "LuloPro": {
+    "nombre": "Lulo Bank (Pro)",
+    "tasaEA": 0.0925,
+    "capitalizacion": "mensual",
+    "nota": "Rango 7.5%–9.25% E.A. según producto"
+  },
+  "PiBank": {
+    "nombre": "Pibank Colombia",
+    "tasaEA": 0.11,
+    "capitalizacion": "mensual"
+  },
+  "BancoPopularPlateada": {
+    "nombre": "Banco Popular (Cuenta Plateada)",
+    "tasaEA": 0.09,
+    "capitalizacion": "diaria"
+  },
+  "RappiPayBolsillo": {
+    "nombre": "RappiPay (Bolsillo / RappiCuenta)",
+    "tasaEA": 0.09,
+    "capitalizacion": "mensual"
+  },
+  "BoldBolsillo": {
+    "nombre": "Bold (Bolsillos de Ahorro)",
+    "tasaEA": 0.085,
+    "capitalizacion": "mensual"
   }
-  
+}

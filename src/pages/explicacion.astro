@@ -7,22 +7,29 @@ import Layout from '../layouts/Layout.astro';
     <h1 class="text-3xl font-bold mb-6 text-indigo-700">¿Cómo se calculan los rendimientos?</h1>
 
     <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">1. Tasa Efectiva Anual (EA)</h2>
+      <h2 class="text-xl font-semibold mb-2 text-indigo-700">1. Tasa Efectiva Anual (EA)</h2>
       <p class="mb-2">
         En Colombia, las cuentas de ahorro de alto rendimiento suelen usar la <strong>Tasa Efectiva Anual (EA)</strong>,
         que indica cuánto crecerá tu dinero en un año si los intereses se capitalizan (es decir, se reinvierten) en cada período.
       </p>
-      <p>
+      <p class="mb-3">
         Para convertirla a otros períodos:
       </p>
-      <ul class="list-disc pl-6 mt-2 space-y-1">
-        <li><strong>Tasa mensual:</strong> \( (1 + EA)^{1/12} - 1 \)</li>
-        <li><strong>Tasa diaria:</strong> \( (1 + EA)^{1/365} - 1 \)</li>
-      </ul>
+      
+      <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100 space-y-3">
+        <div class="flex items-center gap-3">
+          <span class="font-semibold text-slate-700 w-32">Tasa mensual:</span>
+          <code class="bg-white px-3 py-1 rounded border border-indigo-200 text-indigo-700 font-mono">(1 + EA)<sup>1/12</sup> - 1</code>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="font-semibold text-slate-700 w-32">Tasa diaria:</span>
+          <code class="bg-white px-3 py-1 rounded border border-indigo-200 text-indigo-700 font-mono">(1 + EA)<sup>1/365</sup> - 1</code>
+        </div>
+      </div>
     </section>
 
     <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">2. Capitalización</h2>
+      <h2 class="text-xl font-semibold mb-2 text-indigo-700">2. Capitalización</h2>
       <p class="mb-2">
         Algunos bancos aplican intereses <strong>mensualmente</strong> (como Lulo Bank), mientras que otros lo hacen <strong>diariamente</strong> (como Nu y Ualá).
       </p>
@@ -53,33 +60,33 @@ import Layout from '../layouts/Layout.astro';
     </section>
 
     <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">3. Retención en la fuente</h2>
+      <h2 class="text-xl font-semibold mb-2 text-indigo-700">3. Retención en la fuente</h2>
       <p class="mb-2">
-        En 2025, si tus rendimientos superan los <strong>$2.739 COP diarios</strong>, se aplica una
-        <strong>retención del 7%</strong> sobre los intereses ganados.
+        En 2026 el umbral práctico equivalente diario es aproximadamente <strong>$3.038 COP</strong> (0,058 UVT), según la cuantía mínima aplicada por entidades financieras.
+        Si superas este monto, se aplica una <strong>retención del 7%</strong> sobre los intereses ganados.
       </p>
       <p class="mb-2">
-        Esta retención solo aplica sobre los <strong>rendimientos</strong>, no sobre tu capital. Si ganas menos de $2.739 diarios en intereses, <strong>no se aplica</strong>.
+        Esta retención solo aplica sobre los <strong>rendimientos</strong>, no sobre tu capital. Si ganas menos de $3.038 diarios en intereses, <strong>no se aplica</strong>.
       </p>
 
-      <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-4 text-sm rounded-lg">
-        <p><strong>Ejemplo:</strong> Si tu ganancia diaria promedio es $3.000 COP, entonces:</p>
+      <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mt-4 text-sm rounded-lg">
+        <p><strong>Ejemplo:</strong> Si tu ganancia diaria promedio es $3.500 COP, entonces:</p>
         <ul class="list-disc pl-6 mt-2">
           <li>Aplica retención: 7%</li>
-          <li>Retención total mensual: $3.000 x 30 x 7% = $6.300 COP</li>
+          <li>Retención total mensual: $3.500 x 30 x 7% = $7.350 COP</li>
         </ul>
       </div>
     </section>
 
     <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">4. Fórmula del Interés Compuesto</h2>
+      <h2 class="text-xl font-semibold mb-2 text-indigo-700">4. Fórmula del Interés Compuesto</h2>
       <p class="mb-2">
         La fórmula básica usada es:
       </p>
-      <div class="bg-gray-100 p-4 rounded-lg font-mono text-sm mt-2">
-        Monto final = Monto inicial × (1 + tasa) ^ períodos
+      <div class="bg-slate-800 text-white p-4 rounded-lg font-mono text-center shadow-md mt-2 text-lg">
+        Monto final = Monto inicial × (1 + tasa)<sup>períodos</sup>
       </div>
-      <p class="mt-2">
+      <p class="mt-2 text-sm text-gray-600">
         Donde la tasa depende del período (mensual o diaria), y el número de períodos corresponde a meses o días según el banco.
       </p>
     </section>
