@@ -1,14 +1,43 @@
 ---
 import "../styles/global.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Calculadora de Rendimientos", 
+  description = "Calcula y compara los rendimientos de tus inversiones en diferentes cuentas de ahorro en bancos de Colombia." 
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
 ---
 
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Calculadora de Rendimientos</title>
-    <meta name="description" content="Calcula y compara los rendimientos de tus inversiones en diferentes bancos de Colombia." />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="calculadora de rendimientos, tasas de interés, colombia, nu bank, lulo bank, cuentas de ahorro, inflación, inversiones" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL("/favicon.svg", Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL("/favicon.svg", Astro.url)} />
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col antialiased">

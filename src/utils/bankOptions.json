@@ -2,44 +2,52 @@
   "Nu": {
     "nombre": "Nu Colombia (Cajitas)",
     "tasaEA": 0.0875,
-    "capitalizacion": "diaria"
+    "capitalizacion": "diaria",
+    "url": "https://nu.com.co/cf/cuenta/"
   },
   "Uala": {
     "nombre": "Ualá",
     "tasaEA": 0.05,
     "capitalizacion": "diaria",
-    "nota": "Rango 5%–10.5% E.A. según uso de tarjeta"
+    "nota": "Rango 5%–10.5% E.A. según uso de tarjeta",
+    "url": "https://www.uala.com.co/"
   },
   "Lulo": {
     "nombre": "Lulo Bank",
     "tasaEA": 0.075,
     "capitalizacion": "mensual",
-    "nota": "Rango 7.5%–9.25% E.A. según producto"
+    "nota": "Rango 7.5%–9.25% E.A. según producto",
+    "url": "https://www.lulobank.com/"
   },
   "LuloPro": {
     "nombre": "Lulo Bank (Pro)",
     "tasaEA": 0.0925,
     "capitalizacion": "mensual",
-    "nota": "Rango 7.5%–9.25% E.A. según producto"
+    "nota": "Rango 7.5%–9.25% E.A. según producto",
+    "url": "https://www.lulobank.com/lulo-pro"
   },
   "PiBank": {
     "nombre": "Pibank Colombia",
     "tasaEA": 0.11,
-    "capitalizacion": "mensual"
+    "capitalizacion": "mensual",
+    "url": "https://www.pibank.co/"
   },
   "BancoPopularPlateada": {
     "nombre": "Banco Popular (Cuenta Plateada)",
     "tasaEA": 0.09,
-    "capitalizacion": "diaria"
+    "capitalizacion": "diaria",
+    "url": "https://www.bancopopular.com.co/wps/portal/bancopopular/inicio/para-ti/productos-ahorro-inversion/cuentas-ahorro/cuenta-plateada"
   },
   "RappiPayBolsillo": {
     "nombre": "RappiPay (Bolsillo / RappiCuenta)",
     "tasaEA": 0.09,
-    "capitalizacion": "mensual"
+    "capitalizacion": "mensual",
+    "url": "https://www.rappipay.co/rappicuenta/bolsillos/"
   },
   "BoldBolsillo": {
     "nombre": "Bold (Bolsillos de Ahorro)",
     "tasaEA": 0.085,
-    "capitalizacion": "mensual"
+    "capitalizacion": "mensual",
+    "url": "https://bold.co/personas"
   }
 }

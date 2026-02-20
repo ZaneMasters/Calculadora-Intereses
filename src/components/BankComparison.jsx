@@ -28,7 +28,13 @@ export default function BankComparison() {
               >
                 <td className="px-6 py-4 font-medium text-slate-900 flex items-center gap-3 relative group">
                   <div className={`w-2 h-2 rounded-full ${index < 3 ? 'bg-indigo-500' : 'bg-slate-300'}`}></div>
-                  {banco.nombre}
+                  {banco.url ? (
+                    <a href={banco.url} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 hover:underline transition-colors">
+                      {banco.nombre}
+                    </a>
+                  ) : (
+                    <span>{banco.nombre}</span>
+                  )}
                   {banco.nota && (
                     <div className="relative group cursor-help ml-2">
                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-slate-400 hover:text-indigo-500 transition-colors">
