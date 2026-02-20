@@ -70,7 +70,7 @@ export function useCalculatorLogic() {
     for (let i = 1; i <= periodos; i++) {
       capital *= (1 + tasaPeriodo);
       crecimiento.push({
-        mes: `${i}${capitalizacion === 'diaria' ? '° día' : 'er mes'}`,
+        mes: capitalizacion === 'diaria' ? `Día ${i}` : `Mes ${i}`,
         valor: capital
       });
     }
