@@ -24,6 +24,15 @@ export default function Calculator({ onResult }) {
       return;
     }
 
+    if (!inputs.usarTasaPersonalizada) {
+      const bancoSeleccionado = bankOptions[inputs.banco];
+      if (bancoSeleccionado?.isBajoMonto && monto > 11024727) {
+        handleLimpiar(); // Limpia todo el formulario incluyendo los resultados
+        setErrorMonto('El monto supera el tope de depósitos de bajo monto para 2026 ($11.024.727)'); // Volvemos a setear el error porque handleLimpiar lo borró
+        return;
+      }
+    }
+
     if (inputs.usarTasaPersonalizada && (!inputs.tasaPersonalizada || inputs.tasaPersonalizada <= 0)) {
         // Validación básica para tasa personalizada
         return; 

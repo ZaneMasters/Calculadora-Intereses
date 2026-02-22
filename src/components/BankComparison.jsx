@@ -27,25 +27,35 @@ export default function BankComparison() {
                 className={`hover:bg-indigo-50/50 transition-colors ${index < 3 ? 'bg-indigo-50/10' : ''}`}
               >
                 <td className="px-6 py-4 font-medium text-slate-900 flex items-center gap-3 relative group">
-                  <div className={`w-2 h-2 rounded-full ${index < 3 ? 'bg-indigo-500' : 'bg-slate-300'}`}></div>
-                  {banco.url ? (
-                    <a href={banco.url} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 hover:underline transition-colors">
-                      {banco.nombre}
-                    </a>
-                  ) : (
-                    <span>{banco.nombre}</span>
-                  )}
-                  {banco.nota && (
-                    <div className="relative group cursor-help ml-2">
-                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-slate-400 hover:text-indigo-500 transition-colors">
-                         <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                       </svg>
-                       <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 p-2 bg-slate-800 text-white text-xs rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 text-center">
-                         {banco.nota}
-                         <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>
-                       </div>
-                    </div>
-                  )}
+                  <div className={`w-2 h-2 rounded-full flex-shrink-0 ${index < 3 ? 'bg-indigo-500' : 'bg-slate-300'}`}></div>
+                  
+                  <div className="flex flex-wrap items-center gap-2 w-full">
+                    {banco.url ? (
+                      <a href={banco.url} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 hover:underline transition-colors line-clamp-1">
+                        {banco.nombre}
+                      </a>
+                    ) : (
+                      <span className="line-clamp-1">{banco.nombre}</span>
+                    )}
+                    
+                    {banco.isBajoMonto && (
+                      <span className="inline-flex items-center justify-center rounded-md bg-blue-50 px-2 py-0.5 text-[10px] leading-tight font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 cursor-default transition-colors hover:bg-blue-100 whitespace-nowrap">
+                        Bajo Monto
+                      </span>
+                    )}
+
+                    {banco.nota && (
+                      <div className="relative group cursor-help">
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-slate-400 hover:text-indigo-500 transition-colors">
+                           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                         </svg>
+                         <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 p-2 bg-slate-800 text-white text-xs rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 text-center z-50">
+                           {banco.nota}
+                           <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>
+                         </div>
+                      </div>
+                    )}
+                  </div>
                 </td>
                 <td className="px-6 py-4 text-right">
                   <span className={`inline-block px-2 py-1 rounded text-xs font-bold ${

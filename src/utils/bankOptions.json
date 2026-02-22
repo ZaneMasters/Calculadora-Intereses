@@ -10,6 +10,7 @@
     "tasaEA": 0.05,
     "capitalizacion": "diaria",
     "nota": "Rango 5%–10.5% E.A. según uso de tarjeta",
+    "isBajoMonto": true,
     "url": "https://www.uala.com.co/"
   },
   "Lulo": {
@@ -42,12 +43,22 @@
     "nombre": "RappiPay (Bolsillo / RappiCuenta)",
     "tasaEA": 0.09,
     "capitalizacion": "mensual",
+    "isBajoMonto": true,
     "url": "https://www.rappipay.co/rappicuenta/bolsillos/"
   },
   "BoldBolsillo": {
     "nombre": "Bold (Bolsillos de Ahorro)",
     "tasaEA": 0.085,
     "capitalizacion": "mensual",
+    "isBajoMonto": true,
     "url": "https://bold.co/personas"
+  },
+  "Global66": {
+    "nombre": "Global 66",
+    "tasaEA": 0.11,
+    "capitalizacion": "mensual",
+    "isBajoMonto": true,
+    "nota": "Debe haber efectuado al menos una operación en el mes",
+    "url": "https://global66.com/co/cuenta-global"
   }
 }
