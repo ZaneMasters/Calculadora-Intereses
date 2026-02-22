@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Building2, Percent, DollarSign, CalendarDays, Info, ShieldAlert, CheckCircle2, ChevronRight, Calculator as CalcIcon, RefreshCw, TrendingUp } from 'lucide-react';
+import { Building2, Percent, DollarSign, CalendarDays, Info, ShieldAlert, CheckCircle2, ChevronRight, Calculator as CalcIcon, RefreshCw, TrendingUp, Check } from 'lucide-react';
 import bankOptions from '../utils/bankOptions.json';
 import { useCalculatorLogic } from '../hooks/useCalculatorLogic';
 
@@ -16,6 +16,19 @@ export default function Calculator({ onResult }) {
 
   const [errorMonto, setErrorMonto] = useState('');
   const [showResults, setShowResults] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [dropdownRef]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -118,19 +131,47 @@ export default function Calculator({ onResult }) {
                    <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-slate-400 font-bold">%</div>
                  </div>
               ) : (
-                  <div className="relative group">
-                    <select
-                      className="w-full appearance-none bg-slate-50 border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 py-3.5 px-4 pr-10 rounded-xl font-medium outline-none transition-all cursor-pointer shadow-sm hover:border-slate-300"
-                      value={inputs.banco}
-                      onChange={(e) => handleInputChange('banco', e.target.value)}
+                  <div className="relative group" ref={dropdownRef}>
+                    <button
+                      type="button"
+                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                      className="w-full flex items-center justify-between bg-slate-50 border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 py-3.5 px-4 rounded-xl font-medium outline-none transition-all shadow-sm hover:border-slate-300"
                     >
-                      {Object.entries(bankOptions).map(([key, val]) => (
-                        <option key={key} value={key}>{val.nombre}</option>
-                      ))}
-                    </select>
-                    <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-400 group-hover:text-indigo-500 transition-colors">
-                      <ChevronRight className="w-4 h-4 rotate-90" />
-                    </div>
+                      <span className="truncate pr-4">
+                        {bankOptions[inputs.banco] ? bankOptions[inputs.banco].nombre : 'Selecciona un banco'}
+                      </span>
+                      <ChevronRight className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${isDropdownOpen ? '-rotate-90' : 'rotate-90'}`} />
+                    </button>
+
+                    <AnimatePresence>
+                      {isDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10, scaleY: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scaleY: 1 }}
+                          exit={{ opacity: 0, y: -10, scaleY: 0.95 }}
+                          transition={{ duration: 0.2, originY: 0 }}
+                          className="absolute z-50 w-full mt-2 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden"
+                        >
+                          <div className="max-h-60 overflow-y-auto w-full custom-scrollbar">
+                            {Object.entries(bankOptions).map(([key, val]) => (
+                              <button
+                                key={key}
+                                type="button"
+                                onClick={() => {
+                                  handleInputChange('banco', key);
+                                  setIsDropdownOpen(false);
+                                }}
+                                className={`w-full text-left px-4 py-3 flex items-center justify-between hover:bg-indigo-50 transition-colors ${inputs.banco === key ? 'bg-indigo-50/50 text-indigo-700 font-bold' : 'text-slate-700 font-medium'}`}
+                              >
+                                <span>{val.nombre}</span>
+                                {inputs.banco === key && <Check className="w-4 h-4 text-indigo-600" />}
+                              </button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
                     {bankOptions[inputs.banco]?.nota && (
                       <div className="absolute -top-8 right-0 group cursor-help flex items-center">
                          <Info className="w-4 h-4 text-indigo-400 hover:text-indigo-600 transition-colors" />

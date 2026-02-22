@@ -56,27 +56,27 @@ export default function BankComparison() {
         </h2>
       </div>
       
-      <div className="overflow-x-auto p-4 sm:p-6">
+      <div className="p-4 sm:p-6">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           animate="show"
-          className="flex flex-col gap-3 min-w-[600px]"
+          className="flex flex-col gap-4 sm:gap-3"
         >
-          {/* Header */}
-          <div className="grid grid-cols-12 gap-4 px-6 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
-            <div className="col-span-6 sm:col-span-5">Entidad Financiera</div>
-            <div className="col-span-3 sm:col-span-4 text-center">Rendimiento (E.A.)</div>
+          {/* Header (Desktop Only) */}
+          <div className="hidden sm:grid grid-cols-12 gap-4 px-6 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
+            <div className="col-span-5">Entidad Financiera</div>
+            <div className="col-span-4 text-center">Rendimiento (E.A.)</div>
             <div className="col-span-3 text-right">Frecuencia</div>
           </div>
 
           {/* Rows */}
           {bancos.map((banco, index) => (
             <motion.div 
-              key={banco.nombre} 
+              key={banco.key} 
               variants={itemVariants}
               whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
-              className={`group grid grid-cols-12 gap-4 px-6 py-5 rounded-2xl border transition-all ${
+              className={`group flex flex-col sm:grid sm:grid-cols-12 gap-3 sm:gap-4 px-5 py-4 sm:px-6 sm:py-5 rounded-2xl border transition-all ${
                 index === 0 
                   ? 'bg-gradient-to-r from-emerald-50 to-white border-emerald-200 shadow-sm shadow-emerald-500/5 hover:border-emerald-300 hover:shadow-emerald-500/10' 
                   : index < 3 
@@ -84,8 +84,8 @@ export default function BankComparison() {
                     : 'bg-white border-slate-100 hover:border-slate-300 hover:bg-slate-50/50'
               }`}
             >
-              {/* Bank Name */}
-              <div className="col-span-6 sm:col-span-5 flex items-center gap-3">
+              {/* Bank Name Section */}
+              <div className="col-span-5 flex items-start sm:items-center gap-3">
                 <div className="hidden sm:flex items-center justify-center w-10 h-10 rounded-xl flex-shrink-0 transition-colors bg-white shadow-sm border border-slate-100 group-hover:shadow-md overflow-hidden">
                   {getBankLogo(banco.key, banco.nombre)}
                 </div>
@@ -110,15 +110,16 @@ export default function BankComparison() {
                   
                   {banco.nota && (
                     <div className="flex items-center gap-1 text-[11px] font-medium text-slate-500 mt-0.5">
-                      <Info className="w-3 h-3 text-slate-400" />
-                      <span className="line-clamp-1">{banco.nota}</span>
+                      <Info className="w-3 h-3 text-slate-400 flex-shrink-0" />
+                      <span className="line-clamp-2 sm:line-clamp-1">{banco.nota}</span>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* Tasa EA */}
-              <div className="col-span-3 sm:col-span-4 flex items-center justify-center">
+              {/* Tasa EA Section */}
+              <div className="col-span-4 flex items-center justify-between sm:justify-center border-t border-slate-100 sm:border-0 pt-3 sm:pt-0 mt-2 sm:mt-0">
+                <span className="sm:hidden text-xs font-bold text-slate-400 uppercase tracking-wider">Tasa E.A.</span>
                 <span className={`inline-flex items-center justify-center px-4 py-1.5 rounded-xl text-lg font-black shadow-sm ${
                   index === 0 ? 'bg-emerald-500 text-white shadow-emerald-500/20' : 
                   index === 1 ? 'bg-emerald-100/80 text-emerald-700 border border-emerald-200/50' : 
@@ -129,10 +130,13 @@ export default function BankComparison() {
                 </span>
               </div>
 
-              {/* Capitalization */}
-              <div className="col-span-3 flex items-center justify-end gap-1.5 text-slate-500 text-sm font-medium capitalize">
-                <CalendarDays className="w-4 h-4 text-slate-400 hidden sm:block" />
-                {banco.capitalizacion}
+              {/* Capitalization Section */}
+              <div className="col-span-3 flex items-center justify-between sm:justify-end gap-1.5 text-slate-500 text-sm font-medium capitalize border-t border-slate-100 sm:border-0 pt-3 sm:pt-0 mt-2 sm:mt-0">
+                <span className="sm:hidden text-xs font-bold text-slate-400 uppercase tracking-wider">Pago de Intereses</span>
+                <div className="flex items-center gap-1.5">
+                  <CalendarDays className="w-4 h-4 text-slate-400" />
+                  {banco.capitalizacion}
+                </div>
               </div>
             </motion.div>
           ))}
