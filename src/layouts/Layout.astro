@@ -40,27 +40,39 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col antialiased">
-    <div class="fixed inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#6366f1_100%)] opacity-20"></div>
+  <body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col antialiased relative overflow-x-hidden">
+    
+    {/* Animated Background Blobs */}
+    <div class="fixed inset-0 w-full h-full -z-10 overflow-hidden bg-slate-50">
+      <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
+      <div class="absolute top-0 -right-4 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
+      <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-4000"></div>
+    </div>
 
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/70 border-b border-slate-200 shadow-sm transition-all duration-300">
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/60 border-b border-slate-200/50 shadow-sm transition-all duration-300">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-4">
-          <div class="flex items-center gap-2">
-            <span class="text-3xl">💸</span>
+          <div class="flex items-center gap-2 group cursor-default">
+            <span class="text-3xl group-hover:scale-110 transition-transform origin-bottom-left">💸</span>
             <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
               Calculadora de Rendimientos
             </h1>
           </div>
           <nav class="mt-4 sm:mt-0 flex gap-6 text-sm font-medium text-slate-600">
-            <a href="/" class="hover:text-indigo-600 transition-colors duration-200">Calculadora</a>
-            <a href="/explicacion" class="hover:text-indigo-600 transition-colors duration-200">¿Cómo funciona?</a>
+            <a href="/" class="hover:text-indigo-600 transition-colors duration-200 relative group">
+              Calculadora
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all group-hover:w-full"></span>
+            </a>
+            <a href="/explicacion" class="hover:text-indigo-600 transition-colors duration-200 relative group">
+              ¿Cómo funciona?
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all group-hover:w-full"></span>
+            </a>
           </nav>
         </div>
       </div>
     </header>
 
-    <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
+    <main class="flex-grow w-full relative z-10">
       <slot />
     </main>
 
