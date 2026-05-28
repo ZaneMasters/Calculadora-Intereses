@@ -11,7 +11,8 @@ export function useCalculatorLogic() {
     monto: '',
     meses: 12,
     usarTasaPersonalizada: false,
-    tasaPersonalizada: ''
+    tasaPersonalizada: '',
+    capitalizacionDiariaPersonalizada: false
   });
 
   const [resultados, setResultados] = useState(null);
@@ -27,7 +28,8 @@ export function useCalculatorLogic() {
     setInputs((prev) => ({
       ...prev,
       usarTasaPersonalizada: !prev.usarTasaPersonalizada,
-      tasaPersonalizada: ''
+      tasaPersonalizada: '',
+      capitalizacionDiariaPersonalizada: false
     }));
     setResultados(null);
   };
@@ -38,18 +40,19 @@ export function useCalculatorLogic() {
       monto: '',
       meses: 12,
       usarTasaPersonalizada: false,
-      tasaPersonalizada: ''
+      tasaPersonalizada: '',
+      capitalizacionDiariaPersonalizada: false
     });
     setResultados(null);
   };
 
   const calcularResultados = () => {
-    const { banco, monto, meses, usarTasaPersonalizada, tasaPersonalizada } = inputs;
+    const { banco, monto, meses, usarTasaPersonalizada, tasaPersonalizada, capitalizacionDiariaPersonalizada } = inputs;
     let tasaEA, capitalizacion;
 
     if (usarTasaPersonalizada) {
       tasaEA = parseFloat(tasaPersonalizada) / 100;
-      capitalizacion = 'mensual'; // Default para personalizada
+      capitalizacion = capitalizacionDiariaPersonalizada ? 'diaria' : 'mensual';
     } else {
       const settings = getBankSettings(banco);
       tasaEA = settings.tasaEA;

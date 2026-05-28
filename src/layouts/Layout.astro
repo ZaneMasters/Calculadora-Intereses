@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import "../styles/global.css";
 
 export interface Props {
@@ -7,7 +8,7 @@ export interface Props {
 }
 
 const { 
-  title = "Calculadora de Rendimientos", 
+  title = "Mejora tus Rendimientos", 
   description = "Calcula y compara los rendimientos de tus inversiones en diferentes cuentas de ahorro en bancos de Colombia." 
 } = Astro.props;
 
@@ -39,14 +40,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
     <meta property="twitter:image" content={new URL("/favicon.svg", Astro.url)} />
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <ViewTransitions />
   </head>
   <body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col antialiased relative overflow-x-hidden">
     
     {/* Animated Background Blobs */}
     <div class="fixed inset-0 w-full h-full -z-10 overflow-hidden bg-slate-50">
-      <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
-      <div class="absolute top-0 -right-4 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
-      <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-4000"></div>
+      <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob will-change-transform transform-gpu"></div>
+      <div class="absolute top-0 -right-4 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000 will-change-transform transform-gpu"></div>
+      <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-4000 will-change-transform transform-gpu"></div>
     </div>
 
     <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/60 border-b border-slate-200/50 shadow-sm transition-all duration-300">
@@ -55,7 +57,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
           <div class="flex items-center gap-2 group cursor-default">
             <span class="text-3xl group-hover:scale-110 transition-transform origin-bottom-left">💸</span>
             <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-              Calculadora de Rendimientos
+              Mejora tus Rendimientos
             </h1>
           </div>
           <nav class="mt-4 sm:mt-0 flex gap-6 text-sm font-medium text-slate-600">
@@ -65,6 +67,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
             </a>
             <a href="/explicacion" class="hover:text-indigo-600 transition-colors duration-200 relative group">
               ¿Cómo funciona?
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all group-hover:w-full"></span>
+            </a>
+            <a href="/topes" class="hover:text-indigo-600 transition-colors duration-200 relative group">
+              Topes 2026
               <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all group-hover:w-full"></span>
             </a>
           </nav>

@@ -18,6 +18,7 @@ export default function Calculator({ onResult }) {
   const [showResults, setShowResults] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const resultsRef = useRef(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -70,7 +71,12 @@ export default function Calculator({ onResult }) {
     if (resultados && onResult) {
       onResult(resultados);
       setShowResults(false);
-      setTimeout(() => setShowResults(true), 50);
+      setTimeout(() => {
+        setShowResults(true);
+        setTimeout(() => {
+          resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }, 50);
     }
   }, [resultados, onResult]);
 
@@ -118,17 +124,42 @@ export default function Calculator({ onResult }) {
               </label>
               
               {inputs.usarTasaPersonalizada ? (
-                 <div className="relative">
-                   <input
-                      type="number"
-                      step="0.01"
-                      className="w-full bg-slate-50 border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 py-3.5 px-4 rounded-xl font-medium placeholder-slate-400 outline-none transition-all"
-                      value={inputs.tasaPersonalizada}
-                      onChange={(e) => handleInputChange('tasaPersonalizada', e.target.value)}
-                      placeholder="Ej: 12.5"
-                      required
-                   />
-                   <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-slate-400 font-bold">%</div>
+                 <div className="space-y-3">
+                   <div className="relative">
+                     <input
+                        type="text"
+                        inputMode="decimal"
+                        className="w-full bg-slate-50 border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 py-3.5 px-4 rounded-xl font-medium placeholder-slate-400 outline-none transition-all shadow-sm hover:border-slate-300"
+                        value={inputs.tasaPersonalizada}
+                        onChange={(e) => {
+                          const val = e.target.value.replace(/%/g, '');
+                          if (/^\d*\.?\d*$/.test(val)) {
+                            handleInputChange('tasaPersonalizada', val);
+                          }
+                        }}
+                        onBlur={() => {
+                          if (inputs.tasaPersonalizada && !inputs.tasaPersonalizada.toString().includes('%')) {
+                            handleInputChange('tasaPersonalizada', `${inputs.tasaPersonalizada}%`);
+                          }
+                        }}
+                        onFocus={() => {
+                          if (inputs.tasaPersonalizada && inputs.tasaPersonalizada.toString().includes('%')) {
+                            handleInputChange('tasaPersonalizada', inputs.tasaPersonalizada.toString().replace('%', ''));
+                          }
+                        }}
+                        placeholder="Ej: 12.5"
+                        required
+                     />
+                   </div>
+                   <label className="flex items-center gap-2 cursor-pointer mt-2 text-sm text-slate-600 font-medium hover:text-slate-800 transition-colors">
+                     <input 
+                       type="checkbox"
+                       className="w-4 h-4 accent-indigo-600 cursor-pointer"
+                       checked={inputs.capitalizacionDiariaPersonalizada}
+                       onChange={(e) => handleInputChange('capitalizacionDiariaPersonalizada', e.target.checked)}
+                     />
+                     <span>Calcular con capitalización diaria</span>
+                   </label>
                  </div>
               ) : (
                   <div className="relative group" ref={dropdownRef}>
@@ -276,6 +307,7 @@ export default function Calculator({ onResult }) {
         <AnimatePresence>
         {resultados && showResults && (
           <motion.div
+            ref={resultsRef}
             initial={{ opacity: 0, height: 0, scale: 0.95 }}
             animate={{ opacity: 1, height: 'auto', scale: 1 }}
             exit={{ opacity: 0, height: 0, scale: 0.95 }}
@@ -291,53 +323,53 @@ export default function Calculator({ onResult }) {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 mb-5">
                  {/* Card Tasa */}
-                 <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-5 rounded-2xl border border-indigo-100 shadow-sm relative overflow-hidden group">
+                 <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-4 sm:p-5 rounded-2xl border border-indigo-100 shadow-sm relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-2xl -mr-10 -mt-10"></div>
                     <div className="flex items-center gap-2 mb-2">
-                      <Percent className="w-4 h-4 text-indigo-500" />
-                      <p className="text-sm text-indigo-700 font-semibold">{inputs.usarTasaPersonalizada ? 'Tasa Personalizada (E.A.)' : 'Tasa Efectiva Anual'}</p>
+                      <Percent className="w-4 h-4 text-indigo-500 shrink-0" />
+                      <p className="text-xs sm:text-sm text-indigo-700 font-semibold">{inputs.usarTasaPersonalizada ? 'Tasa Personalizada (E.A.)' : 'Tasa Efectiva Anual'}</p>
                     </div>
-                    <p className="text-3xl font-extrabold text-indigo-900 drop-shadow-sm">{resultados.tasaEA ? `${(resultados.tasaEA * 100).toFixed(2)}%` : '---'}</p>
+                    <p className="text-2xl sm:text-3xl font-extrabold text-indigo-900 drop-shadow-sm">{resultados.tasaEA ? `${(resultados.tasaEA * 100).toFixed(2)}%` : '---'}</p>
                  </div>
                  {/* Card Ganancia Total */}
-                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-5 rounded-2xl border border-emerald-100 shadow-sm relative overflow-hidden group">
+                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-4 sm:p-5 rounded-2xl border border-emerald-100 shadow-sm relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl -mr-10 -mt-10"></div>
                     <div className="flex items-center gap-2 mb-2">
-                      <TrendingUp className="w-4 h-4 text-emerald-600" />
-                      <p className="text-sm text-emerald-700 font-semibold">Ganancia Total (Intereses)</p>
+                      <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <p className="text-xs sm:text-sm text-emerald-700 font-semibold">Ganancia Total (Intereses)</p>
                     </div>
-                    <p className="text-3xl font-extrabold text-emerald-900 drop-shadow-sm">
+                    <p className="text-2xl sm:text-3xl font-extrabold text-emerald-900 drop-shadow-sm break-all">
                       <span className="text-emerald-600 mr-1">+</span>
                       ${Number(resultados.interesesTotales.toFixed(0)).toLocaleString()}
                     </p>
                  </div>
             </div>
 
-            <div className="bg-slate-50 p-6 sm:p-7 rounded-2xl border-2 border-slate-100 shadow-inner space-y-4">
-               <div className="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                  <span className="text-slate-600 font-medium">Total Final (Capital + Interés):</span>
-                  <span className="font-extrabold text-slate-900 text-xl md:text-2xl">${Number(resultados.totalFinal.toFixed(0)).toLocaleString()}</span>
+            <div className="bg-slate-50 p-5 sm:p-7 rounded-2xl border-2 border-slate-100 shadow-inner space-y-4">
+               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2 bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm">
+                  <span className="text-sm sm:text-base text-slate-600 font-medium">Total Final (Capital + Interés):</span>
+                  <span className="font-extrabold text-slate-900 text-2xl md:text-3xl break-all">${Number(resultados.totalFinal.toFixed(0)).toLocaleString()}</span>
                </div>
                
-               <div className="grid sm:grid-cols-2 gap-4 pt-2">
-                 <div className="flex justify-between items-center text-sm p-3 bg-white rounded-lg border border-slate-100">
+               <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
+                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2 text-sm p-3 sm:p-4 bg-white rounded-lg border border-slate-100">
                     <span className="text-slate-500">Rendimiento Mensual Est.:</span>
-                    <span className="font-bold text-slate-700">${Number(resultados.interesesMensuales.toFixed(0)).toLocaleString()}</span>
+                    <span className="font-bold text-slate-700 text-base sm:text-sm break-all">${Number(resultados.interesesMensuales.toFixed(0)).toLocaleString()}</span>
                  </div>
                  {resultados.interesesDiarios && (
-                    <div className="flex justify-between items-center text-sm p-3 bg-white rounded-lg border border-slate-100">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2 text-sm p-3 sm:p-4 bg-white rounded-lg border border-slate-100">
                        <span className="text-slate-500">Rendimiento Diario Est.:</span>
-                       <span className="font-bold text-slate-700">${Number(resultados.interesPrimerDia.toFixed(0)).toLocaleString()}</span>
+                       <span className="font-bold text-slate-700 text-base sm:text-sm break-all">${Number(resultados.interesPrimerDia.toFixed(0)).toLocaleString()}</span>
                     </div>
                  )}
                </div>
 
                <div className={`mt-4 p-4 rounded-xl border flex flex-col gap-2 text-sm font-medium transition-colors ${resultados.aplicaRete ? 'bg-rose-50 border-rose-100 text-rose-700' : 'bg-emerald-50 border-emerald-100 text-emerald-700'}`}>
-                  <div className="flex items-center gap-2.5">
-                    {resultados.aplicaRete ? <ShieldAlert className="w-5 h-5 text-rose-500" /> : <CheckCircle2 className="w-5 h-5 text-emerald-500" />}
-                    <span>{resultados.aplicaRete ? 'Aplica retención en la fuente (7%) por superar el UVT diario' : 'Tus rendimientos están libres de retención en la fuente'}</span>
+                  <div className="flex items-start sm:items-center gap-2.5">
+                    {resultados.aplicaRete ? <ShieldAlert className="w-5 h-5 text-rose-500 shrink-0 mt-0.5 sm:mt-0" /> : <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5 sm:mt-0" />}
+                    <span className="leading-tight">{resultados.aplicaRete ? 'Aplica retención en la fuente (7%) por superar el UVT diario' : 'Tus rendimientos están libres de retención en la fuente'}</span>
                   </div>
                   {resultados.aplicaRete && (
                     <div className="pl-7 text-rose-600/80 text-xs sm:text-sm">

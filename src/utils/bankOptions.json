@@ -1,7 +1,7 @@
 {
   "Nu": {
     "nombre": "Nu Colombia (Cajitas)",
-    "tasaEA": 0.0875,
+    "tasaEA": 0.0925,
     "capitalizacion": "diaria",
     "url": "https://nu.com.co/cf/cuenta/"
   },
@@ -17,14 +17,14 @@
     "nombre": "Lulo Bank",
     "tasaEA": 0.075,
     "capitalizacion": "mensual",
-    "nota": "Rango 7.5%–9.25% E.A. según producto",
+    "nota": "Rango 7.5%–10% E.A. según producto",
     "url": "https://www.lulobank.com/"
   },
   "LuloPro": {
     "nombre": "Lulo Bank (Pro)",
     "tasaEA": 0.0925,
     "capitalizacion": "mensual",
-    "nota": "Rango 7.5%–9.25% E.A. según producto",
+    "nota": "Rango 7.5%–10% E.A. según producto",
     "url": "https://www.lulobank.com/lulo-pro"
   },
   "PiBank": {
@@ -48,7 +48,7 @@
   },
   "BoldBolsillo": {
     "nombre": "Bold (Bolsillos de Ahorro)",
-    "tasaEA": 0.085,
+    "tasaEA": 0.09,
     "capitalizacion": "mensual",
     "isBajoMonto": true,
     "url": "https://bold.co/personas"
