@@ -93,7 +93,7 @@ export default function TopesInfo() {
               </h3>
               <p className="text-slate-600 mb-6">Aplica para tu cuenta de nómina o ahorros principal en cualquier banco (Bancolombia, Nu, Lulo, etc.).</p>
               
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+              <div className="bg-white p-6 rounded-2xl">
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                   <div>
                     <div className="text-slate-500 font-medium mb-1">Tope máximo exento (Mensual)</div>
@@ -102,8 +102,8 @@ export default function TopesInfo() {
                        350 UVT (2026)
                     </div>
                   </div>
-                  <div className="bg-rose-50 text-rose-700 p-4 rounded-xl border border-rose-100 flex items-start gap-3 text-sm font-medium max-w-sm w-full">
-                    <AlertTriangle className="w-6 h-6 shrink-0 text-rose-500 mt-0.5" />
+                  <div className="bg-amber-50 text-amber-700 p-4 rounded-xl border border-amber-100 flex items-start gap-3 text-sm font-medium max-w-sm w-full">
+                    <AlertTriangle className="w-6 h-6 shrink-0 text-amber-500 mt-0.5" />
                     <span>Recuerda: Solo puedes tener <strong>UNA única cuenta</strong> de ahorros exenta del 4x1000 en todo el sistema financiero.</span>
                   </div>
                 </div>
@@ -152,23 +152,23 @@ export default function TopesInfo() {
                 </div>
 
                 {/* 2026 */}
-                <div className="bg-rose-50 p-6 rounded-2xl border border-rose-100">
+                <div className="bg-indigo-50 p-6 rounded-2xl border border-indigo-100">
                   <div className="flex justify-between items-center mb-6">
-                    <h4 className="font-bold text-rose-900 text-lg flex items-center gap-2">
-                      <Calendar className="w-5 h-5 text-rose-400" /> Año Gravable 2026
+                    <h4 className="font-bold text-slate-800 text-lg flex items-center gap-2">
+                      <Calendar className="w-5 h-5 text-slate-400" /> Año Gravable 2026
                     </h4>
-                    <span className="text-xs font-bold bg-rose-200 text-rose-800 px-2 py-1 rounded-md">Se declara en 2027</span>
+                    <span className="text-xs font-bold bg-indigo-200 text-slate-700 px-2 py-1 rounded-md">Se declara en 2027</span>
                   </div>
                   <ul className="space-y-4">
                     <li>
-                      <div className="text-sm text-rose-700/80 font-medium mb-1">Ingresos / Compras / Consignaciones</div>
-                      <div className="text-2xl font-extrabold text-rose-900 mb-1">$73.323.600</div>
-                      <div className="text-xs text-rose-500/80 font-medium">1.400 UVT</div>
+                      <div className="text-sm text-slate-500 font-medium mb-1">Ingresos / Compras / Consignaciones</div>
+                      <div className="text-2xl font-extrabold text-slate-900 mb-1">$73.323.600</div>
+                      <div className="text-xs text-slate-400 font-medium">1.400 UVT</div>
                     </li>
-                    <li className="pt-4 border-t border-rose-200/60">
-                      <div className="text-sm text-rose-700/80 font-medium mb-1">Patrimonio Bruto (Bienes, Cuentas)</div>
-                      <div className="text-2xl font-extrabold text-rose-900 mb-1">$235.683.000</div>
-                      <div className="text-xs text-rose-500/80 font-medium">4.500 UVT</div>
+                    <li className="pt-4 border-t border-slate-200">
+                      <div className="text-sm text-slate-500 font-medium mb-1">Patrimonio Bruto (Bienes, Cuentas)</div>
+                      <div className="text-2xl font-extrabold text-slate-900 mb-1">$235.683.000</div>
+                      <div className="text-xs text-slate-400 font-medium">4.500 UVT</div>
                     </li>
                   </ul>
                 </div>
