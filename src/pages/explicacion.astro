@@ -2,93 +2,320 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
-  <div class="max-w-3xl mx-auto px-4 py-8 text-gray-800">
-    <h1 class="text-3xl font-bold mb-6 text-indigo-700">¿Cómo se calculan los rendimientos?</h1>
+<Layout
+  title="¿Cómo se calculan los rendimientos? | Mejora tus Rendimientos"
+  description="Aprende cómo funcionan el interés compuesto, la capitalización diaria y mensual, y la retención en la fuente en las cuentas de ahorro de Colombia."
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-14 space-y-6 sm:space-y-10">
 
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2 text-indigo-700">1. Tasa Efectiva Anual (EA)</h2>
-      <p class="mb-2">
-        En Colombia, las cuentas de ahorro de alto rendimiento suelen usar la <strong>Tasa Efectiva Anual (EA)</strong>,
-        que indica cuánto crecerá tu dinero en un año si los intereses se capitalizan (es decir, se reinvierten) en cada período.
+    {/* Page header */}
+    <div class="text-center mb-8 sm:mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        Guía de cálculo
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3 leading-tight">
+        ¿Cómo se calculan<br class="hidden sm:block"/> los rendimientos?
+      </h1>
+      <p class="text-sm sm:text-base text-slate-500 max-w-xl mx-auto leading-relaxed">
+        Entiende la matemática detrás de tus ahorros y por qué elegir el banco correcto hace la diferencia.
       </p>
-      <p class="mb-3">
-        Para convertirla a otros períodos:
+    </div>
+
+    {/* Step 1 */}
+    <div class="explain-card">
+      <div class="explain-step-badge">1</div>
+      <h2 class="explain-title">Tasa Efectiva Anual (E.A.)</h2>
+      <p class="explain-body">
+        La <strong>Tasa Efectiva Anual (E.A.)</strong> indica cuánto crece tu dinero en un año cuando los intereses se reinvierten en cada período. Para calcular períodos menores, se aplica la raíz correspondiente:
       </p>
-      
-      <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100 space-y-3">
-        <div class="flex items-center gap-3">
-          <span class="font-semibold text-slate-700 w-32">Tasa mensual:</span>
-          <code class="bg-white px-3 py-1 rounded border border-indigo-200 text-indigo-700 font-mono">(1 + EA)<sup>1/12</sup> - 1</code>
+      <div class="formula-grid">
+        <div class="formula-item">
+          <span class="formula-label">Tasa mensual</span>
+          <code class="formula-code">(1 + EA)<sup>1/12</sup> − 1</code>
         </div>
-        <div class="flex items-center gap-3">
-          <span class="font-semibold text-slate-700 w-32">Tasa diaria:</span>
-          <code class="bg-white px-3 py-1 rounded border border-indigo-200 text-indigo-700 font-mono">(1 + EA)<sup>1/365</sup> - 1</code>
+        <div class="formula-item">
+          <span class="formula-label">Tasa diaria</span>
+          <code class="formula-code">(1 + EA)<sup>1/365</sup> − 1</code>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2 text-indigo-700">2. Capitalización</h2>
-      <p class="mb-2">
-        Algunos bancos aplican intereses <strong>mensualmente</strong> (como Lulo Bank), mientras que otros lo hacen <strong>diariamente</strong> (como Nu y Ualá).
+    {/* Step 2 */}
+    <div class="explain-card">
+      <div class="explain-step-badge">2</div>
+      <h2 class="explain-title">Capitalización</h2>
+      <p class="explain-body">
+        La frecuencia con la que el banco suma los intereses al capital determina cuánto creces. A mayor frecuencia, mayor rendimiento real.
       </p>
-      <p class="mb-2">
-        Esto afecta la frecuencia con la que se suman los intereses al capital, y por tanto el crecimiento total.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-        <div class="bg-indigo-50 p-4 rounded-xl shadow-sm">
-          <h3 class="font-bold mb-2">Ejemplo - Capitalización Mensual</h3>
-          <p class="text-sm">
-            Si inviertes $1.000.000 a una tasa EA del 12%:<br />
-            Tasa mensual ≈ 0.949%<br />
-            En el primer mes, ganas: $9.490<br />
-            Ese total se usa para calcular el segundo mes, y así sucesivamente.
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+        <div class="cap-card cap-card--monthly">
+          <div class="cap-card__header">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Capitalización Mensual
+          </div>
+          <p class="cap-card__body">
+            $1.000.000 al <strong>12% E.A.</strong><br/>
+            Tasa mensual ≈ <strong>0.949%</strong><br/>
+            Primer mes: <strong class="text-indigo-700">+$9.490</strong>
           </p>
+          <p class="cap-card__note">Los intereses se suman cada mes al capital. Ej: Lulo Bank.</p>
         </div>
-        <div class="bg-indigo-50 p-4 rounded-xl shadow-sm">
-          <h3 class="font-bold mb-2">Ejemplo - Capitalización Diaria</h3>
-          <p class="text-sm">
-            Con capitalización diaria (ej. Nu), los intereses se calculan cada día:<br />
-            Tasa diaria ≈ 0.0302%<br />
-            Si tienes $1.000.000, al primer día ganas $302.<br />
-            Al siguiente día, se calcula sobre $1.000.302.
+        <div class="cap-card cap-card--daily">
+          <div class="cap-card__header">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Capitalización Diaria
+          </div>
+          <p class="cap-card__body">
+            $1.000.000 al <strong>12% E.A.</strong><br/>
+            Tasa diaria ≈ <strong>0.0302%</strong><br/>
+            Primer día: <strong class="text-emerald-700">+$302</strong>
           </p>
+          <p class="cap-card__note">Los intereses se calculan cada día. Ej: Nu Colombia.</p>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2 text-indigo-700">3. Retención en la fuente</h2>
-      <p class="mb-2">
-        En 2026 el umbral práctico equivalente diario es aproximadamente <strong>$3.038 COP</strong> (0,058 UVT), según la cuantía mínima aplicada por entidades financieras.
-        Si superas este monto, se aplica una <strong>retención del 7%</strong> sobre los intereses ganados.
+    {/* Step 3 */}
+    <div class="explain-card">
+      <div class="explain-step-badge">3</div>
+      <h2 class="explain-title">Retención en la fuente</h2>
+      <p class="explain-body">
+        Si tu ganancia diaria en intereses supera <strong>$3.038 COP</strong> (0.058 UVT en 2026), el banco aplica automáticamente una <strong>retención del 7%</strong> sobre los rendimientos — no sobre tu capital.
       </p>
-      <p class="mb-2">
-        Esta retención solo aplica sobre los <strong>rendimientos</strong>, no sobre tu capital. Si ganas menos de $3.038 diarios en intereses, <strong>no se aplica</strong>.
-      </p>
-
-      <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mt-4 text-sm rounded-lg">
-        <p><strong>Ejemplo:</strong> Si tu ganancia diaria promedio es $3.500 COP, entonces:</p>
-        <ul class="list-disc pl-6 mt-2">
-          <li>Aplica retención: 7%</li>
-          <li>Retención total mensual: $3.500 x 30 x 7% = $7.350 COP</li>
-        </ul>
+      <div class="alert-amber">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div>
+          <p class="font-semibold mb-1">Ejemplo práctico</p>
+          <p>Si ganas <strong>$3.500/día</strong> en intereses → aplica retención:</p>
+          <p class="mt-1">$3.500 × 30 días × 7% = <strong class="text-amber-800">−$7.350 al mes</strong></p>
+        </div>
       </div>
-    </section>
+    </div>
 
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2 text-indigo-700">4. Fórmula del Interés Compuesto</h2>
-      <p class="mb-2">
-        La fórmula básica usada es:
+    {/* Step 4 */}
+    <div class="explain-card">
+      <div class="explain-step-badge">4</div>
+      <h2 class="explain-title">Fórmula del interés compuesto</h2>
+      <p class="explain-body">
+        La calculadora aplica esta fórmula para cada período (mes o día), reinvirtiendo los intereses automáticamente:
       </p>
-      <div class="bg-slate-800 text-white p-4 rounded-lg font-mono text-center shadow-md mt-2 text-lg">
-        Monto final = Monto inicial × (1 + tasa)<sup>períodos</sup>
+      <div class="formula-main">
+        <span class="formula-main__label">Monto final</span>
+        <span class="formula-main__eq">=</span>
+        <span class="formula-main__formula">
+          Capital inicial × (1 + tasa)<sup class="text-indigo-300">períodos</sup>
+        </span>
       </div>
-      <p class="mt-2 text-sm text-gray-600">
-        Donde la tasa depende del período (mensual o diaria), y el número de períodos corresponde a meses o días según el banco.
+      <p class="text-xs sm:text-sm text-slate-400 mt-3 text-center">
+        Donde <em>tasa</em> = tasa mensual o diaria según el banco, y <em>períodos</em> = cantidad de meses o días.
       </p>
-    </section>
+    </div>
+
   </div>
 </Layout>
+
+<style>
+  .explain-card {
+    background: white;
+    border-radius: 1.25rem;
+    border: 1px solid #e2e8f0;
+    padding: 1.25rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    position: relative;
+  }
+  @media (min-width: 640px) {
+    .explain-card { padding: 2rem; }
+  }
+
+  .explain-step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: linear-gradient(135deg, #6366f1, #7c3aed);
+    color: white;
+    font-weight: 800;
+    font-size: 0.875rem;
+    border-radius: 0.625rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .explain-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 0.625rem;
+    line-height: 1.3;
+  }
+  @media (min-width: 640px) {
+    .explain-title { font-size: 1.25rem; }
+  }
+
+  .explain-body {
+    font-size: 0.875rem;
+    color: #475569;
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .explain-body { font-size: 0.9375rem; }
+  }
+
+  /* Formula grid */
+  .formula-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.625rem;
+    margin-top: 0.75rem;
+  }
+  @media (min-width: 400px) {
+    .formula-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .formula-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    border-radius: 0.75rem;
+    padding: 0.875rem;
+  }
+
+  .formula-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #4338ca;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .formula-code {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: #3730a3;
+    background: white;
+    border: 1px solid #c7d2fe;
+    border-radius: 0.5rem;
+    padding: 0.375rem 0.625rem;
+    white-space: nowrap;
+    overflow-x: auto;
+    display: block;
+  }
+  @media (min-width: 640px) {
+    .formula-code { font-size: 0.875rem; }
+  }
+
+  /* Capitalization cards */
+  .cap-card {
+    border-radius: 0.875rem;
+    padding: 1rem;
+    border: 1px solid;
+  }
+
+  .cap-card--monthly {
+    background: #eef2ff;
+    border-color: #c7d2fe;
+  }
+  .cap-card--daily {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+  }
+
+  .cap-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    margin-bottom: 0.625rem;
+    color: #334155;
+  }
+  .cap-card--monthly .cap-card__header { color: #4338ca; }
+  .cap-card--daily .cap-card__header { color: #047857; }
+
+  .cap-card__body {
+    font-size: 0.8125rem;
+    color: #334155;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .cap-card__note {
+    font-size: 0.75rem;
+    color: #64748b;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Alert amber */
+  .alert-amber {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: 0.875rem;
+    padding: 0.875rem 1rem;
+    font-size: 0.8125rem;
+    color: #78350f;
+    margin-top: 1rem;
+  }
+
+  /* Main formula display */
+  .formula-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    background: #1e293b;
+    color: white;
+    border-radius: 0.875rem;
+    padding: 1.25rem 1rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  @media (min-width: 480px) {
+    .formula-main {
+      flex-direction: row;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1.5rem;
+    }
+  }
+
+  .formula-main__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  @media (min-width: 480px) {
+    .formula-main__label { font-size: 0.875rem; }
+  }
+
+  .formula-main__eq {
+    color: #6366f1;
+    font-weight: 800;
+    font-size: 1.25rem;
+    display: none;
+  }
+  @media (min-width: 480px) {
+    .formula-main__eq { display: inline; }
+  }
+
+  .formula-main__formula {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: -0.01em;
+  }
+  @media (min-width: 640px) {
+    .formula-main__formula { font-size: 1.125rem; }
+  }
+</style>

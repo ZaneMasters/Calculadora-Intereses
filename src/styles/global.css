@@ -49,3 +49,24 @@
     transform: translate(0px, 0px) scale(1);
   }
 }
+
+/* GPU acceleration for animated elements */
+.transition-transform,
+.transition-all,
+.transition-\[transform\,box-shadow\] {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob,
+  .animate-ping {
+    animation: none;
+  }
+  .transition-transform,
+  .transition-all,
+  .transition-\[transform\,box-shadow\] {
+    transition-duration: 0.01ms !important;
+  }
+}
