@@ -38,6 +38,19 @@ export default function TopesInfo() {
         <p className="text-sm sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
           Manténte informado sobre los límites legales para evitar el 4x1000, bloqueos en tus cuentas y saber cuándo debes declarar renta en Colombia.
         </p>
+
+        {/* UVT 2026 Badge */}
+        <div className="inline-flex items-center gap-3 mt-6 px-5 py-3 rounded-2xl bg-gradient-to-r from-indigo-50 to-violet-50 border border-indigo-200 shadow-sm">
+          <div className="flex flex-col items-start sm:flex-row sm:items-center gap-1 sm:gap-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-indigo-400">UVT 2026</span>
+            <span className="hidden sm:block text-indigo-300 text-lg leading-none">|</span>
+            <span className="text-xl sm:text-2xl font-extrabold text-indigo-700 tracking-tight">$52.374</span>
+          </div>
+          <div className="h-8 w-px bg-indigo-200 hidden sm:block" />
+          <span className="text-xs text-slate-500 text-left leading-snug max-w-[180px] sm:max-w-none">
+            Valor fijado por la <strong className="text-slate-600">DIAN</strong> para el año gravable 2026
+          </span>
+        </div>
       </motion.div>
 
       <motion.div 
