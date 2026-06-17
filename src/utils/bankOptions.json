@@ -60,5 +60,13 @@
     "isBajoMonto": true,
     "nota": "Debe haber efectuado al menos una operación en el mes",
     "url": "https://global66.com/co/cuenta-global"
+  },
+  "DaleBolsillo": {
+    "nombre": "dale! (Alcancías Digitales)",
+    "tasaEA": 0.105,
+    "capitalizacion": "diaria",
+    "isBajoMonto": true,
+    "nota": "Tasa del 10.5% E.A. sobre nuevos depósitos en la alcancía digital. Desde $1.000 pesos.",
+    "url": "https://dale.com.co/"
   }
 }

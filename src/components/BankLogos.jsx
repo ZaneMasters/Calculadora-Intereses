@@ -65,6 +65,14 @@ const Global66Logo = ({ className }) => (
   />
 );
 
+const DaleLogo = ({ className }) => (
+  <img 
+    src="https://dale.com.co/sites/default/files/Logo.svg" 
+    alt="dale!" 
+    className={`${className} object-contain`} 
+  />
+);
+
 export const BankLogos = {
   nu: NuLogo,
   uala: UalaLogo,
@@ -73,5 +81,6 @@ export const BankLogos = {
   popular: PopularLogo,
   rappi: RappiLogo,
   bold: BoldLogo,
-  global66: Global66Logo
+  global66: Global66Logo,
+  dale: DaleLogo
 };

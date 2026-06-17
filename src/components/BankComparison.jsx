@@ -18,7 +18,8 @@ export default function BankComparison() {
       BancoPopularPlateada: BankLogos.popular,
       RappiPayBolsillo: BankLogos.rappi,
       BoldBolsillo: BankLogos.bold,
-      Global66: BankLogos.global66
+      Global66: BankLogos.global66,
+      DaleBolsillo: BankLogos.dale
     };
     
     const Component = logoMap[key];
