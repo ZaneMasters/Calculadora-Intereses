@@ -1,7 +1,7 @@
 {
   "Nu": {
     "nombre": "Nu Colombia (Cajitas)",
-    "tasaEA": 0.0925,
+    "tasaEA": 0.093,
     "capitalizacion": "diaria",
     "url": "https://nu.com.co/cf/cuenta/"
   },
@@ -48,17 +48,17 @@
   },
   "BoldBolsillo": {
     "nombre": "Bold (Bolsillos de Ahorro)",
-    "tasaEA": 0.09,
+    "tasaEA": 0.1,
     "capitalizacion": "mensual",
     "isBajoMonto": true,
     "url": "https://bold.co/personas"
   },
   "Global66": {
     "nombre": "Global 66",
-    "tasaEA": 0.11,
+    "tasaEA": 0.08,
     "capitalizacion": "mensual",
     "isBajoMonto": true,
-    "nota": "Debe haber efectuado al menos una operación en el mes",
+    "nota": "Plan Start 8% E.A. Plan Pro 11% E.A. Plan Ultra 12% E.A.",
     "url": "https://global66.com/co/cuenta-global"
   },
   "DaleBolsillo": {
@@ -66,7 +66,7 @@
     "tasaEA": 0.105,
     "capitalizacion": "diaria",
     "isBajoMonto": true,
-    "nota": "Tasa del 10.5% E.A. sobre nuevos depósitos en la alcancía digital. Desde $1.000 pesos.",
+    "nota": "Tasa del 10.5% E.A. sobre la alcancía digital. Desde $1.000 pesos.",
     "url": "https://dale.com.co/"
   }
 }
