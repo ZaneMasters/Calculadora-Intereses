@@ -15,16 +15,16 @@
   },
   "Lulo": {
     "nombre": "Lulo Bank",
-    "tasaEA": 0.075,
+    "tasaEA": 0.095,
     "capitalizacion": "mensual",
-    "nota": "Rango 7.5%–10% E.A. según producto",
+    "nota": "Tasa del 9.5% E.A. en bolsillos Flex",
     "url": "https://www.lulobank.com/"
   },
   "LuloPro": {
     "nombre": "Lulo Bank (Pro)",
-    "tasaEA": 0.0925,
+    "tasaEA": 0.1,
     "capitalizacion": "mensual",
-    "nota": "Rango 7.5%–10% E.A. según producto",
+    "nota": "Tasa del 10% E.A. para clientes Lulo Pro (nómina o ingresos > $3M)",
     "url": "https://www.lulobank.com/lulo-pro"
   },
   "PiBank": {
