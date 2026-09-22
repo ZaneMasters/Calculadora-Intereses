@@ -3,9 +3,13 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.jsx';
 import CalculatorWrapper from '../components/CalculatorWrapper.jsx';
 import BankComparison from '../components/BankComparison.jsx';
+import SeoContent from '../components/SeoContent.astro';
 ---
 
-<Layout>
+<Layout
+  title="Calculadora de Rendimientos Cuentas de Ahorro Colombia 2026 | Nu, Pibank, Lulo y más"
+  description="Calcula y compara los rendimientos reales de Nu Cajitas, Pibank, Lulo Bank, dale!, Bold, RappiPay y más en Colombia. Tasas Efectivas Anuales (E.A.) actualizadas a 2026 con retención en la fuente."
+>
   <Hero client:load />
   
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 pb-20 space-y-16">
@@ -15,6 +19,10 @@ import BankComparison from '../components/BankComparison.jsx';
     
     <section id="comparison-section">
       <BankComparison client:load />
+    </section>
+
+    <section id="seo-guide-section">
+      <SeoContent />
     </section>
   </div>
 </Layout>

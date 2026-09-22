@@ -1,0 +1,261 @@
+---
+import bankOptions from '../utils/bankOptions.json';
+
+const banks = Object.entries(bankOptions).map(([key, bank]) => ({
+  key,
+  ...bank,
+  tasaPercent: (bank.tasaEA * 100).toFixed(2)
+})).sort((a, b) => b.tasaEA - a.tasaEA);
+
+const faqs = [
+  {
+    q: "¿Cuál es la cuenta de ahorros que más intereses paga en Colombia en 2026?",
+    a: "Actualmente, entre las cuentas con liquidez y disponibilidad de retiro, Pibank Colombia ofrece la tasa más alta con un 11.00% E.A. desde el primer peso. Le siguen dale! (Alcancías digitales) con 10.50% E.A., Lulo Bank (Pro) y Bold con 10.00% E.A., Lulo Bank (Estándar) con 9.50% E.A., y Nu Colombia (Cajitas) con 9.30% E.A."
+  },
+  {
+    q: "¿Cómo funcionan y cómo se calculan las Cajitas de Nu Colombia?",
+    a: "Las Cajitas de Nu Colombia remuneran al 9.30% E.A. con cálculo y abono diario sobre el saldo depositado en la cajita. El dinero en el saldo principal de la cuenta genera 0.10% E.A., por lo que es necesario trasladar el saldo a las Cajitas desde la aplicación móvil para recibir el 9.30% E.A."
+  },
+  {
+    q: "¿Cuál es la diferencia de rentabilidad entre Lulo Bank estándar y Lulo Pro?",
+    a: "Los clientes estándar de Lulo Bank reciben una tasa del 9.50% E.A. en sus bolsillos Flex. Los clientes clasificados como Lulo Pro (quienes reciben su nómina en la entidad o registran ingresos recurrentes superiores a $3.000.000 COP mensuales) acceden a una tasa preferencial del 10.00% E.A. en sus bolsillos."
+  },
+  {
+    q: "¿Cuánto descuenta la DIAN por retención en la fuente sobre los rendimientos?",
+    a: "En Colombia, para 2026, la retención en la fuente sobre rendimientos financieros aplica si los intereses diarios superan 0.058 UVT (aproximadamente $3.038 COP diarios). Si superas ese límite, el banco retiene automáticamente el 7% sobre el valor del rendimiento generado, nunca sobre tu capital inicial."
+  },
+  {
+    q: "¿El dinero en estas cuentas digitales está protegido por Fogafín?",
+    a: "Sí. Entidades bancarias y compañías de financiamiento vigiladas por la Superintendencia Financiera de Colombia (como Nu Colombia, Pibank / Banco Pichincha, Lulo Bank, Banco Popular, dale! y Bold CF) cuentan con el Seguro de Depósitos de Fogafín, el cual cubre hasta $50.000.000 COP por titular en cada entidad."
+  },
+  {
+    q: "¿Qué diferencia hay entre capitalización diaria y mensual?",
+    a: "En la capitalización diaria (como Nu Colombia, dale! o Banco Popular), los intereses se liquidan y suman diariamente al saldo, aprovechando el interés compuesto día a día. En la capitalización mensual (como Pibank o Lulo Bank), los rendimientos se calculan sobre el saldo promedio o saldo diario pero se abonan al final o inicio de cada mes calendario."
+  }
+];
+---
+
+<section class="mt-16 sm:mt-24 space-y-16 border-t border-slate-200/60 pt-12">
+  <!-- SEO Guide Header -->
+  <div class="text-center max-w-3xl mx-auto space-y-4">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold">
+      <span>📚</span> Guía Financiera Colombia 2026
+    </div>
+    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+      Comparativa de Cuentas de Ahorro de Alto Rendimiento
+    </h2>
+    <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+      Conoce las características, tasas efectivas anuales (E.A.), topes de bajo monto y condiciones de cada banco en Colombia para tomar la mejor decisión de ahorro e inversión.
+    </p>
+  </div>
+
+  <!-- Summary Cards by Bank -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Pibank -->
+    <article class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-bold text-slate-900">Pibank Colombia</h3>
+        <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-emerald-100 text-emerald-800">11.00% E.A.</span>
+      </div>
+      <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+        Cuenta de ahorros remunerada de Banco Pichincha. Paga rendimientos desde $1 COP sin saldo mínimo ni comisiones de administración.
+      </p>
+      <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+        <li><strong>Abono:</strong> Mensual (cálculo diario).</li>
+        <li><strong>Liquidez:</strong> 100% disponible sin penalidades.</li>
+        <li><strong>Respaldo:</strong> Vigilado Superfinanciera / Fogafín.</li>
+      </ul>
+    </article>
+
+    <!-- dale! -->
+    <article class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-bold text-slate-900">dale! (Alcancías)</h3>
+        <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-emerald-100 text-emerald-800">10.50% E.A.</span>
+      </div>
+      <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+        Billetera digital del Grupo Aval. Rentabiliza el saldo guardado en sus Alcancías Digitales desde montos tan bajos como $1.000 COP.
+      </p>
+      <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+        <li><strong>Abono:</strong> Liquidación y abono diario.</li>
+        <li><strong>Tipo:</strong> Depósito de bajo monto / ordinario.</li>
+        <li><strong>Respaldo:</strong> Grupo Aval / Fogafín.</li>
+      </ul>
+    </article>
+
+    <!-- Lulo Bank Pro & Normal -->
+    <article class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-bold text-slate-900">Lulo Bank & Lulo Pro</h3>
+        <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-indigo-100 text-indigo-800">9.50% - 10% E.A.</span>
+      </div>
+      <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+        Banco 100% digital del Grupo Gilinski. Ofrece bolsillos Flex con disponibilidad inmediata y bolsillos programados a plazos de 60 y 90 días.
+      </p>
+      <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+        <li><strong>Lulo Pro:</strong> 10.00% E.A. (nómina o ingresos > $3M).</li>
+        <li><strong>Lulo Estándar:</strong> 9.50% E.A. en bolsillos Flex.</li>
+        <li><strong>Cashback:</strong> 0.5% en compras con tarjeta débito.</li>
+      </ul>
+    </article>
+
+    <!-- Bold -->
+    <article class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-bold text-slate-900">Bold (Bolsillos)</h3>
+        <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-indigo-100 text-indigo-800">10.00% E.A.</span>
+      </div>
+      <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+        Compañía de financiamiento colombiana. Sus bolsillos de ahorro pagan el 10% E.A. sobre el saldo mantenido durante 30 días calendario.
+      </p>
+      <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+        <li><strong>Abono:</strong> Mensual en cada bolsillo.</li>
+        <li><strong>Condición:</strong> Permanencia mínima de 30 días.</li>
+        <li><strong>Capacidad:</strong> Hasta 10 bolsillos organizados.</li>
+      </ul>
+    </article>
+
+    <!-- Nu Colombia -->
+    <article class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-bold text-slate-900">Nu Colombia (Cajitas)</h3>
+        <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-indigo-100 text-indigo-800">9.30% E.A.</span>
+      </div>
+      <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+        La cuenta de ahorros de Nu permite crear Cajitas que generan rendimientos diarios con liquidez total 24/7 y sin cuotas de manejo.
+      </p>
+      <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+        <li><strong>Abono:</strong> Diario directo a la Cajita.</li>
+        <li><strong>Sin mínimos:</strong> Rentabilidad desde el primer peso.</li>
+        <li><strong>Seguridad:</strong> Avalado por Fogafín hasta $50M.</li>
+      </ul>
+    </article>
+
+    <!-- Banco Popular -->
+    <article class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-bold text-slate-900">Banco Popular Plateada</h3>
+        <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-slate-100 text-slate-800">9.00% E.A.</span>
+      </div>
+      <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+        Cuenta digital del Banco Popular (Grupo Aval). Genera 9% E.A. con liquidación diaria y retiros gratuitos en red AVAL.
+      </p>
+      <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+        <li><strong>Abono:</strong> Diario sobre el saldo total.</li>
+        <li><strong>Cajeros:</strong> Más de 2.700 cajeros sin costo.</li>
+        <li><strong>Transferencias:</strong> Gratuitas vía Transfiya / Aval.</li>
+      </ul>
+    </article>
+
+    <!-- RappiPay -->
+    <article class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-bold text-slate-900">RappiPay (Bolsillos)</h3>
+        <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-slate-100 text-slate-800">9.00% E.A.</span>
+      </div>
+      <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+        RappiCuenta con bolsillos de ahorro remunerados al 9% E.A. y opción de Bóvedas a plazo fijo con tasas de hasta 13.5% E.A.
+      </p>
+      <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+        <li><strong>Abono:</strong> Mensual en bolsillos.</li>
+        <li><strong>Bóvedas:</strong> Plazos de 90 a 540 días.</li>
+        <li><strong>Vigilancia:</strong> Banco RappiPay / Fogafín.</li>
+      </ul>
+    </article>
+
+    <!-- Global 66 -->
+    <article class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-bold text-slate-900">Global 66</h3>
+        <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-slate-100 text-slate-800">8% - 12% E.A.</span>
+      </div>
+      <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+        Cuenta multimoneda internacional que remunera tanto en pesos colombianos como en dólares estadounidenses según el plan activo.
+      </p>
+      <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+        <li><strong>Plan Start:</strong> 8.00% E.A. base en COP.</li>
+        <li><strong>Plan Pro / Ultra:</strong> 11% y 12% E.A. en COP.</li>
+        <li><strong>Dólares:</strong> Hasta 6% E.A. en USD.</li>
+      </ul>
+    </article>
+
+    <!-- Ualá -->
+    <article class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-bold text-slate-900">Ualá Colombia</h3>
+        <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-slate-100 text-slate-800">5% - 10.5% E.A.</span>
+      </div>
+      <p class="text-sm text-slate-600 mb-3 leading-relaxed">
+        Cuenta de ahorro de bajo monto que recompensa el uso de su tarjeta débito Mastercard con una tasa escalonada.
+      </p>
+      <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+        <li><strong>Tasa base:</strong> 5.00% E.A. sin requisitos.</li>
+        <li><strong>Con 1 compra:</strong> Sube a 8.25% E.A.</li>
+        <li><strong>Compras > $400K:</strong> Alcanza el 10.50% E.A.</li>
+      </ul>
+    </article>
+  </div>
+
+  <!-- Key Factors for Savers -->
+  <div class="bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+    <div class="relative z-10 space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-indigo-200 text-xs font-semibold backdrop-blur-sm">
+        <span>💡</span> Claves para maximizar tus ganancias
+      </div>
+      <h3 class="text-xl sm:text-3xl font-bold tracking-tight">
+        Consejos para elegir la mejor cuenta de ahorro en Colombia
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm space-y-2">
+          <h4 class="font-bold text-base text-indigo-300">1. Exención del 4x1.000</h4>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Puedes tener una cuenta de ahorros exenta del Gravamen a los Movimientos Financieros (4x1.000) hasta por 350 UVT mensuales ($18.330.550 COP en 2026). Márcala como exenta para no perder rentabilidad al retirar.
+          </p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm space-y-2">
+          <h4 class="font-bold text-base text-indigo-300">2. Cuidado con los Topes</h4>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Las cuentas de bajo monto tienen un límite de saldo de 210,5 UVT ($11.024.727 COP en 2026). Si planeas ahorrar montos mayores, solicita que tu cuenta pase a categoría ordinaria.
+          </p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm space-y-2">
+          <h4 class="font-bold text-base text-indigo-300">3. Seguro de Fogafín</h4>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Asegúrate de que la entidad esté vigilada por la Superfinanciera. El seguro cubre hasta $50.000.000 COP por persona y banco. Si tienes más capital, diversifica entre diferentes entidades.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frequently Asked Questions (FAQ) Section -->
+  <div class="space-y-6">
+    <div class="text-center max-w-2xl mx-auto space-y-2">
+      <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+        Preguntas Frecuentes sobre Rendimientos y Tasas
+      </h3>
+      <p class="text-sm text-slate-600">
+        Resolvemos las dudas más comunes sobre el cálculo de rendimientos, retención de impuestos y seguridad financiera en Colombia.
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-3">
+      {faqs.map((faq, index) => (
+        <details class="group bg-white rounded-2xl border border-slate-200 p-5 open:shadow-sm open:border-indigo-200 transition-all duration-200">
+          <summary class="flex justify-between items-center font-bold text-slate-900 cursor-pointer list-none text-sm sm:text-base select-none gap-4">
+            <span class="flex items-center gap-2.5">
+              <span class="text-indigo-600 text-xs font-black bg-indigo-50 px-2 py-0.5 rounded-md">Q{index + 1}</span>
+              {faq.q}
+            </span>
+            <span class="text-slate-400 group-open:rotate-180 transition-transform flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </summary>
+          <div class="mt-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            <p>{faq.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

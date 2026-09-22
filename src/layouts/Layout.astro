@@ -2,44 +2,168 @@
 import { ViewTransitions } from 'astro:transitions';
 import "../styles/global.css";
 
+import bankOptions from '../utils/bankOptions.json';
+
 export interface Props {
   title?: string;
   description?: string;
+  isHome?: boolean;
 }
 
 const { 
-  title = "Mejora tus Rendimientos", 
-  description = "Calcula y compara los rendimientos de tus inversiones en diferentes cuentas de ahorro en bancos de Colombia." 
+  title = "Mejora tus Rendimientos | Calculadora de Cuentas de Ahorro Colombia", 
+  description = "Calcula y compara los rendimientos reales de Nu Cajitas, Pibank, Lulo Bank, dale!, Bold, RappiPay y más en Colombia. Tasas Efectivas Anuales (E.A.) 2026.",
+  isHome = false
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://mejoratusrendimientos.com';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const ogImageURL = `${siteUrl}/og-image.jpg`;
+
+// Schema.org Structured Data
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  "url": siteUrl,
+  "name": "Mejora tus Rendimientos",
+  "description": "Calculadora y comparador de tasas de interés y rendimientos de cuentas de ahorro en Colombia.",
+  "inLanguage": "es-CO"
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": `${siteUrl}/#app`,
+  "name": "Calculadora de Rendimientos Cuentas de Ahorro Colombia",
+  "url": siteUrl,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "description": "Herramienta gratuita para calcular y simular intereses compuestos diarios y mensuales de cuentas de ahorro colombianas (Nu, Pibank, Lulo, Bold, dale!, RappiPay, Ualá).",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "COP"
+  }
+};
+
+const financialProductsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Ranking Cuentas de Ahorro de Alto Rendimiento en Colombia 2026",
+  "itemListElement": Object.entries(bankOptions).map(([key, bank], idx) => ({
+    "@type": "ListItem",
+    "position": idx + 1,
+    "item": {
+      "@type": "FinancialProduct",
+      "name": bank.nombre,
+      "annualPercentageRate": bank.tasaEA * 100,
+      "interestRate": bank.tasaEA * 100,
+      "url": bank.url || siteUrl,
+      "description": bank.nota || `Cuenta con rentabilidad ${(bank.tasaEA * 100).toFixed(2)}% E.A. y capitalización ${bank.capitalizacion}.`
+    }
+  }))
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la cuenta de ahorros que más intereses paga en Colombia en 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entre las cuentas con liquidez disponible, Pibank Colombia lidera con 11.00% E.A. desde $1 COP. Le siguen dale! con 10.50% E.A., Lulo Bank (Pro) y Bold con 10.00% E.A., Lulo Bank Estándar con 9.50% E.A. y Nu Colombia con 9.30% E.A."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo funcionan y cómo se calculan las Cajitas de Nu Colombia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las Cajitas de Nu Colombia remuneran al 9.30% E.A. con cálculo y abono diario sobre el saldo depositado en la cajita. El dinero en el saldo principal de la cuenta genera 0.10% E.A., por lo que debes mover tu dinero a las Cajitas para recibir la tasa completa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la diferencia de rentabilidad entre Lulo Bank estándar y Lulo Pro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los clientes estándar de Lulo Bank reciben una tasa del 9.50% E.A. en bolsillos Flex. Los clientes Lulo Pro (con nómina o ingresos recurrentes mayores a $3.000.000 COP) reciben una tasa preferencial del 10.00% E.A."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto descuenta la DIAN por retención en la fuente sobre los rendimientos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En Colombia, para 2026, la retención en la fuente sobre rendimientos financieros aplica si los intereses diarios superan 0.058 UVT (aproximadamente $3.038 COP diarios). Si superas ese límite, el banco retiene automáticamente el 7% sobre los rendimientos generados."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El dinero en estas cuentas digitales está protegido por Fogafín?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Las entidades vigiladas por la Superintendencia Financiera de Colombia (Nu, Pibank, Lulo Bank, Banco Popular, dale!, Bold) cuentan con el Seguro de Depósitos de Fogafín, que cubre hasta $50.000.000 COP por titular."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre capitalización diaria y mensual?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En la capitalización diaria los intereses se liquidan y suman diariamente al saldo (aprovechando el interés compuesto día a día). En la mensual, los intereses se abonan al final o inicio de cada mes calendario."
+      }
+    }
+  ]
+};
 ---
 
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="calculadora de rendimientos, tasas de interés, colombia, nu bank, lulo bank, cuentas de ahorro, inflación, inversiones" />
+    <meta name="keywords" content="calculadora de rendimientos colombia, tasas cuentas de ahorro, nu colombia cajitas, pibank colombia tasa, lulo bank rendimientos, lulo pro, bold bolsillos, dale alcancias, rappipay rendimientos, uala colombia, interes compuesto colombia, retencion en la fuente cuentas de ahorro, cuentas alto rendimiento 2026" />
+    <meta name="author" content="ZaneMasters" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#4f46e5" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={canonicalURL} />
+    <link rel="canonical" href={canonicalURL.toString()} />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="Mejora tus Rendimientos" />
+    <meta property="og:url" content={canonicalURL.toString()} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL("/favicon.svg", Astro.url)} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:secure_url" content={ogImageURL} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Calculadora y Comparativa de Cuentas de Ahorro en Colombia 2026" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL("/favicon.svg", Astro.url)} />
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL.toString()} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content="Calculadora y Comparativa de Cuentas de Ahorro en Colombia 2026" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- JSON-LD Structured Data for Google -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(financialProductsSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <ViewTransitions />
   </head>
   <body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col antialiased relative overflow-x-hidden">
