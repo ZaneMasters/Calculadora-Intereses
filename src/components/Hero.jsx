@@ -4,6 +4,11 @@ import { TrendingUp, ShieldCheck, Wallet } from 'lucide-react';
 export default function Hero() {
   return (
     <div className="relative pt-12 pb-20 sm:pt-20 sm:pb-24 lg:pb-32 overflow-hidden">
+      {/* Decorative ambient brand icon in hero background */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-[460px] sm:h-[460px] -z-10 pointer-events-none opacity-[0.08] select-none transform rotate-6">
+        <img src="/logo.png" alt="" className="w-full h-full object-contain rounded-3xl" />
+      </div>
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         <motion.div

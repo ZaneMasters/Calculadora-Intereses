@@ -3,6 +3,7 @@
     "nombre": "Nu Colombia (Cajitas)",
     "tasaEA": 0.093,
     "capitalizacion": "diaria",
+    "descripcion": "La cuenta de ahorros de Nu permite crear Cajitas que generan rendimientos diarios con liquidez total 24/7 y sin cuotas de manejo. Rentabilidad desde el primer peso.",
     "url": "https://nu.com.co/cf/cuenta/"
   },
   "Uala": {
@@ -10,6 +11,7 @@
     "tasaEA": 0.05,
     "capitalizacion": "diaria",
     "nota": "Rango 5%–10.5% E.A. según uso de tarjeta",
+    "descripcion": "Cuenta de ahorro de bajo monto que recompensa el uso de su tarjeta débito Mastercard: tasa base del 5% E.A., 8.25% con 1 compra mensual y hasta 10.50% por compras superiores a $400.000 COP.",
     "isBajoMonto": true,
     "url": "https://www.uala.com.co/"
   },
@@ -18,6 +20,7 @@
     "tasaEA": 0.095,
     "capitalizacion": "mensual",
     "nota": "Tasa del 9.5% E.A. en bolsillos Flex",
+    "descripcion": "Banco 100% digital del Grupo Gilinski. Ofrece bolsillos Flex con disponibilidad inmediata al 9.50% E.A., transferencias gratuitas y cashback del 0.5% con tarjeta débito.",
     "url": "https://www.lulobank.com/"
   },
   "LuloPro": {
@@ -25,24 +28,28 @@
     "tasaEA": 0.1,
     "capitalizacion": "mensual",
     "nota": "Tasa del 10% E.A. para clientes Lulo Pro (nómina o ingresos > $3M)",
+    "descripcion": "Categoría preferencial para usuarios que reciben su nómina o ingresos recurrentes superiores a $3.000.000 COP en Lulo Bank, accediendo al 10.00% E.A. en bolsillos de ahorro.",
     "url": "https://www.lulobank.com/lulo-pro"
   },
   "PiBank": {
     "nombre": "Pibank Colombia",
     "tasaEA": 0.11,
     "capitalizacion": "mensual",
+    "descripcion": "Cuenta de ahorros remunerada de Banco Pichincha. Paga rendimientos del 11.00% E.A. desde $1 COP sin saldo mínimo ni comisiones de administración. Abono mensual con cálculo diario.",
     "url": "https://www.pibank.co/"
   },
   "BancoPopularPlateada": {
     "nombre": "Banco Popular (Cuenta Plateada)",
     "tasaEA": 0.09,
     "capitalizacion": "diaria",
+    "descripcion": "Cuenta digital del Banco Popular (Grupo Aval). Genera 9.00% E.A. con liquidación diaria, retiros gratuitos en más de 2.700 cajeros de la red AVAL y transferencias sin costo.",
     "url": "https://www.bancopopular.com.co/wps/portal/bancopopular/inicio/para-ti/productos-ahorro-inversion/cuentas-ahorro/cuenta-plateada"
   },
   "RappiPayBolsillo": {
     "nombre": "RappiPay (Bolsillo / RappiCuenta)",
     "tasaEA": 0.09,
     "capitalizacion": "mensual",
+    "descripcion": "RappiCuenta con bolsillos de ahorro remunerados al 9.00% E.A. y opción de Bóvedas a plazo fijo con tasas de hasta 13.50% E.A. Respaldo de Banco RappiPay y Fogafín.",
     "isBajoMonto": true,
     "url": "https://www.rappipay.co/rappicuenta/bolsillos/"
   },
@@ -50,6 +57,7 @@
     "nombre": "Bold (Bolsillos de Ahorro)",
     "tasaEA": 0.1,
     "capitalizacion": "mensual",
+    "descripcion": "Compañía de financiamiento vigilada por la Superfinanciera. Sus bolsillos de ahorro pagan el 10.00% E.A. sobre el saldo mantenido durante un período mínimo de 30 días calendario.",
     "isBajoMonto": true,
     "url": "https://bold.co/personas"
   },
@@ -57,16 +65,18 @@
     "nombre": "Global 66",
     "tasaEA": 0.08,
     "capitalizacion": "mensual",
-    "isBajoMonto": true,
     "nota": "Plan Start 8% E.A. Plan Pro 11% E.A. Plan Ultra 12% E.A.",
+    "descripcion": "Cuenta multimoneda internacional que remunera tanto en pesos colombianos (Start 8%, Pro 11%, Ultra 12% E.A.) como en dólares estadounidenses (hasta 6% E.A.).",
+    "isBajoMonto": true,
     "url": "https://global66.com/co/cuenta-global"
   },
   "DaleBolsillo": {
     "nombre": "dale! (Alcancías Digitales)",
     "tasaEA": 0.105,
     "capitalizacion": "diaria",
-    "isBajoMonto": true,
     "nota": "Tasa del 10.5% E.A. sobre la alcancía digital. Desde $1.000 pesos.",
+    "descripcion": "Billetera digital del Grupo Aval. Rentabiliza el saldo guardado en sus Alcancías Digitales al 10.50% E.A. con liquidación diaria y desde montos tan bajos como $1.000 COP.",
+    "isBajoMonto": true,
     "url": "https://dale.com.co/"
   }
 }

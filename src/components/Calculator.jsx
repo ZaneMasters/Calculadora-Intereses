@@ -88,8 +88,11 @@ export default function Calculator({ onResult }) {
       className="bg-white/90 backdrop-blur-md shadow-[0_20px_50px_rgb(0,0,0,0.05)] rounded-3xl w-full max-w-4xl mx-auto border border-white/50 overflow-hidden transition-all duration-300"
     >
       <div className="bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-600 p-8 sm:p-10 relative overflow-hidden">
-        {/* Decorative subtle pattern */}
+        {/* Decorative subtle pattern and ambient logo */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
+        <div className="absolute -right-8 -bottom-8 w-40 h-40 sm:w-48 sm:h-48 pointer-events-none opacity-15 select-none transform rotate-12">
+          <img src="/logo.png" alt="" className="w-full h-full object-contain rounded-3xl" />
+        </div>
         <div className="relative z-10 flex flex-col items-center">
           <div className="bg-white/20 p-3 rounded-2xl mb-4 backdrop-blur-sm border border-white/20">
             <CalcIcon className="w-8 h-8 text-white" />
