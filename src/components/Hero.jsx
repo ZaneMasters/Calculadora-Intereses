@@ -26,15 +26,15 @@ export default function Hero() {
           </div>
           
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-5 sm:mb-8 leading-tight">
-            Haz que tu dinero <br className="hidden sm:block" />
+            Calculadora de Rendimientos <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">
-              trabaje para ti
+              Cuentas de Ahorro Colombia
             </span>
           </h1>
           
           <p className="text-base sm:text-xl text-slate-600 leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto">
-            Calcula y compara los rendimientos reales de las mejores cuentas de ahorro en Colombia.
-            <span className="hidden sm:inline"> Descubre dónde crece más rápido tu capital.</span>
+            Compara las tasas E.A. y rendimientos reales de Nu Cajitas, Pibank, Lulo Bank, dale!, Bold y RappiPay en 2026.
+            <span className="hidden sm:inline"> Simula el interés compuesto con retención en la fuente.</span>
           </p>
         </motion.div>
 

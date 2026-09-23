@@ -97,8 +97,8 @@ export default function Calculator({ onResult }) {
           <div className="bg-white/20 p-3 rounded-2xl mb-4 backdrop-blur-sm border border-white/20">
             <CalcIcon className="w-8 h-8 text-white" />
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center mb-2 tracking-tight">Potencia tu Ahorro</h2>
-          <p className="text-indigo-100 text-center text-sm sm:text-base max-w-lg">Ingresa tus datos y descubre la opción que hará crecer tu dinero más rápido.</p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center mb-2 tracking-tight">Simula tus Rendimientos y Ganancias</h2>
+          <p className="text-indigo-100 text-center text-sm sm:text-base max-w-lg">Calcula tu ganancia con interés compuesto diario o mensual y retención en la fuente.</p>
         </div>
       </div>
 

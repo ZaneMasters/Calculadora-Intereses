@@ -53,7 +53,7 @@ export default function BankComparison() {
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
         <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-          Comparativa de Cuentas de Ahorro de Alto Rendimiento
+          Comparativa de Cuentas de Ahorro de Alto Rendimiento en Colombia 2026
         </h2>
         <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
           Conoce las características, tasas efectivas anuales (E.A.), topes de bajo monto y condiciones de cada banco en Colombia para tomar la mejor decisión de ahorro e inversión.
