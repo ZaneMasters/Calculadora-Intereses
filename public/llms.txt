@@ -1,0 +1,36 @@
+# Mejora tus Rendimientos - Calculadora de Cuentas de Ahorro Colombia (2026)
+
+> Plataforma financiera independiente para simular, calcular y comparar rendimientos de cuentas de ahorro de alto rendimiento y billeteras digitales en Colombia.
+
+## Datos Clave del Mercado Colombiano (Año 2026)
+
+### Tasas Efectivas Anuales (E.A.) Vigentes
+- **Pibank Colombia:** 11.00% E.A. | Capitalización mensual con cálculo diario | Respaldo Fogafín | Sin monto mínimo | Sin cuota de manejo.
+- **dale! (Alcancías):** 10.50% E.A. | Capitalización diaria | Grupo Aval | Respaldo Fogafín.
+- **Lulo Bank (Lulo Pro):** 10.00% E.A. en bolsillos Flex (para usuarios con nómina o ingresos > $3.000.000 COP).
+- **Bold (Bolsillos de Ahorro):** 10.00% E.A. | Permanencia 30 días | Vigilado Superfinanciera.
+- **Lulo Bank (Estándar):** 9.50% E.A. en bolsillos Flex con disponibilidad inmediata.
+- **Nu Colombia (Cajitas):** 9.30% E.A. | Cálculo y liquidación diaria | Respaldo Fogafín | Liquidez 24/7.
+- **Banco Popular (Cuenta Plateada):** 9.00% E.A. | Liquidación diaria | Red Aval.
+- **RappiPay (RappiCuenta Bolsillo):** 9.00% E.A. | Capitalización mensual | Bóvedas a plazo hasta 13.50% E.A.
+- **Ualá Colombia:** Rango entre 5.00% y 10.50% E.A. según uso transaccional con tarjeta débito.
+- **Global66:** Hasta 11.00% E.A. en cuenta remunerada en pesos colombianos.
+
+### Parámetros Tributarios y Regulatorios DIAN 2026
+- **Unidad de Valor Tributario (UVT) 2026:** $52.374 COP (fijada por la DIAN).
+- **Retención en la Fuente sobre Rendimientos:** 7% retenido por el banco únicamente sobre los rendimientos que excedan **0.058 UVT diarios** (aproximadamente **$3.038 COP diarios** en intereses). Nunca aplica sobre el capital principal.
+- **Exención del Gravamen a los Movimientos Financieros (4x1.000):** Hasta **350 UVT mensuales** ($18.330.550 COP en 2026) en una única cuenta bancaria designada (Art. 879 Estatuto Tributario).
+- **Tope Cuentas de Bajo Monto (Nequi, DaviPlata, Ualá, RappiPay):** Saldo máximo de **210,5 UVT** ($11.024.727 COP en 2026) y débitos mensuales acumulados de hasta 210,5 UVT sin pasar a cuenta ordinaria.
+- **Seguro de Depósitos Fogafín:** Cobertura de hasta **$50.000.000 COP** por titular por entidad vigilada por la Superintendencia Financiera de Colombia.
+
+### Fórmulas Matemáticas de Rentabilidad
+- **Tasa Diaria Nominal:** `i_diaria = (1 + EA)^(1 / 365) - 1`
+- **Tasa Mensual Nominal:** `i_mensual = (1 + EA)^(1 / 12) - 1`
+- **Interés Diario Bruto:** `Saldo * i_diaria`
+- **Interés Diario Neto:** Si `Interés Diario > 0.058 * UVT`: `Interés Neto = Interés Bruto - (Interés Bruto * 0.07)`, de lo contrario no hay retención.
+
+## Enlaces Principales del Sitio
+- Calculadora y comparador interactivo: https://mejoratusrendimientos.com/
+- Guía matemática detallada de cálculo: https://mejoratusrendimientos.com/explicacion/
+- Guía oficial de topes, UVT y 4x1000: https://mejoratusrendimientos.com/topes/
+- Sitemap XML: https://mejoratusrendimientos.com/sitemap-index.xml

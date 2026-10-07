@@ -1,5 +1,31 @@
 User-agent: *
 Allow: /
 
-# Sitemap oficial
+# Motores de Búsqueda Generativa e IA (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Archivos de contexto para IA
+# LLMs Context: https://mejoratusrendimientos.com/llms.txt
+
+# Sitemaps oficiales
 Sitemap: https://mejoratusrendimientos.com/sitemap-index.xml
+Sitemap: https://mejoratusrendimientos.com/sitemap.xml

@@ -21,14 +21,14 @@ export default function GrowthChart({ data }) {
   const ChartComponent = isDaily ? AreaChart : BarChart;
 
   return (
-    <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-8 mt-8 border border-slate-200">
-      <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+    <div className="bg-white shadow-lg rounded-2xl p-3.5 sm:p-8 mt-6 sm:mt-8 border border-slate-200">
+      <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-4 sm:mb-6 flex items-center gap-2">
         <span>📊</span> Proyección de Crecimiento
       </h3>
       
-      <div className="h-[300px] w-full">
+      <div className="h-[280px] sm:h-[300px] w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <ChartComponent data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+          <ChartComponent data={data} margin={{ top: 10, right: 8, left: -12, bottom: 0 }}>
             {isDaily && (
                 <defs>
                   <linearGradient id="colorValor" x1="0" y1="0" x2="0" y2="1">
@@ -40,18 +40,18 @@ export default function GrowthChart({ data }) {
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
             <XAxis
               dataKey="mes"
-              tick={{ fontSize: 12, fill: '#64748b' }}
+              tick={{ fontSize: 11, fill: '#64748b' }}
               tickLine={false}
               axisLine={false}
               interval="preserveStartEnd"
-              minTickGap={30}
+              minTickGap={20}
             />
             <YAxis
               tickFormatter={(value) => `$${formatNumber(Math.round(value/1000))}k`}
-              tick={{ fontSize: 12, fill: '#64748b' }}
+              tick={{ fontSize: 11, fill: '#64748b' }}
               tickLine={false}
               axisLine={false}
-              width={60}
+              width={50}
             />
             <Tooltip
               cursor={{ fill: '#f1f5f9' }}

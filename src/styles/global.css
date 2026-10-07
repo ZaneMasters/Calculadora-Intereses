@@ -50,10 +50,13 @@
   }
 }
 
-/* GPU acceleration for animated elements */
-.transition-transform,
-.transition-all,
-.transition-\[transform\,box-shadow\] {
+html {
+  -webkit-tap-highlight-color: transparent;
+  scroll-padding-top: 5rem;
+}
+
+/* GPU acceleration only for elements actively transforming */
+.transition-transform {
   will-change: transform;
   backface-visibility: hidden;
 }

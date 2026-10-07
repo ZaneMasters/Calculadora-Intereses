@@ -5,9 +5,9 @@ import { formatNumber, unformat } from '../utils/format';
 //const RETE_FUENTE_LIMITE_2025 = 2739 * 30; // mensual
 const RETE_FUENTE_LIMITE_2025 = 3038 * 30; // mensual
 
-export function useCalculatorLogic() {
+export function useCalculatorLogic(defaultBank = 'Nu') {
   const [inputs, setInputs] = useState({
-    banco: 'Nu',
+    banco: defaultBank,
     monto: '',
     meses: 12,
     usarTasaPersonalizada: false,
@@ -36,7 +36,7 @@ export function useCalculatorLogic() {
 
   const limpiar = () => {
     setInputs({
-      banco: 'Nu',
+      banco: defaultBank,
       monto: '',
       meses: 12,
       usarTasaPersonalizada: false,

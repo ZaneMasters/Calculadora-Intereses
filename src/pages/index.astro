@@ -7,12 +7,13 @@ import SeoContent from '../components/SeoContent.astro';
 ---
 
 <Layout
-  title="Calculadora de Rendimientos Cuentas de Ahorro Colombia 2026"
-  description="Calcula y compara rendimientos de Nu Cajitas, Pibank, Lulo, dale!, Bold y RappiPay en Colombia. Simula interés compuesto y retención en la fuente 2026."
+  title="Calculadora de Rendimientos 2026 | Compara Nu, Pibank y Lulo Bank"
+  description="¿Cuánto ganas en Pibank (11%), Nu (9.3%) o Lulo? Simula tus rendimientos reales con cálculo diario, retención en la fuente y exención del 4x1000 en Colombia."
+  isHome={true}
 >
   <Hero client:load />
   
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 pb-20 space-y-16">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 relative z-20 pb-16 sm:pb-20 space-y-8 sm:space-y-12">
     <section id="calculator-section">
       <CalculatorWrapper client:load />
     </section>

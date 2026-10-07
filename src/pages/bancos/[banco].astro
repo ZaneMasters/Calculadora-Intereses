@@ -1,0 +1,250 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CalculatorWrapper from '../../components/CalculatorWrapper.jsx';
+import bankOptions from '../../utils/bankOptions.json';
+import { BankLogos } from '../../components/BankLogos.jsx';
+
+export async function getStaticPaths() {
+  const bankSlugMap = [
+    { slug: 'pibank', key: 'PiBank', searchKeywords: 'pibank simulador, pibank rentabilidad, pibank colombia tasa' },
+    { slug: 'nu-colombia', key: 'Nu', searchKeywords: 'nu cajitas simulador, rendimientos nu colombia, tasa nu cajitas 2026' },
+    { slug: 'lulo-bank', key: 'Lulo', searchKeywords: 'lulo bank rendimientos, simulador lulo flex, tasa lulo bank' },
+    { slug: 'lulo-pro', key: 'LuloPro', searchKeywords: 'lulo pro rendimientos, tasa 10 lulo bank, simulador lulo pro' },
+    { slug: 'dale', key: 'DaleBolsillo', searchKeywords: 'dale alcancias rendimientos, simulador dale grupo aval, tasa dale 10.5' },
+    { slug: 'bold', key: 'BoldBolsillo', searchKeywords: 'bold bolsillos rendimientos, simulador bold cuenta, tasa bold 10' },
+    { slug: 'rappipay', key: 'RappiPayBolsillo', searchKeywords: 'rappipay rendimientos, simulador rappicuenta, bovedas rappipay' },
+    { slug: 'uala', key: 'Uala', searchKeywords: 'uala colombia rendimientos, simulador uala cuenta, tasa uala 2026' },
+    { slug: 'banco-popular', key: 'BancoPopularPlateada', searchKeywords: 'cuenta plateada popular rendimientos, simulador banco popular' },
+    { slug: 'global66', key: 'Global66', searchKeywords: 'global 66 rendimientos pesos, simulador global66 colombia' }
+  ];
+
+  return bankSlugMap.map(({ slug, key, searchKeywords }) => {
+    const bank = bankOptions[key];
+    return {
+      params: { banco: slug },
+      props: { bankKey: key, bank, slug, searchKeywords }
+    };
+  });
+}
+
+const { bankKey, bank, slug, searchKeywords } = Astro.props;
+
+const tasaPct = (bank.tasaEA * 100).toFixed(2);
+const tasaNum = bank.tasaEA * 100;
+
+// Cálculo estimativo a 12 meses para $1.000.000 COP
+const gananciaMillon12Meses = Math.round(1000000 * bank.tasaEA);
+const gananciaMillon1Mes = Math.round(1000000 * (Math.pow(1 + bank.tasaEA, 1/12) - 1));
+
+const title = `Simulador ${bank.nombre} 2026 | Rentabilidad y Rendimientos Reales`;
+const description = `Calcula cuánto rinde tu dinero en ${bank.nombre} con tasa del ${tasaPct}% E.A. Simula tus ganancias mensuales con cálculo diario, retención y comparativa 2026.`;
+
+// Preguntas frecuentes específicas por banco
+const bankFaqs = [
+  {
+    q: `¿Cuál es la tasa de interés de ${bank.nombre} en 2026?`,
+    a: `${bank.nombre} remunera actualmente con una Tasa Efectiva Anual (E.A.) del ${tasaPct}%, con esquema de capitalización ${bank.capitalizacion}. ${bank.nota ? bank.nota + '.' : ''}`
+  },
+  {
+    q: `¿Cuánto dinero gano al mes en ${bank.nombre} por cada $1.000.000 COP?`,
+    a: `Por cada $1.000.000 COP ahorrado en ${bank.nombre}, recibes aproximadamente $${gananciaMillon1Mes.toLocaleString('es-CO')} COP en tu primer mes, proyectando una rentabilidad anual de aproximadamente $${gananciaMillon12Meses.toLocaleString('es-CO')} COP bajo interés compuesto.`
+  },
+  {
+    q: `¿Los depósitos en ${bank.nombre} cuentan con Seguro de Fogafín?`,
+    a: `Sí. Al ser una entidad vigilada por la Superintendencia Financiera de Colombia, los recursos depositados cuentan con el Seguro de Depósitos de Fogafín, con una cobertura de hasta $50.000.000 COP por titular.`
+  }
+];
+
+const bankCustomSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FinancialProduct",
+      "name": bank.nombre,
+      "description": bank.descripcion,
+      "annualPercentageRate": tasaNum,
+      "interestRate": tasaNum,
+      "url": bank.url,
+      "feesAndCommissionsSpecification": "Sin cuota de manejo en transferencias seleccionadas"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": bankFaqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    }
+  ]
+};
+
+// Obtener otros bancos para la tabla comparativa
+const otrosBancos = Object.entries(bankOptions)
+  .filter(([key]) => key !== bankKey)
+  .map(([key, val]) => ({ key, ...val }))
+  .sort((a, b) => b.tasaEA - a.tasaEA)
+  .slice(0, 4);
+---
+
+<Layout
+  title={title}
+  description={description}
+  isHome={false}
+  customSchema={bankCustomSchema}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12">
+    
+    {/* Breadcrumbs de navegación */}
+    <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-500 font-medium" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-indigo-600 transition-colors">Inicio</a>
+      <span>/</span>
+      <span class="text-slate-400">Bancos</span>
+      <span>/</span>
+      <span class="text-indigo-600 font-semibold">{bank.nombre}</span>
+    </nav>
+
+    {/* Hero Específico de la Entidad */}
+    <header class="bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-4 sm:p-10 shadow-xl relative overflow-hidden">
+      <div class="relative z-10 space-y-4 sm:space-y-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-indigo-200 text-xs font-semibold backdrop-blur-sm">
+          <span>🏦</span> Entidad Vigilada Superfinanciera & Fogafín
+        </div>
+
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
+          Simulador de Rendimientos <br class="hidden sm:block"/>
+          <span class="text-indigo-300">{bank.nombre}</span>
+        </h1>
+
+        <p class="text-sm sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+          {bank.descripcion}
+        </p>
+
+        {/* Métricas clave */}
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 pt-4 border-t border-white/10">
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-3 sm:p-4">
+            <span class="text-[11px] sm:text-xs text-indigo-300 font-medium block">Tasa Efectiva Anual</span>
+            <span class="text-xl sm:text-3xl font-extrabold text-white">{tasaPct}%</span>
+            <span class="text-[10px] sm:text-[11px] text-slate-400 block mt-0.5">E.A. vigente 2026</span>
+          </div>
+
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-3 sm:p-4">
+            <span class="text-[11px] sm:text-xs text-indigo-300 font-medium block">Capitalización</span>
+            <span class="text-lg sm:text-2xl font-bold text-white capitalize">{bank.capitalizacion}</span>
+            <span class="text-[10px] sm:text-[11px] text-slate-400 block mt-0.5">Interés compuesto</span>
+          </div>
+
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-3 sm:p-4">
+            <span class="text-[11px] sm:text-xs text-indigo-300 font-medium block">Rendimiento mensual ($1M)</span>
+            <span class="text-lg sm:text-2xl font-bold text-emerald-400 break-words">+${gananciaMillon1Mes.toLocaleString('es-CO')}</span>
+            <span class="text-[10px] sm:text-[11px] text-slate-400 block mt-0.5">Estimado mes 1</span>
+          </div>
+
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-3 sm:p-4">
+            <span class="text-[11px] sm:text-xs text-indigo-300 font-medium block">Seguro Fogafín</span>
+            <span class="text-lg sm:text-2xl font-bold text-white">$50M COP</span>
+            <span class="text-[10px] sm:text-[11px] text-slate-400 block mt-0.5">Por titular</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {/* Calculadora interactiva precargada con este banco */}
+    <section class="space-y-4">
+      <div class="text-center max-w-2xl mx-auto space-y-1">
+        <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Simula tus ganancias en {bank.nombre}
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600">
+          Ajusta el monto y el plazo para calcular los intereses netos con retención en la fuente.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-2 sm:p-6 shadow-sm border border-slate-200">
+        <CalculatorWrapper client:load initialBank={bankKey} />
+      </div>
+    </section>
+
+    {/* Comparativa Directa con Alternativas */}
+    <section class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+            ¿Cómo se compara {bank.nombre} frente a otros bancos?
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500">
+            Comparativa de tasas de interés y condiciones con las alternativas líderes en Colombia.
+          </p>
+        </div>
+        <a href="/" class="text-xs sm:text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors inline-flex items-center gap-1" aria-label="Ver ranking completo de cuentas de ahorro en Colombia">
+          Ver ranking completo
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {otrosBancos.map((otro) => (
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-indigo-200 transition-[border-color,box-shadow] duration-150 ease-out shadow-sm space-y-3 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-semibold text-slate-400 block mb-1">Alternativa</span>
+              <h3 class="font-bold text-slate-900 text-base">{otro.nombre}</h3>
+              <p class="text-xs text-slate-500 mt-1 line-clamp-2">{otro.descripcion}</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-slate-400 block">Tasa E.A.</span>
+                <span class="text-lg font-black text-indigo-700">{(otro.tasaEA * 100).toFixed(2)}%</span>
+              </div>
+              <span class="text-xs px-2 py-1 rounded-lg bg-slate-100 text-slate-600 font-medium capitalize">
+                {otro.capitalizacion}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Preguntas Frecuentes Específicas */}
+    <section class="space-y-6">
+      <div class="text-center max-w-xl mx-auto space-y-1">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+          Preguntas Frecuentes sobre {bank.nombre}
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500">
+          Todo lo que necesitas saber antes de depositar tu capital.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-3">
+        {bankFaqs.map((faq, idx) => (
+          <details class="group bg-white rounded-2xl border border-slate-200 p-5 open:shadow-sm open:border-indigo-200 transition-[border-color,box-shadow] duration-150 ease-out">
+            <summary class="flex justify-between items-center font-bold text-slate-900 cursor-pointer list-none text-sm sm:text-base select-none gap-4">
+              <span>{faq.q}</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </summary>
+            <div class="mt-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+              <p>{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    {/* Enlaces de soporte normativo y guías */}
+    <footer class="bg-slate-100/70 border border-slate-200 rounded-2xl p-6 text-center space-y-3">
+      <h3 class="text-sm font-bold text-slate-700">¿Quieres profundizar en las fórmulas y normativas?</h3>
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm font-semibold text-indigo-600">
+        <a href="/explicacion/" class="hover:underline">Guía matemática de cálculo de interés</a>
+        <span>•</span>
+        <a href="/topes/" class="hover:underline">Límites UVT y exención del 4x1000 2026</a>
+        <span>•</span>
+        <a href="/" class="hover:underline">Volver a la Calculadora General</a>
+      </div>
+    </footer>
+
+  </div>
+</Layout>

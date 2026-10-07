@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, MotionConfig } from 'framer-motion';
 import { Shield, AlertTriangle, FileText, Wallet, CheckCircle2, TrendingUp, Calendar } from 'lucide-react';
 
 export default function TopesInfo() {
@@ -16,7 +16,8 @@ export default function TopesInfo() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16">
+    <MotionConfig reducedMotion="user">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -31,23 +32,23 @@ export default function TopesInfo() {
           Guía Financiera 2026
         </div>
         
-        <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4 sm:mb-6 leading-tight">
-          Conoce tus <span className="text-indigo-700">Topes y Límites</span>
-        </h2>
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4 sm:mb-6 leading-tight">
+          Topes Cuentas de Bajo Monto y <span className="text-indigo-700">Límites Financieros 2026</span>
+        </h1>
         
         <p className="text-sm sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
           Manténte informado sobre los límites legales para evitar el 4x1000, bloqueos en tus cuentas y saber cuándo debes declarar renta en Colombia.
         </p>
 
         {/* UVT 2026 Badge */}
-        <div className="inline-flex items-center gap-3 mt-6 px-5 py-3 rounded-2xl bg-gradient-to-r from-indigo-50 to-violet-50 border border-indigo-200 shadow-sm">
-          <div className="flex flex-col items-start sm:flex-row sm:items-center gap-1 sm:gap-3">
+        <div className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-3 mt-6 px-4 sm:px-5 py-3 rounded-2xl bg-gradient-to-r from-indigo-50 to-violet-50 border border-indigo-200 shadow-sm max-w-full text-center sm:text-left">
+          <div className="flex items-center gap-2 sm:gap-3">
             <span className="text-xs font-bold uppercase tracking-widest text-indigo-400">UVT 2026</span>
-            <span className="hidden sm:block text-indigo-300 text-lg leading-none">|</span>
-            <span className="text-xl sm:text-2xl font-extrabold text-indigo-700 tracking-tight">$52.374</span>
+            <span className="text-indigo-300 text-lg leading-none">|</span>
+            <span className="text-xl sm:text-2xl font-extrabold text-indigo-700 tracking-tight tabular-nums">$52.374</span>
           </div>
           <div className="h-8 w-px bg-indigo-200 hidden sm:block" />
-          <span className="text-xs text-slate-500 text-left leading-snug max-w-[180px] sm:max-w-none">
+          <span className="text-xs text-slate-500 text-center sm:text-left leading-snug max-w-[240px] sm:max-w-none">
             Valor fijado por la <strong className="text-slate-600">DIAN</strong> para el año gravable 2026
           </span>
         </div>
@@ -57,24 +58,24 @@ export default function TopesInfo() {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="space-y-10 md:space-y-12"
+        className="space-y-8 sm:space-y-12"
       >
         {/* Bajo Monto */}
         <motion.div variants={itemVariants} className="bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
-          <div className="p-5 sm:p-8 flex flex-col sm:flex-row gap-4 sm:gap-8 items-start">
+          <div className="p-4 sm:p-8 flex flex-col sm:flex-row gap-4 sm:gap-8 items-start">
             <div className="bg-indigo-50 p-3 sm:p-4 rounded-xl sm:rounded-2xl text-indigo-600 shrink-0 border border-indigo-100">
               <Wallet className="w-6 h-6 sm:w-8 sm:h-8" />
             </div>
-            <div className="flex-1 w-full">
+            <div className="flex-1 w-full min-w-0">
               <h3 className="text-lg sm:text-2xl font-bold text-slate-900 mb-1 sm:mb-2">Cuentas de Bajo Monto</h3>
               <p className="text-xs sm:text-sm text-slate-600 mb-4 sm:mb-6">Aplica para billeteras digitales como Nequi, DaviPlata, Ualá, RappiPay (Bolsillos), etc.</p>
               
-              <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                 <div className="bg-slate-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-100">
                   <div className="flex items-center gap-2 text-indigo-700 font-semibold mb-2 sm:mb-3 text-xs sm:text-sm">
                     <Shield className="w-4 h-4 shrink-0" /> Tope Movimientos (Mes)
                   </div>
-                  <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-1">$11.024.727</div>
+                  <div className="text-xl sm:text-3xl font-extrabold text-slate-900 mb-1 tabular-nums break-words">$11.024.727</div>
                   <div className="text-xs text-slate-500 font-medium mb-2 sm:mb-0">210,5 UVT (2026)</div>
                   <p className="hidden sm:block text-sm text-slate-600 mt-4">Si superas este monto en depósitos o retiros, la cuenta se bloqueará o deberás pasarla a una cuenta de ahorros tradicional.</p>
                 </div>
@@ -83,7 +84,7 @@ export default function TopesInfo() {
                   <div className="flex items-center gap-2 text-emerald-700 font-semibold mb-2 sm:mb-3 text-xs sm:text-sm">
                     <CheckCircle2 className="w-4 h-4 shrink-0" /> Exento 4x1000 (Mes)
                   </div>
-                  <div className="text-2xl sm:text-3xl font-extrabold text-emerald-900 mb-1">$3.404.310</div>
+                  <div className="text-xl sm:text-3xl font-extrabold text-emerald-900 mb-1 tabular-nums break-words">$3.404.310</div>
                   <div className="text-xs text-emerald-600 font-medium mb-2 sm:mb-0">65 UVT (2026)</div>
                   <p className="hidden sm:block text-sm text-emerald-800 mt-4">Tus movimientos mensuales hasta este valor no pagan el 4x1000, <strong>sin necesidad de marcar la cuenta</strong>.</p>
                 </div>
@@ -109,7 +110,7 @@ export default function TopesInfo() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
                     <div className="text-xs sm:text-sm text-slate-500 font-medium mb-1">Tope máximo exento (Mensual)</div>
-                    <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-1">$18.330.900</div>
+                    <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-1 tabular-nums">$18.330.900</div>
                     <div className="text-xs sm:text-sm text-violet-700 font-medium">350 UVT (2026)</div>
                   </div>
                   <div className="bg-amber-50 text-amber-700 p-3 sm:p-4 rounded-xl border border-amber-100 flex items-start gap-2.5 text-xs sm:text-sm font-medium w-full sm:max-w-sm">
@@ -149,12 +150,12 @@ export default function TopesInfo() {
                   <ul className="space-y-3 sm:space-y-4">
                     <li>
                       <div className="text-[11px] sm:text-sm text-slate-500 font-medium mb-0.5">Ingresos / Compras / Consignaciones</div>
-                      <div className="text-xl sm:text-2xl font-bold text-slate-900">$69.718.600</div>
+                      <div className="text-xl sm:text-2xl font-bold text-slate-900 tabular-nums">$69.718.600</div>
                       <div className="text-[10px] sm:text-xs text-slate-400 font-medium">1.400 UVT</div>
                     </li>
                     <li className="pt-3 sm:pt-4 border-t border-slate-200">
                       <div className="text-[11px] sm:text-sm text-slate-500 font-medium mb-0.5">Patrimonio Bruto (Bienes, Cuentas)</div>
-                      <div className="text-xl sm:text-2xl font-bold text-slate-900">$224.095.500</div>
+                      <div className="text-xl sm:text-2xl font-bold text-slate-900 tabular-nums">$224.095.500</div>
                       <div className="text-[10px] sm:text-xs text-slate-400 font-medium">4.500 UVT</div>
                     </li>
                   </ul>
@@ -171,12 +172,12 @@ export default function TopesInfo() {
                   <ul className="space-y-3 sm:space-y-4">
                     <li>
                       <div className="text-[11px] sm:text-sm text-slate-500 font-medium mb-0.5">Ingresos / Compras / Consignaciones</div>
-                      <div className="text-xl sm:text-2xl font-extrabold text-slate-900">$73.323.600</div>
+                      <div className="text-xl sm:text-2xl font-extrabold text-slate-900 tabular-nums">$73.323.600</div>
                       <div className="text-[10px] sm:text-xs text-slate-400 font-medium">1.400 UVT</div>
                     </li>
                     <li className="pt-3 sm:pt-4 border-t border-slate-200">
                       <div className="text-[11px] sm:text-sm text-slate-500 font-medium mb-0.5">Patrimonio Bruto (Bienes, Cuentas)</div>
-                      <div className="text-xl sm:text-2xl font-extrabold text-slate-900">$235.683.000</div>
+                      <div className="text-xl sm:text-2xl font-extrabold text-slate-900 tabular-nums">$235.683.000</div>
                       <div className="text-[10px] sm:text-xs text-slate-400 font-medium">4.500 UVT</div>
                     </li>
                   </ul>
@@ -188,5 +189,6 @@ export default function TopesInfo() {
         </motion.div>
       </motion.div>
     </div>
+    </MotionConfig>
   );
 }

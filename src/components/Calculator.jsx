@@ -4,7 +4,7 @@ import { Building2, Percent, DollarSign, CalendarDays, Info, ShieldAlert, CheckC
 import bankOptions from '../utils/bankOptions.json';
 import { useCalculatorLogic } from '../hooks/useCalculatorLogic';
 
-export default function Calculator({ onResult }) {
+export default function Calculator({ onResult, initialBank = 'Nu' }) {
   const {
     inputs,
     handleInputChange,
@@ -12,7 +12,7 @@ export default function Calculator({ onResult }) {
     calcularResultados,
     limpiar,
     resultados
-  } = useCalculatorLogic();
+  } = useCalculatorLogic(initialBank);
 
   const [errorMonto, setErrorMonto] = useState('');
   const [showResults, setShowResults] = useState(false);
@@ -85,24 +85,24 @@ export default function Calculator({ onResult }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-white/90 backdrop-blur-md shadow-[0_20px_50px_rgb(0,0,0,0.05)] rounded-3xl w-full max-w-4xl mx-auto border border-white/50 overflow-hidden transition-all duration-300"
+      className="bg-white/90 backdrop-blur-md shadow-[0_20px_50px_rgb(0,0,0,0.05)] rounded-3xl w-full max-w-4xl mx-auto border border-white/50 overflow-hidden"
     >
-      <div className="bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-600 p-8 sm:p-10 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-600 p-5 sm:p-10 relative overflow-hidden">
         {/* Decorative subtle pattern and ambient logo */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
         <div className="absolute -right-8 -bottom-8 w-40 h-40 sm:w-48 sm:h-48 pointer-events-none opacity-15 select-none transform rotate-12">
           <img src="/logo.png" alt="" className="w-full h-full object-contain rounded-3xl" />
         </div>
         <div className="relative z-10 flex flex-col items-center">
-          <div className="bg-white/20 p-3 rounded-2xl mb-4 backdrop-blur-sm border border-white/20">
-            <CalcIcon className="w-8 h-8 text-white" />
+          <div className="bg-white/20 p-2.5 sm:p-3 rounded-2xl mb-3 sm:mb-4 backdrop-blur-sm border border-white/20">
+            <CalcIcon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center mb-2 tracking-tight">Simula tus Rendimientos y Ganancias</h2>
-          <p className="text-indigo-100 text-center text-sm sm:text-base max-w-lg">Calcula tu ganancia con interés compuesto diario o mensual y retención en la fuente.</p>
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-white text-center mb-2 tracking-tight">Potencia tu Ahorro</h2>
+          <p className="text-indigo-100 text-center text-xs sm:text-base max-w-lg">Ingresa tus datos y descubre la opción que hará crecer tu dinero más rápido.</p>
         </div>
       </div>
 
-      <div className="p-6 sm:p-8">
+      <div className="p-4 sm:p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
             
           {/* Toggle Tasa Personalizada */}
@@ -114,14 +114,17 @@ export default function Calculator({ onResult }) {
                 checked={inputs.usarTasaPersonalizada}
                 onChange={toggleTasaPersonalizada}
               />
-              <div className="relative w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+              <div className="relative w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-transform after:duration-200 peer-checked:bg-indigo-600 transition-colors duration-200"></div>
               <span className="ms-3 text-sm font-medium text-slate-700">Usar tasa personalizada</span>
             </label>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-3">
-              <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
+              <label 
+                htmlFor={inputs.usarTasaPersonalizada ? "tasa-input" : undefined}
+                className="flex items-center gap-2 text-sm font-bold text-slate-700 cursor-pointer"
+              >
                 {inputs.usarTasaPersonalizada ? <Percent className="w-4 h-4 text-indigo-500" /> : <Building2 className="w-4 h-4 text-indigo-500" />}
                 {inputs.usarTasaPersonalizada ? 'Tasa E.A. Anual (%)' : 'Selecciona tu Banco'}
               </label>
@@ -130,9 +133,11 @@ export default function Calculator({ onResult }) {
                  <div className="space-y-3">
                    <div className="relative">
                      <input
+                        id="tasa-input"
+                        name="tasaPersonalizada"
                         type="text"
                         inputMode="decimal"
-                        className="w-full bg-slate-50 border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 py-3.5 px-4 rounded-xl font-medium placeholder-slate-400 outline-none transition-all shadow-sm hover:border-slate-300"
+                        className="w-full bg-slate-50 border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 py-3.5 px-4 rounded-xl font-medium placeholder-slate-400 outline-none transition-[border-color,box-shadow] duration-150 ease-out shadow-sm hover:border-slate-300"
                         value={inputs.tasaPersonalizada}
                         onChange={(e) => {
                           const val = e.target.value.replace(/%/g, '');
@@ -169,12 +174,12 @@ export default function Calculator({ onResult }) {
                     <button
                       type="button"
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                      className="w-full flex items-center justify-between bg-slate-50 border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 py-3.5 px-4 rounded-xl font-medium outline-none transition-all shadow-sm hover:border-slate-300"
+                      className="w-full flex items-center justify-between bg-slate-50 border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 py-3.5 px-4 rounded-xl font-medium outline-none transition-[border-color,box-shadow] duration-150 ease-out shadow-sm hover:border-slate-300"
                     >
                       <span className="truncate pr-4">
                         {bankOptions[inputs.banco] ? bankOptions[inputs.banco].nombre : 'Selecciona un banco'}
                       </span>
-                      <ChevronRight className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${isDropdownOpen ? '-rotate-90' : 'rotate-90'}`} />
+                      <ChevronRight className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isDropdownOpen ? '-rotate-90' : 'rotate-90'}`} />
                     </button>
 
                     <AnimatePresence>
@@ -183,10 +188,10 @@ export default function Calculator({ onResult }) {
                           initial={{ opacity: 0, y: -10, scaleY: 0.95 }}
                           animate={{ opacity: 1, y: 0, scaleY: 1 }}
                           exit={{ opacity: 0, y: -10, scaleY: 0.95 }}
-                          transition={{ duration: 0.2, originY: 0 }}
+                          transition={{ duration: 0.15, ease: "easeOut" }}
                           className="absolute z-50 w-full mt-2 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden"
                         >
-                          <div className="max-h-60 overflow-y-auto w-full custom-scrollbar">
+                          <div className="max-h-60 overflow-y-auto overscroll-contain w-full custom-scrollbar">
                             {Object.entries(bankOptions).map(([key, val]) => (
                               <button
                                 key={key}
@@ -220,15 +225,19 @@ export default function Calculator({ onResult }) {
             </div>
 
             <div className="space-y-3">
-              <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
+              <label htmlFor="monto-input" className="flex items-center gap-2 text-sm font-bold text-slate-700 cursor-pointer">
                 <DollarSign className="w-4 h-4 text-indigo-500" />
                 Monto a Invertir ($)
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 font-semibold">$</div>
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 font-semibold" aria-hidden="true">$</div>
                 <input
+                  id="monto-input"
+                  name="monto"
                   type="text"
-                  className={`w-full bg-slate-50 border-2 ${errorMonto ? 'border-red-400 focus:ring-red-500/20' : 'border-slate-200 focus:border-indigo-500 focus:ring-indigo-500/10'} text-slate-800 py-3.5 pl-8 pr-4 rounded-xl font-medium outline-none transition-all shadow-sm hover:border-slate-300 focus:ring-4`}
+                  inputMode="numeric"
+                  autoComplete="off"
+                  className={`w-full bg-slate-50 border-2 ${errorMonto ? 'border-red-400 focus:ring-red-500/20' : 'border-slate-200 focus:border-indigo-500 focus:ring-indigo-500/10'} text-slate-800 py-3.5 pl-8 pr-4 rounded-xl font-medium outline-none transition-[border-color,box-shadow] duration-150 ease-out shadow-sm hover:border-slate-300 focus:ring-4`}
                   value={inputs.monto}
                   onChange={(e) => handleInputChange('monto', e.target.value)}
                   placeholder="Ej: 1,000,000"
@@ -252,14 +261,16 @@ export default function Calculator({ onResult }) {
 
           <div className="space-y-4 pt-2">
             <div className="flex items-center justify-between">
-              <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
+              <label htmlFor="meses-input" className="flex items-center gap-2 text-sm font-bold text-slate-700 cursor-pointer">
                 <CalendarDays className="w-4 h-4 text-indigo-500" />
                 Plazo de la inversión
               </label>
               <div className="flex items-center gap-2">
                 <input
+                  id="meses-input"
+                  name="meses"
                   type="number"
-                  className="w-16 bg-indigo-50 border border-indigo-200 text-indigo-900 py-1.5 px-2 rounded-lg text-center font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-16 bg-indigo-50 border border-indigo-200 text-indigo-900 py-1.5 px-2 rounded-lg text-center font-bold text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   min={1}
                   max={60}
                   value={inputs.meses}
@@ -274,9 +285,10 @@ export default function Calculator({ onResult }) {
                 type="range"
                 min="1"
                 max="60"
+                aria-label="Ajustar plazo de inversión en meses"
                 value={inputs.meses}
                 onChange={(e) => handleInputChange('meses', e.target.value)}
-                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all hover:bg-slate-300"
+                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-colors duration-150 ease-out hover:bg-slate-300"
               />
               <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium px-1">
                 <span>1 mes</span>
@@ -291,14 +303,16 @@ export default function Calculator({ onResult }) {
           <div className="flex flex-col sm:flex-row gap-4 pt-6 mt-6 border-t border-slate-100">
             <button
               type="submit"
-              className="flex-1 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-indigo-500/40 transition-all active:scale-[0.98] group"
+              aria-label="Calcular rendimientos e intereses de cuenta de ahorro en Colombia"
+              className="flex-1 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-indigo-500/40 transition-[background-color,box-shadow,transform] duration-150 ease-out motion-safe:enabled:active:scale-[0.96] group"
             >
-              <CalcIcon className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              <CalcIcon className="w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
               <span>Calcular Rendimiento</span>
             </button>
             <button
               type="button"
-              className="px-6 py-3.5 flex items-center justify-center gap-2 border-2 border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 hover:border-slate-300 transition-all focus:ring-4 focus:ring-slate-100 active:bg-slate-100"
+              aria-label="Limpiar simulación de rendimientos"
+              className="px-6 py-3.5 flex items-center justify-center gap-2 border-2 border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 hover:border-slate-300 transition-[background-color,border-color,transform] duration-150 ease-out focus:ring-4 focus:ring-slate-100 motion-safe:enabled:active:scale-[0.96]"
               onClick={handleLimpiar}
             >
               <RefreshCw className="w-4 h-4" />
@@ -314,7 +328,7 @@ export default function Calculator({ onResult }) {
             initial={{ opacity: 0, height: 0, scale: 0.95 }}
             animate={{ opacity: 1, height: 'auto', scale: 1 }}
             exit={{ opacity: 0, height: 0, scale: 0.95 }}
-            transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className="mt-10 pt-8"
           >
             <div className="relative mb-8">
@@ -326,45 +340,45 @@ export default function Calculator({ onResult }) {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 mb-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 mb-4 sm:mb-5">
                  {/* Card Tasa */}
-                 <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-4 sm:p-5 rounded-2xl border border-indigo-100 shadow-sm relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                 <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-3.5 sm:p-5 rounded-2xl border border-indigo-100 shadow-sm relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-2xl -mr-10 -mt-10" aria-hidden="true"></div>
                     <div className="flex items-center gap-2 mb-2">
                       <Percent className="w-4 h-4 text-indigo-500 shrink-0" />
                       <p className="text-xs sm:text-sm text-indigo-700 font-semibold">{inputs.usarTasaPersonalizada ? 'Tasa Personalizada (E.A.)' : 'Tasa Efectiva Anual'}</p>
                     </div>
-                    <p className="text-2xl sm:text-3xl font-extrabold text-indigo-900 drop-shadow-sm">{resultados.tasaEA ? `${(resultados.tasaEA * 100).toFixed(2)}%` : '---'}</p>
+                    <p className="text-xl sm:text-2xl md:text-3xl font-extrabold text-indigo-900 drop-shadow-sm tabular-nums">{resultados.tasaEA ? `${(resultados.tasaEA * 100).toFixed(2)}%` : '---'}</p>
                  </div>
                  {/* Card Ganancia Total */}
-                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-4 sm:p-5 rounded-2xl border border-emerald-100 shadow-sm relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-3.5 sm:p-5 rounded-2xl border border-emerald-100 shadow-sm relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl -mr-10 -mt-10" aria-hidden="true"></div>
                     <div className="flex items-center gap-2 mb-2">
                       <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
                       <p className="text-xs sm:text-sm text-emerald-700 font-semibold">Ganancia Total (Intereses)</p>
                     </div>
-                    <p className="text-2xl sm:text-3xl font-extrabold text-emerald-900 drop-shadow-sm break-all">
+                    <p className="text-xl sm:text-2xl md:text-3xl font-extrabold text-emerald-900 drop-shadow-sm tabular-nums break-words">
                       <span className="text-emerald-600 mr-1">+</span>
                       ${Number(resultados.interesesTotales.toFixed(0)).toLocaleString()}
                     </p>
                  </div>
             </div>
 
-            <div className="bg-slate-50 p-5 sm:p-7 rounded-2xl border-2 border-slate-100 shadow-inner space-y-4">
-               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2 bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm">
-                  <span className="text-sm sm:text-base text-slate-600 font-medium">Total Final (Capital + Interés):</span>
-                  <span className="font-extrabold text-slate-900 text-2xl md:text-3xl break-all">${Number(resultados.totalFinal.toFixed(0)).toLocaleString()}</span>
+            <div className="bg-slate-50 p-3.5 sm:p-7 rounded-2xl sm:rounded-3xl border-2 border-slate-100 shadow-inner space-y-4">
+               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2 bg-white p-3.5 sm:p-5 rounded-xl border border-slate-200 shadow-sm">
+                  <span className="text-xs sm:text-base text-slate-600 font-medium">Total Final (Capital + Interés):</span>
+                  <span className="font-extrabold text-slate-900 text-xl sm:text-2xl md:text-3xl tabular-nums break-words">${Number(resultados.totalFinal.toFixed(0)).toLocaleString()}</span>
                </div>
                
-               <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
+               <div className="grid sm:grid-cols-2 gap-2.5 sm:gap-4 pt-1 sm:pt-2">
                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2 text-sm p-3 sm:p-4 bg-white rounded-lg border border-slate-100">
-                    <span className="text-slate-500">Rendimiento Mensual Est.:</span>
-                    <span className="font-bold text-slate-700 text-base sm:text-sm break-all">${Number(resultados.interesesMensuales.toFixed(0)).toLocaleString()}</span>
+                    <span className="text-xs sm:text-sm text-slate-500">Rendimiento Mensual Est.:</span>
+                    <span className="font-bold text-slate-700 text-sm sm:text-base tabular-nums break-words">${Number(resultados.interesesMensuales.toFixed(0)).toLocaleString()}</span>
                  </div>
                  {resultados.interesesDiarios && (
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2 text-sm p-3 sm:p-4 bg-white rounded-lg border border-slate-100">
-                       <span className="text-slate-500">Rendimiento Diario Est.:</span>
-                       <span className="font-bold text-slate-700 text-base sm:text-sm break-all">${Number(resultados.interesPrimerDia.toFixed(0)).toLocaleString()}</span>
+                       <span className="text-xs sm:text-sm text-slate-500">Rendimiento Diario Est.:</span>
+                       <span className="font-bold text-slate-700 text-sm sm:text-base tabular-nums break-words">${Number(resultados.interesPrimerDia.toFixed(0)).toLocaleString()}</span>
                     </div>
                  )}
                </div>
@@ -376,7 +390,7 @@ export default function Calculator({ onResult }) {
                   </div>
                   {resultados.aplicaRete && (
                     <div className="pl-7 text-rose-600/80 text-xs sm:text-sm">
-                      Valor retenido aproximadamente: <span className="font-bold text-rose-700">-${Number(resultados.valorRete.toFixed(0)).toLocaleString()}</span>
+                      Valor retenido aproximadamente: <span className="font-bold text-rose-700 tabular-nums">-${Number(resultados.valorRete.toFixed(0)).toLocaleString()}</span>
                     </div>
                   )}
                </div>

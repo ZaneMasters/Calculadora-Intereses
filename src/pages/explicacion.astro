@@ -1,25 +1,85 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cómo calcular el interés de una cuenta de ahorros en Colombia (2026)",
+  "description": "Fórmula matemática y procedimiento paso a paso para calcular los rendimientos diarios y mensuales de cuentas de ahorro en Colombia con Tasa Efectiva Anual (E.A.) y retención en la fuente.",
+  "totalTime": "PT3M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Convertir la Tasa Efectiva Anual (E.A.) a tasa periódica",
+      "text": "Aplica la fórmula matemática de conversión: Tasa diaria = (1 + EA)^(1/365) - 1. Para tasa mensual: Tasa mensual = (1 + EA)^(1/12) - 1."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Calcular la frecuencia de capitalización",
+      "text": "Si el banco capitaliza diariamente (como Nu o dale!), los intereses se suman cada 24 horas al capital, generando interés compuesto. Si capitaliza mensualmente (como Pibank o Lulo), se liquidan al cierre del mes."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Comprobar la retención en la fuente de la DIAN",
+      "text": "En Colombia para 2026, si la ganancia diaria en intereses supera 0.058 UVT ($3.038 COP), el banco retiene automáticamente el 7% sobre los intereses generados."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Aplicar la fórmula del interés compuesto",
+      "text": "Aplica la fórmula: Monto Final = Capital Inicial * (1 + tasa)^períodos para proyectar el crecimiento del ahorro a lo largo del tiempo."
+    }
+  ]
+};
 ---
 
 <Layout
-  title="¿Cómo se calculan los rendimientos de cuentas de ahorro? | Guía 2026"
-  description="Aprende cómo calcular el interés compuesto, la diferencia entre capitalización diaria vs mensual y cómo aplica la retención en la fuente (7% sobre 0.058 UVT) en Colombia."
+  title="¿Cómo Calcular el Interés de una Cuenta de Ahorros? | Guía 2026"
+  description="Aprende cómo calcular el interés de una cuenta de ahorro en Colombia: fórmulas de tasa diaria y mensual, capitalización compuesta y retención en la fuente 2026."
+  customSchema={howToSchema}
 >
   <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-14 space-y-6 sm:space-y-10">
 
     {/* Page header */}
-    <div class="text-center mb-8 sm:mb-12">
+    <div class="text-center mb-6 sm:mb-10">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold mb-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        Guía de cálculo
+        Fórmulas Financieras Colombia 2026
       </div>
       <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3 leading-tight">
-        ¿Cómo se calculan<br class="hidden sm:block"/> los rendimientos?
+        ¿Cómo se calcula el interés de una cuenta de ahorros?
       </h1>
       <p class="text-sm sm:text-base text-slate-500 max-w-xl mx-auto leading-relaxed">
-        Entiende la matemática detrás de tus ahorros y por qué elegir el banco correcto hace la diferencia.
+        Guía paso a paso con fórmulas matemáticas exactas, ejemplos numéricos y explicación de retención en la fuente en Colombia.
       </p>
+    </div>
+
+    {/* Answer-First Featured Snippet Block (Optimizado para Google y Motores de IA) */}
+    <div class="bg-gradient-to-br from-indigo-50 via-white to-violet-50 border-2 border-indigo-200 rounded-2xl p-5 sm:p-7 shadow-sm space-y-4">
+      <div class="flex items-center gap-2 text-indigo-700 font-bold text-sm uppercase tracking-wide">
+        <span class="text-lg">⚡</span> Respuesta Rápida: Fórmula de Cálculo
+      </div>
+      <p class="text-sm sm:text-base text-slate-800 leading-relaxed">
+        Para calcular los intereses diarios de tu cuenta de ahorros en Colombia, convierte la <strong>Tasa Efectiva Anual (E.A.)</strong> a tasa diaria y multiplícala por tu saldo ahorrado:
+      </p>
+      <div class="bg-slate-900 text-white rounded-xl p-4 font-mono text-xs sm:text-sm overflow-x-auto text-center border border-slate-800">
+        Interés Diario = Saldo × [(1 + E.A.)<sup>(1 / 365)</sup> − 1]
+      </div>
+      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+        <strong>Ejemplo real:</strong> Un saldo de <strong>$1.000.000 COP</strong> en una cuenta al <strong>11.00% E.A.</strong> (como Pibank) tiene una tasa diaria de <strong>0,0286%</strong>, generando aproximadamente <strong>$286 COP diarios</strong> y <strong>$8.694 COP mensuales</strong> de ganancia neta.
+      </p>
+      <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-indigo-100">
+        <span class="text-xs text-slate-500 font-medium text-center sm:text-left">
+          ¿Prefieres no hacer los cálculos a mano?
+        </span>
+        <a href="/#calculator-section" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 text-white text-xs sm:text-sm font-semibold hover:bg-indigo-700 transition-colors shadow-sm">
+          Simular en la Calculadora Interactiva
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
 
     {/* Step 1 */}
@@ -110,6 +170,27 @@ import Layout from '../layouts/Layout.astro';
       <p class="text-xs sm:text-sm text-slate-400 mt-3 text-center">
         Donde <em>tasa</em> = tasa mensual o diaria según el banco, y <em>períodos</em> = cantidad de meses o días.
       </p>
+    </div>
+
+    {/* Citaciones Autorizadas (GEO Princeton +40%) */}
+    <div class="border-t border-slate-200/80 pt-8 space-y-4">
+      <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500">
+        Fuentes Oficiales y Referencias Normativas
+      </h3>
+      <ul class="text-xs sm:text-sm text-slate-600 space-y-2.5">
+        <li class="flex items-start gap-2">
+          <span class="text-indigo-600 font-bold">•</span>
+          <span><strong>Superintendencia Financiera de Colombia:</strong> Reporte periódico de tasas de captación efectivas anuales (E.A.) para cuentas de ahorro y depósitos de bajo monto. <a href="https://www.superfinanciera.gov.co/" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">Portal oficial Superfinanciera</a>.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-indigo-600 font-bold">•</span>
+          <span><strong>DIAN (Dirección de Impuestos y Aduanas Nacionales):</strong> Estatuto Tributario (Art. 623 para retención de rendimientos financieros sobre 0.058 UVT y Art. 879 para exención de 350 UVT del 4x1000). <a href="https://www.dian.gov.co/" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">Portal DIAN</a>.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-indigo-600 font-bold">•</span>
+          <span><strong>Fogafín:</strong> Fondo de Garantías de Instituciones Financieras con Seguro de Depósitos de hasta $50.000.000 COP por depositante por entidad vigilada. <a href="https://www.fogafin.gov.co/" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">Portal Fogafín</a>.</span>
+        </li>
+      </ul>
     </div>
 
   </div>
