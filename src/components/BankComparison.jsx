@@ -67,9 +67,6 @@ export default function BankComparison() {
       {/* Section Header with Illustrated Badge */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 max-w-4xl mx-auto bg-gradient-to-r from-blue-900/5 via-emerald-500/5 to-transparent p-3.5 sm:p-7 rounded-2xl sm:rounded-3xl border border-slate-200/80 shadow-xs">
         <div className="text-center md:text-left space-y-1 sm:space-y-2 flex-1">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold border border-blue-100">
-            <span>🏆</span> Ranking Oficial Colombia 2026
-          </span>
           <h2 className="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
             Comparativa de Cuentas de Ahorro <span className="hidden sm:inline">de Alto Rendimiento</span>
           </h2>
