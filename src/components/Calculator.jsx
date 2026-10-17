@@ -87,26 +87,29 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
       transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
       className="bg-white/90 backdrop-blur-md shadow-[0_20px_50px_rgb(0,0,0,0.05)] rounded-3xl w-full max-w-4xl mx-auto border border-white/50 overflow-hidden"
     >
-      <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 p-5 sm:p-10 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 p-3.5 sm:p-10 relative overflow-hidden">
         {/* Decorative subtle pattern and ambient logo */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-        <div className="absolute -right-8 -bottom-8 w-40 h-40 sm:w-48 sm:h-48 pointer-events-none opacity-15 select-none transform rotate-12">
+        <div className="absolute -right-8 -bottom-8 w-40 h-40 sm:w-48 sm:h-48 pointer-events-none opacity-15 select-none transform rotate-12 hidden sm:block">
           <img src="/logo.png" alt="" className="w-full h-full object-contain rounded-3xl" />
         </div>
         <div className="relative z-10 flex flex-col items-center">
-          <div className="bg-white/10 p-2.5 sm:p-3 rounded-2xl mb-3 sm:mb-4 backdrop-blur-sm border border-white/20 text-emerald-400">
+          <div className="hidden sm:flex bg-white/10 p-2.5 sm:p-3 rounded-2xl mb-3 sm:mb-4 backdrop-blur-sm border border-white/20 text-emerald-400">
             <CalcIcon className="w-7 h-7 sm:w-8 sm:h-8" />
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-white text-center mb-2 tracking-tight">Potencia tu Ahorro</h2>
-          <p className="text-slate-300 text-center text-xs sm:text-base max-w-lg">Ingresa tus datos y descubre la opción que hará crecer tu dinero más rápido.</p>
+          <h2 className="text-xl sm:text-4xl font-extrabold text-white text-center tracking-tight flex items-center gap-2">
+            <CalcIcon className="w-5 h-5 text-emerald-400 sm:hidden shrink-0" />
+            Potencia tu Ahorro
+          </h2>
+          <p className="hidden sm:block text-slate-300 text-center text-xs sm:text-base max-w-lg mt-2">Ingresa tus datos y descubre la opción que hará crecer tu dinero más rápido.</p>
         </div>
       </div>
 
-      <div className="p-4 sm:p-8">
-        <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="p-3.5 sm:p-8">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             
           {/* Toggle Tasa Personalizada */}
-          <div className="flex items-center justify-end mb-4">
+          <div className="flex items-center justify-end mb-2 sm:mb-4">
             <label className="inline-flex items-center cursor-pointer">
               <input 
                 type="checkbox" 
@@ -114,12 +117,15 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                 checked={inputs.usarTasaPersonalizada}
                 onChange={toggleTasaPersonalizada}
               />
-              <div className="relative w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-transform after:duration-200 peer-checked:bg-emerald-600 transition-colors duration-200"></div>
-              <span className="ms-3 text-sm font-medium text-slate-700">Usar tasa personalizada</span>
+              <div className="relative w-9 h-5 sm:w-11 sm:h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-emerald-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 sm:after:h-5 sm:after:w-5 after:transition-transform after:duration-200 peer-checked:bg-emerald-600 transition-colors duration-200"></div>
+              <span className="ms-2 sm:ms-3 text-xs sm:text-sm font-medium text-slate-700">
+                <span className="sm:hidden">Tasa manual</span>
+                <span className="hidden sm:inline">Usar tasa personalizada</span>
+              </span>
             </label>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
             <div className="space-y-3">
               <label 
                 htmlFor={inputs.usarTasaPersonalizada ? "tasa-input" : undefined}
@@ -290,32 +296,32 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                 onChange={(e) => handleInputChange('meses', e.target.value)}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-colors duration-150 ease-out hover:bg-slate-300"
               />
-              <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium px-1">
+              <div className="flex justify-between text-[11px] sm:text-xs text-slate-400 mt-1 sm:mt-2 font-medium px-1">
                 <span>1 mes</span>
                 <span>1 año</span>
-                <span>2 años</span>
-                <span>3 años</span>
+                <span className="hidden sm:inline">2 años</span>
+                <span className="hidden sm:inline">3 años</span>
                 <span>5 años</span>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-6 mt-6 border-t border-slate-100">
+          <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-4 pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-slate-100">
             <button
               type="submit"
               aria-label="Calcular rendimientos e intereses de cuenta de ahorro en Colombia"
-              className="flex-1 flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-emerald-500/30 transition-[background-color,box-shadow,transform] duration-150 ease-out motion-safe:enabled:active:scale-[0.96] group"
+              className="flex-1 flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 sm:py-3.5 px-4 sm:px-6 rounded-xl shadow-lg hover:shadow-emerald-500/30 transition-[background-color,box-shadow,transform] duration-150 ease-out motion-safe:enabled:active:scale-[0.96] text-sm sm:text-base group"
             >
-              <CalcIcon className="w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
+              <CalcIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-200" />
               <span>Calcular Rendimiento</span>
             </button>
             <button
               type="button"
               aria-label="Limpiar simulación de rendimientos"
-              className="px-6 py-3.5 flex items-center justify-center gap-2 border-2 border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 hover:border-slate-300 transition-[background-color,border-color,transform] duration-150 ease-out focus:ring-4 focus:ring-slate-100 motion-safe:enabled:active:scale-[0.96]"
+              className="px-4 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-center gap-1.5 sm:gap-2 border-2 border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 hover:border-slate-300 transition-[background-color,border-color,transform] duration-150 ease-out focus:ring-4 focus:ring-slate-100 motion-safe:enabled:active:scale-[0.96] text-xs sm:text-sm"
               onClick={handleLimpiar}
             >
-              <RefreshCw className="w-4 h-4" />
+              <RefreshCw className="w-3.5 h-3.5" />
               Limpiar
             </button>
           </div>
@@ -395,18 +401,18 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                   )}
                </div>
 
-               {/* Banner Visual Ilustrado de Interés Compuesto */}
-               <div className="mt-5 p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-5 border border-slate-800">
-                 <div className="space-y-1.5 text-center md:text-left z-10 flex-1">
-                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+               {/* Banner Visual Ilustrado de Interés Compuesto - Compacto en mobile, completo en desktop */}
+               <div className="mt-4 sm:mt-5 p-3.5 sm:p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-5 border border-slate-800">
+                 <div className="space-y-1 text-center md:text-left z-10 flex-1">
+                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] sm:text-xs font-bold border border-emerald-500/30">
                      <span>📈</span> Proyección Exponencial
                    </span>
-                   <h4 className="font-extrabold text-base sm:text-xl text-white tracking-tight">Así crece tu dinero en el tiempo</h4>
-                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-md">
+                   <h4 className="font-extrabold text-sm sm:text-xl text-white tracking-tight">Así crece tu dinero en el tiempo</h4>
+                   <p className="hidden sm:block text-xs sm:text-sm text-slate-300 leading-relaxed max-w-md">
                      Al no retirar tus intereses, cada día el banco calcula rendimientos sobre una base más grande. El interés compuesto multiplica tu ahorro.
                    </p>
                  </div>
-                 <div className="w-full sm:w-64 md:w-72 shrink-0 z-10">
+                 <div className="hidden sm:block w-full sm:w-64 md:w-72 shrink-0 z-10">
                    <img 
                      src="/illustrations/compound-interest-growth.svg" 
                      alt="Gráfica ilustrada de interés compuesto y crecimiento exponencial" 

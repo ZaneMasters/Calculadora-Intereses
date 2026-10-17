@@ -4,7 +4,7 @@ import { TrendingUp, ShieldCheck, Wallet } from 'lucide-react';
 export default function Hero() {
   return (
     <MotionConfig reducedMotion="user">
-      <div className="relative pt-6 pb-8 sm:pt-20 sm:pb-24 lg:pb-32 overflow-hidden">
+      <div className="relative pt-3 pb-5 sm:pt-20 sm:pb-24 lg:pb-32 overflow-hidden">
         {/* High-impact dynamic wealth growth backdrop */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none select-none flex items-center justify-center">
         {/* Ambient atmospheric aura */}
@@ -29,9 +29,9 @@ export default function Hero() {
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-3xl mx-auto"
         >
-          <h1 className="tracking-tight mb-3 sm:mb-8 leading-tight">
+          <h1 className="tracking-tight mb-2 sm:mb-8 leading-tight">
             {/* Minimalist badge on mobile, full on desktop */}
-            <span className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-4 sm:py-2 rounded-full bg-blue-50/90 border border-blue-100 text-blue-800 text-[11px] sm:text-sm font-semibold mb-2.5 sm:mb-5 shadow-xs max-w-full">
+            <span className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-4 sm:py-2 rounded-full bg-blue-50/90 border border-blue-100 text-blue-800 text-[11px] sm:text-sm font-semibold mb-2 sm:mb-5 shadow-xs max-w-full">
               <span className="flex h-1.5 w-1.5 sm:h-2 sm:w-2 relative shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-emerald-600"></span>
@@ -48,9 +48,9 @@ export default function Hero() {
             </span>
           </h1>
           
-          <p className="text-xs sm:text-lg text-slate-600 leading-relaxed mb-3 sm:mb-8 max-w-2xl mx-auto">
-            Calcula y compara los rendimientos reales de las mejores cuentas de ahorro en Colombia.
-            <span className="hidden sm:inline"> Descubre dónde crece más rápido tu capital con liquidación diaria y respaldo Fogafín.</span>
+          <p className="text-xs sm:text-lg text-slate-600 leading-relaxed mb-2.5 sm:mb-8 max-w-2xl mx-auto">
+            <span className="sm:hidden font-medium">Compara Nu, Pibank, Lulo y más con liquidación diaria.</span>
+            <span className="hidden sm:inline">Calcula y compara los rendimientos reales de las mejores cuentas de ahorro en Colombia. Descubre dónde crece más rápido tu capital con liquidación diaria y respaldo Fogafín.</span>
           </p>
         </motion.div>
 

@@ -65,15 +65,15 @@ export default function BankComparison() {
     <MotionConfig reducedMotion="user">
       <div id="ranking-bancos" className="space-y-6 scroll-mt-20">
       {/* Section Header with Illustrated Badge */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6 max-w-4xl mx-auto bg-gradient-to-r from-blue-900/5 via-emerald-500/5 to-transparent p-5 sm:p-7 rounded-3xl border border-slate-200/80 shadow-xs">
-        <div className="text-center md:text-left space-y-2 flex-1">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-100">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 max-w-4xl mx-auto bg-gradient-to-r from-blue-900/5 via-emerald-500/5 to-transparent p-3.5 sm:p-7 rounded-2xl sm:rounded-3xl border border-slate-200/80 shadow-xs">
+        <div className="text-center md:text-left space-y-1 sm:space-y-2 flex-1">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-bold border border-blue-100">
             <span>🏆</span> Ranking Oficial Colombia 2026
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Comparativa de Cuentas de Ahorro de Alto Rendimiento
+          <h2 className="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Comparativa de Cuentas de Ahorro <span className="hidden sm:inline">de Alto Rendimiento</span>
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl">
+          <p className="hidden sm:block text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl">
             Monitoreamos periódicamente las tasas efectivas anuales (E.A.), capitalización y condiciones de cada banco en Colombia para ayudarte a tomar la mejor decisión de ahorro.
           </p>
         </div>
@@ -109,7 +109,7 @@ export default function BankComparison() {
           </span>
         </div>
       
-        <div className="p-4 sm:p-6">
+        <div className="p-2.5 sm:p-6">
           <motion.div 
             variants={containerVariants}
             initial="hidden"
@@ -284,8 +284,8 @@ export default function BankComparison() {
           </motion.div>
         </div>
         
-        <div className="bg-slate-50 px-4 sm:px-8 py-3.5 sm:py-4 text-xs font-semibold text-slate-400 text-center border-t border-slate-100 uppercase tracking-widest leading-relaxed">
-          * Tasas referenciales sujetas a términos y condiciones de cada entidad. Toca una entidad para ver detalles.
+        <div className="bg-slate-50 px-3 sm:px-8 py-2.5 sm:py-4 text-[10px] sm:text-xs font-semibold text-slate-400 text-center border-t border-slate-100 uppercase tracking-wider sm:tracking-widest leading-relaxed">
+          * Tasas referenciales 2026 sujetas a términos de cada banco.
         </div>
       </motion.div>
     </div>
