@@ -29,32 +29,55 @@ const faqs = [
 
 <section class="space-y-8 sm:space-y-12 border-t border-slate-200/60 pt-6 sm:pt-8">
   <!-- Key Factors for Savers -->
-  <div class="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+  <div class="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden border border-slate-800">
+    <!-- Ambient texture and background watermark -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px"></div>
+    <div class="absolute -right-10 -bottom-10 w-72 h-72 pointer-events-none opacity-15 select-none transform rotate-6 hidden md:block">
+      <img src="/illustrations/fogafin-vault-shield.svg" alt="" class="w-full h-full object-contain" />
+    </div>
+
     <div class="relative z-10 space-y-6">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-200 text-xs font-semibold backdrop-blur-sm">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-200 text-xs font-semibold backdrop-blur-sm border border-white/10">
         <span>💡</span> Claves para maximizar tus ganancias
       </div>
       <h2 class="text-xl sm:text-3xl font-bold tracking-tight">
         Consejos Clave para Elegir la Mejor Cuenta de Ahorro en Colombia
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm space-y-2">
-          <h3 class="font-bold text-base text-emerald-400">1. Exención del 4x1.000</h3>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Conforme al Art. 879 del Estatuto Tributario, puedes tener una cuenta de ahorros exenta del Gravamen a los Movimientos Financieros (4x1.000) hasta por 350 UVT mensuales ($18.330.550 COP en 2026). Márcala como exenta para no perder rentabilidad al retirar.
-          </p>
+        <div class="bg-white/5 border border-white/10 hover:border-emerald-400/50 hover:bg-white/10 rounded-2xl p-5 backdrop-blur-sm space-y-3 transition-[transform,background-color,border-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:hover:-translate-y-1 group flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-lg group-hover:scale-110 transition-transform duration-300">
+              ⚖️
+            </div>
+            <h3 class="font-bold text-base text-emerald-400">1. Exención del 4x1.000</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Conforme al Art. 879 del Estatuto Tributario, puedes tener una cuenta de ahorros exenta del 4x1.000 hasta por 350 UVT mensuales ($18.330.550 COP en 2026). Márcala como exenta para no perder rentabilidad al retirar.
+            </p>
+          </div>
         </div>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm space-y-2">
-          <h3 class="font-bold text-base text-emerald-400">2. Cuidado con los Topes</h3>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Las cuentas de bajo monto tienen un límite de saldo de 210,5 UVT ($11.024.727 COP en 2026 fijado por la DIAN). Si planeas ahorrar montos mayores, solicita que tu cuenta pase a categoría ordinaria. Conoce todos los detalles en nuestra <a href="/topes/" class="text-emerald-300 hover:text-white underline font-semibold transition-colors">guía de topes y 4x1.000</a>.
-          </p>
+
+        <div class="bg-white/5 border border-white/10 hover:border-emerald-400/50 hover:bg-white/10 rounded-2xl p-5 backdrop-blur-sm space-y-3 transition-[transform,background-color,border-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:hover:-translate-y-1 group flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-lg group-hover:scale-110 transition-transform duration-300">
+              🛡️
+            </div>
+            <h3 class="font-bold text-base text-emerald-400">2. Cuidado con los Topes</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Las cuentas de bajo monto tienen un límite de saldo de 210,5 UVT ($11.024.727 COP en 2026). Si planeas ahorrar montos mayores, solicita que pase a ordinaria. Conoce todos los detalles en nuestra <a href="/topes/" class="text-emerald-300 hover:text-white underline font-semibold transition-colors">guía de topes y 4x1.000</a>.
+            </p>
+          </div>
         </div>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm space-y-2">
-          <h3 class="font-bold text-base text-emerald-400">3. Seguro de Fogafín</h3>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Asegúrate de que la entidad esté vigilada por la <a href="https://www.superfinanciera.gov.co/" target="_blank" rel="noopener noreferrer" class="text-emerald-300 hover:underline">Superintendencia Financiera de Colombia</a>. El Seguro de Depósitos de <a href="https://www.fogafin.gov.co/" target="_blank" rel="noopener noreferrer" class="text-emerald-300 hover:underline">Fogafín</a> cubre hasta $50.000.000 COP por persona y banco.
-          </p>
+
+        <div class="bg-white/5 border border-white/10 hover:border-emerald-400/50 hover:bg-white/10 rounded-2xl p-5 backdrop-blur-sm space-y-3 transition-[transform,background-color,border-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:hover:-translate-y-1 group flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-lg group-hover:scale-110 transition-transform duration-300">
+              🔒
+            </div>
+            <h3 class="font-bold text-base text-emerald-400">3. Seguro de Fogafín</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Asegúrate de que la entidad esté vigilada por la <a href="https://www.superfinanciera.gov.co/" target="_blank" rel="noopener noreferrer" class="text-emerald-300 hover:underline">Superintendencia Financiera</a>. El Seguro de Depósitos de <a href="https://www.fogafin.gov.co/" target="_blank" rel="noopener noreferrer" class="text-emerald-300 hover:underline">Fogafín</a> cubre hasta $50.000.000 COP por persona y banco.
+            </p>
+          </div>
         </div>
       </div>
     </div>

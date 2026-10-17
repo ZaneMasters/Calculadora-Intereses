@@ -13,9 +13,9 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 340, damping: 30, mass: 0.9 }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-3xl mx-auto"
         >
           <h1 className="tracking-tight mb-3 sm:mb-8 leading-tight">
@@ -37,9 +37,9 @@ export default function Hero() {
             </span>
           </h1>
           
-          <p className="text-xs sm:text-lg text-slate-600 leading-relaxed mb-3 sm:mb-10 max-w-2xl mx-auto">
+          <p className="text-xs sm:text-lg text-slate-600 leading-relaxed mb-3 sm:mb-8 max-w-2xl mx-auto">
             Calcula y compara los rendimientos reales de las mejores cuentas de ahorro en Colombia.
-            <span className="hidden sm:inline"> Descubre dónde crece más rápido tu capital.</span>
+            <span className="hidden sm:inline"> Descubre dónde crece más rápido tu capital con liquidación diaria y respaldo Fogafín.</span>
           </p>
         </motion.div>
 
@@ -59,24 +59,28 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Desktop: Rich feature cards */}
+        {/* Desktop: Rich feature cards with smooth transitions & depth */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 28, mass: 0.9, delay: 0.15 }}
-          className="hidden sm:grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12"
+          transition={{ duration: 0.9, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+          className="hidden sm:grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto mt-10"
         >
           {[
             { tag: "Comparación", title: "Tasas Actualizadas", icon: TrendingUp, desc: "Monitoreamos constantemente las E.A. de los bancos líderes." },
             { tag: "Seguridad", title: "Topes y Retención", icon: ShieldCheck, desc: "Avisos automáticos de límites de bajo monto y retención en la fuente." },
             { tag: "Interactivo", title: "Simulación Real", icon: Wallet, desc: "Resultados mensuales y totales con herramientas de slider fáciles." }
           ].map((feature, i) => (
-            <div key={i} className="bg-white/60 backdrop-blur-md border border-white p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] text-left hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-[transform,box-shadow] duration-200 ease-out motion-safe:hover:-translate-y-1.5 group flex flex-col items-start">
-              <div className="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-blue-700 motion-safe:group-hover:scale-110 transition-transform duration-200 ease-out shrink-0">
+            <div 
+              key={i} 
+              className="bg-white/80 backdrop-blur-md border border-slate-200/80 hover:border-emerald-300 p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_16px_40px_rgba(5,150,105,0.09)] transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:hover:-translate-y-2 group flex flex-col items-start text-left relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-emerald-500/5 to-transparent rounded-full -mr-8 -mt-8 pointer-events-none group-hover:scale-150 transition-transform duration-700 ease-out"></div>
+              <div className="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-blue-700 motion-safe:group-hover:scale-110 motion-safe:group-hover:bg-emerald-50 motion-safe:group-hover:text-emerald-700 transition-[transform,background-color,color] duration-400 ease-out shrink-0">
                 <feature.icon className="w-6 h-6" />
               </div>
               <div className="min-w-0 flex-1">
-                <h3 className="font-bold text-slate-900 mb-2 text-base">{feature.title}</h3>
+                <h3 className="font-bold text-slate-900 mb-2 text-base group-hover:text-blue-950 transition-colors duration-300">{feature.title}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">{feature.desc}</p>
               </div>
             </div>

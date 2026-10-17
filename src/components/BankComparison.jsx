@@ -48,36 +48,51 @@ export default function BankComparison() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.03, delayChildren: 0.04 }
+      transition: { staggerChildren: 0.05, delayChildren: 0.06 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 12 },
+    hidden: { opacity: 0, y: 16 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.35, ease: "easeOut" }
+      transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
   return (
     <MotionConfig reducedMotion="user">
       <div id="ranking-bancos" className="space-y-6 scroll-mt-20">
-      {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto space-y-3">
-        <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-          Comparativa de Cuentas de Ahorro de Alto Rendimiento
-        </h2>
-        <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-          Conoce las características, tasas efectivas anuales (E.A.), topes de bajo monto y condiciones de cada banco en Colombia para tomar la mejor decisión de ahorro e inversión.
-        </p>
+      {/* Section Header with Illustrated Badge */}
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6 max-w-4xl mx-auto bg-gradient-to-r from-blue-900/5 via-emerald-500/5 to-transparent p-5 sm:p-7 rounded-3xl border border-slate-200/80 shadow-xs">
+        <div className="text-center md:text-left space-y-2 flex-1">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-100">
+            <span>🏆</span> Ranking Oficial Colombia 2026
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Comparativa de Cuentas de Ahorro de Alto Rendimiento
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl">
+            Monitoreamos periódicamente las tasas efectivas anuales (E.A.), capitalización y condiciones de cada banco en Colombia para ayudarte a tomar la mejor decisión de ahorro.
+          </p>
+        </div>
+        <div className="w-40 sm:w-48 shrink-0 hidden sm:block">
+          <img 
+            src="/illustrations/smart-comparison-ranking.svg" 
+            alt="Podio y comparativa de tasas de interés bancario" 
+            className="w-full h-auto object-contain motion-safe:animate-gentle-float drop-shadow-sm" 
+            width="200" 
+            height="145" 
+            loading="lazy" 
+          />
+        </div>
       </div>
 
       <motion.div 
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.15 }}
+        transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         className="bg-white/95 shadow-[0_15px_40px_rgb(0,0,0,0.04)] rounded-3xl overflow-hidden border border-slate-200/80"
       >
         <div className="bg-gradient-to-r from-slate-50 to-white px-4 sm:px-8 py-4 sm:py-5 border-b border-slate-100 flex items-center justify-between">

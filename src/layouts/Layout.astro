@@ -334,4 +334,53 @@ const faqSchema = {
   ::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
   }
+
+  /* Premium Smooth Animation Keyframes */
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes gentleFloat {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes gentleFloatDelayed {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes subtlePulseGlow {
+      0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.9;
+        transform: scale(1.03);
+      }
+    }
+
+    .animate-gentle-float {
+      animation: gentleFloat 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    }
+
+    .animate-gentle-float-delayed {
+      animation: gentleFloatDelayed 7s cubic-bezier(0.45, 0, 0.55, 1) infinite 1.5s;
+    }
+
+    .animate-pulse-glow {
+      animation: subtlePulseGlow 4s ease-in-out infinite;
+    }
+  }
+
+  /* Silky smooth transition curve (Apple / Stripe style) */
+  .ease-spring-smooth {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
 </style>

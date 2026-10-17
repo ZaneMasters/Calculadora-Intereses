@@ -82,9 +82,9 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
 
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
       className="bg-white/90 backdrop-blur-md shadow-[0_20px_50px_rgb(0,0,0,0.05)] rounded-3xl w-full max-w-4xl mx-auto border border-white/50 overflow-hidden"
     >
       <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 p-5 sm:p-10 relative overflow-hidden">
@@ -325,10 +325,10 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
         {resultados && showResults && (
           <motion.div
             ref={resultsRef}
-            initial={{ opacity: 0, height: 0, scale: 0.95 }}
+            initial={{ opacity: 0, height: 0, scale: 0.96 }}
             animate={{ opacity: 1, height: 'auto', scale: 1 }}
-            exit={{ opacity: 0, height: 0, scale: 0.95 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            exit={{ opacity: 0, height: 0, scale: 0.96 }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
             className="mt-10 pt-8"
           >
             <div className="relative mb-8">
@@ -342,7 +342,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 mb-4 sm:mb-5">
                  {/* Card Tasa */}
-                 <div className="bg-gradient-to-br from-blue-50 to-slate-50 p-3.5 sm:p-5 rounded-2xl border border-blue-100 shadow-sm relative overflow-hidden group">
+                 <div className="bg-gradient-to-br from-blue-50 to-slate-50 p-3.5 sm:p-5 rounded-2xl border border-blue-100 shadow-sm relative overflow-hidden group hover:border-blue-300 hover:shadow-md transition-[border-color,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl -mr-10 -mt-10" aria-hidden="true"></div>
                     <div className="flex items-center gap-2 mb-2">
                       <Percent className="w-4 h-4 text-blue-700 shrink-0" />
@@ -351,7 +351,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                     <p className="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-950 drop-shadow-sm tabular-nums">{resultados.tasaEA ? `${(resultados.tasaEA * 100).toFixed(2)}%` : '---'}</p>
                  </div>
                  {/* Card Ganancia Total */}
-                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-3.5 sm:p-5 rounded-2xl border border-emerald-100 shadow-sm relative overflow-hidden group">
+                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-3.5 sm:p-5 rounded-2xl border border-emerald-100 shadow-sm relative overflow-hidden group hover:border-emerald-300 hover:shadow-md transition-[border-color,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl -mr-10 -mt-10" aria-hidden="true"></div>
                     <div className="flex items-center gap-2 mb-2">
                       <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -393,6 +393,29 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                       Valor retenido aproximadamente: <span className="font-bold text-rose-700 tabular-nums">-${Number(resultados.valorRete.toFixed(0)).toLocaleString()}</span>
                     </div>
                   )}
+               </div>
+
+               {/* Banner Visual Ilustrado de Interés Compuesto */}
+               <div className="mt-5 p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-5 border border-slate-800">
+                 <div className="space-y-1.5 text-center md:text-left z-10 flex-1">
+                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+                     <span>📈</span> Proyección Exponencial
+                   </span>
+                   <h4 className="font-extrabold text-base sm:text-xl text-white tracking-tight">Así crece tu dinero en el tiempo</h4>
+                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-md">
+                     Al no retirar tus intereses, cada día el banco calcula rendimientos sobre una base más grande. El interés compuesto multiplica tu ahorro.
+                   </p>
+                 </div>
+                 <div className="w-full sm:w-64 md:w-72 shrink-0 z-10">
+                   <img 
+                     src="/illustrations/compound-interest-growth.svg" 
+                     alt="Gráfica ilustrada de interés compuesto y crecimiento exponencial" 
+                     className="w-full h-auto object-contain rounded-xl shadow-lg motion-safe:hover:scale-[1.03] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" 
+                     width="300"
+                     height="220"
+                     loading="lazy" 
+                   />
+                 </div>
                </div>
             </div>
           </motion.div>

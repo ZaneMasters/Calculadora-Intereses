@@ -6,13 +6,13 @@ export default function TopesInfo() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 }
+      transition: { staggerChildren: 0.12 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, type: "spring" } }
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
   };
 
   return (
@@ -21,7 +21,7 @@ export default function TopesInfo() {
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="text-center mb-10 sm:mb-16"
       >
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-800 text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
@@ -106,16 +106,28 @@ export default function TopesInfo() {
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mb-4 sm:mb-6">Aplica para tu cuenta de nómina o ahorros principal en cualquier banco (Bancolombia, Nu, Lulo, etc.).</p>
               
-              <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-100 p-4 sm:p-6">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                  <div>
-                    <div className="text-xs sm:text-sm text-slate-500 font-medium mb-1">Tope máximo exento (Mensual)</div>
-                    <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-1 tabular-nums">$18.330.900</div>
-                    <div className="text-xs sm:text-sm text-blue-800 font-medium">350 UVT (2026)</div>
+              <div className="bg-slate-50/70 rounded-xl sm:rounded-2xl border border-slate-100 p-4 sm:p-6">
+                <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                  <div className="flex-1 space-y-4">
+                    <div>
+                      <div className="text-xs sm:text-sm text-slate-500 font-medium mb-1">Tope máximo exento (Mensual)</div>
+                      <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-1 tabular-nums">$18.330.900</div>
+                      <div className="text-xs sm:text-sm text-blue-800 font-medium">350 UVT (2026) · Art. 879 Estatuto Tributario</div>
+                    </div>
+                    <div className="bg-amber-50 text-amber-700 p-3 sm:p-4 rounded-xl border border-amber-100 flex items-start gap-2.5 text-xs sm:text-sm font-medium w-full">
+                      <AlertTriangle className="w-5 h-5 shrink-0 text-amber-500 mt-0.5" />
+                      <span>Recuerda: Solo puedes tener <strong>UNA única cuenta</strong> de ahorros exenta del 4x1000 en todo el sistema financiero.</span>
+                    </div>
                   </div>
-                  <div className="bg-amber-50 text-amber-700 p-3 sm:p-4 rounded-xl border border-amber-100 flex items-start gap-2.5 text-xs sm:text-sm font-medium w-full sm:max-w-sm">
-                    <AlertTriangle className="w-5 h-5 shrink-0 text-amber-500 mt-0.5" />
-                    <span>Recuerda: Solo puedes tener <strong>UNA única cuenta</strong> de ahorros exenta del 4x1000 en todo el sistema financiero.</span>
+                  <div className="hidden sm:flex shrink-0 w-36 h-36 lg:w-44 lg:h-44 p-2 bg-gradient-to-br from-emerald-500/5 to-blue-500/5 rounded-2xl border border-slate-200/60 items-center justify-center">
+                    <img 
+                      src="/illustrations/tax-shield-dian.svg" 
+                      alt="Exención DIAN 4x1000 y Estatuto Tributario" 
+                      width="160" 
+                      height="160" 
+                      className="w-full h-full object-contain filter drop-shadow-sm transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
               </div>
