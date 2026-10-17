@@ -24,16 +24,16 @@ export default function TopesInfo() {
         transition={{ duration: 0.6 }}
         className="text-center mb-10 sm:mb-16"
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-800 text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
           <span className="flex h-2 w-2 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-600"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
           </span>
           Guía Financiera 2026
         </div>
         
         <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4 sm:mb-6 leading-tight">
-          Topes Cuentas de Bajo Monto y <span className="text-indigo-700">Límites Financieros 2026</span>
+          Topes Cuentas de Bajo Monto y <span className="text-blue-800">Límites Financieros 2026</span>
         </h1>
         
         <p className="text-sm sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
@@ -41,13 +41,13 @@ export default function TopesInfo() {
         </p>
 
         {/* UVT 2026 Badge */}
-        <div className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-3 mt-6 px-4 sm:px-5 py-3 rounded-2xl bg-gradient-to-r from-indigo-50 to-violet-50 border border-indigo-200 shadow-sm max-w-full text-center sm:text-left">
+        <div className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-3 mt-6 px-4 sm:px-5 py-3 rounded-2xl bg-gradient-to-r from-blue-50 to-emerald-50 border border-blue-200 shadow-sm max-w-full text-center sm:text-left">
           <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-indigo-400">UVT 2026</span>
-            <span className="text-indigo-300 text-lg leading-none">|</span>
-            <span className="text-xl sm:text-2xl font-extrabold text-indigo-700 tracking-tight tabular-nums">$52.374</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-blue-600">UVT 2026</span>
+            <span className="text-blue-300 text-lg leading-none">|</span>
+            <span className="text-xl sm:text-2xl font-extrabold text-blue-900 tracking-tight tabular-nums">$52.374</span>
           </div>
-          <div className="h-8 w-px bg-indigo-200 hidden sm:block" />
+          <div className="h-8 w-px bg-blue-200 hidden sm:block" />
           <span className="text-xs text-slate-500 text-center sm:text-left leading-snug max-w-[240px] sm:max-w-none">
             Valor fijado por la <strong className="text-slate-600">DIAN</strong> para el año gravable 2026
           </span>
@@ -63,7 +63,7 @@ export default function TopesInfo() {
         {/* Bajo Monto */}
         <motion.div variants={itemVariants} className="bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
           <div className="p-4 sm:p-8 flex flex-col sm:flex-row gap-4 sm:gap-8 items-start">
-            <div className="bg-indigo-50 p-3 sm:p-4 rounded-xl sm:rounded-2xl text-indigo-600 shrink-0 border border-indigo-100">
+            <div className="bg-blue-50 p-3 sm:p-4 rounded-xl sm:rounded-2xl text-blue-700 shrink-0 border border-blue-100">
               <Wallet className="w-6 h-6 sm:w-8 sm:h-8" />
             </div>
             <div className="flex-1 w-full min-w-0">
@@ -72,7 +72,7 @@ export default function TopesInfo() {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                 <div className="bg-slate-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-100">
-                  <div className="flex items-center gap-2 text-indigo-700 font-semibold mb-2 sm:mb-3 text-xs sm:text-sm">
+                  <div className="flex items-center gap-2 text-blue-800 font-semibold mb-2 sm:mb-3 text-xs sm:text-sm">
                     <Shield className="w-4 h-4 shrink-0" /> Tope Movimientos (Mes)
                   </div>
                   <div className="text-xl sm:text-3xl font-extrabold text-slate-900 mb-1 tabular-nums break-words">$11.024.727</div>
@@ -96,13 +96,13 @@ export default function TopesInfo() {
         {/* 4x1000 Cuentas de Ahorro */}
         <motion.div variants={itemVariants} className="bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
           <div className="p-5 sm:p-8 flex flex-col sm:flex-row gap-4 sm:gap-8 items-start relative z-10">
-            <div className="bg-violet-50 p-3 sm:p-4 rounded-xl sm:rounded-2xl text-violet-600 shrink-0 border border-violet-100">
+            <div className="bg-blue-50 p-3 sm:p-4 rounded-xl sm:rounded-2xl text-blue-700 shrink-0 border border-blue-100">
               <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8" />
             </div>
             <div className="flex-1 w-full">
               <h3 className="text-lg sm:text-2xl font-bold text-slate-900 mb-1 sm:mb-2 flex flex-wrap items-center gap-2">
                 Exención 4x1000 
-                <span className="px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-xs font-bold uppercase tracking-wider">Cuentas de Ahorro</span>
+                <span className="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider">Cuentas de Ahorro</span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mb-4 sm:mb-6">Aplica para tu cuenta de nómina o ahorros principal en cualquier banco (Bancolombia, Nu, Lulo, etc.).</p>
               
@@ -111,7 +111,7 @@ export default function TopesInfo() {
                   <div>
                     <div className="text-xs sm:text-sm text-slate-500 font-medium mb-1">Tope máximo exento (Mensual)</div>
                     <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-1 tabular-nums">$18.330.900</div>
-                    <div className="text-xs sm:text-sm text-violet-700 font-medium">350 UVT (2026)</div>
+                    <div className="text-xs sm:text-sm text-blue-800 font-medium">350 UVT (2026)</div>
                   </div>
                   <div className="bg-amber-50 text-amber-700 p-3 sm:p-4 rounded-xl border border-amber-100 flex items-start gap-2.5 text-xs sm:text-sm font-medium w-full sm:max-w-sm">
                     <AlertTriangle className="w-5 h-5 shrink-0 text-amber-500 mt-0.5" />
@@ -162,12 +162,12 @@ export default function TopesInfo() {
                 </div>
 
                 {/* 2026 */}
-                <div className="bg-indigo-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-indigo-100">
+                <div className="bg-blue-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-blue-100">
                   <div className="flex justify-between items-center mb-4 sm:mb-6">
                     <h4 className="font-bold text-slate-800 text-sm sm:text-lg flex items-center gap-1.5">
                       <Calendar className="w-4 h-4 text-slate-400" /> 2026
                     </h4>
-                    <span className="text-[10px] sm:text-xs font-bold bg-indigo-200 text-slate-700 px-2 py-0.5 sm:py-1 rounded-md">Declara en 2027</span>
+                    <span className="text-[10px] sm:text-xs font-bold bg-blue-200 text-blue-900 px-2 py-0.5 sm:py-1 rounded-md">Declara en 2027</span>
                   </div>
                   <ul className="space-y-3 sm:space-y-4">
                     <li>

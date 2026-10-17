@@ -1,21 +1,38 @@
+import nuLogo from '../assets/nu.png';
 import popularLogo from '../assets/bancopopular.png';
 import ualaLogo from '../assets/uala.png';
+import luloLogo from '../assets/lulo.png';
+import pibankLogo from '../assets/pibank.png';
+import rappiLogo from '../assets/rappipay.png';
+import boldLogo from '../assets/bold.png';
+import global66Logo from '../assets/global66.png';
+import daleLogo from '../assets/dale.svg?url';
 
-const NuLogo = ({ className }) => (
+const getImageSrc = (img) => {
+  if (!img) return '';
+  if (typeof img === 'string') return img;
+  if (typeof img === 'object') {
+    if (img.src) return img.src;
+    if (img.default) return typeof img.default === 'string' ? img.default : img.default.src;
+  }
+  return String(img);
+};
+
+const NuLogo = ({ className = '' }) => (
   <img 
-    src="https://nu.com.co/favicons/apple-touch-icon.png" 
+    src={getImageSrc(nuLogo)} 
     alt="Nu Colombia - Rendimiento Cajitas 9.3% E.A." 
     width="48"
     height="48"
     loading="lazy"
     decoding="async"
-    className={`${className} object-cover rounded-lg`} 
+    className={`${className} object-contain rounded-lg`} 
   />
 );
 
-const UalaLogo = ({ className }) => (
+const UalaLogo = ({ className = '' }) => (
   <img 
-    src={ualaLogo.src || ualaLogo} 
+    src={getImageSrc(ualaLogo)} 
     alt="Ualá Colombia - Cuenta con rendimiento hasta 10.5% E.A." 
     width="48"
     height="48"
@@ -25,9 +42,9 @@ const UalaLogo = ({ className }) => (
   />
 );
 
-const LuloLogo = ({ className }) => (
+const LuloLogo = ({ className = '' }) => (
   <img 
-    src="https://www.lulobank.com/apple-touch-icon.png" 
+    src={getImageSrc(luloLogo)} 
     alt="Lulo Bank - Rendimiento bolsillos de ahorro Flex y Pro" 
     width="48"
     height="48"
@@ -37,9 +54,9 @@ const LuloLogo = ({ className }) => (
   />
 );
 
-const PiBankLogo = ({ className }) => (
+const PiBankLogo = ({ className = '' }) => (
   <img 
-    src="https://www.pibank.co/wp-content/themes/pibank/_/img/icons/apple-touch-icon.png" 
+    src={getImageSrc(pibankLogo)} 
     alt="Pibank Colombia - Cuenta remunerada 11% E.A." 
     width="48"
     height="48"
@@ -49,9 +66,9 @@ const PiBankLogo = ({ className }) => (
   />
 );
 
-const PopularLogo = ({ className }) => (
+const PopularLogo = ({ className = '' }) => (
   <img 
-    src={popularLogo.src || popularLogo} 
+    src={getImageSrc(popularLogo)} 
     alt="Banco Popular - Cuenta Plateada de ahorro digital" 
     width="48"
     height="48"
@@ -61,9 +78,9 @@ const PopularLogo = ({ className }) => (
   />
 );
 
-const RappiLogo = ({ className }) => (
+const RappiLogo = ({ className = '' }) => (
   <img 
-    src="https://www.rappipay.co/wp-content/uploads/2024/06/cropped-favicon-rappipay-192x192.png" 
+    src={getImageSrc(rappiLogo)} 
     alt="RappiPay Colombia - Rendimiento RappiCuenta y Bolsillos 9% E.A." 
     width="48"
     height="48"
@@ -73,9 +90,9 @@ const RappiLogo = ({ className }) => (
   />
 );
 
-const BoldLogo = ({ className }) => (
+const BoldLogo = ({ className = '' }) => (
   <img 
-    src="https://bold.co/apple-touch-icon.png" 
+    src={getImageSrc(boldLogo)} 
     alt="Bold Colombia - Bolsillos de ahorro 10% E.A." 
     width="48"
     height="48"
@@ -85,9 +102,9 @@ const BoldLogo = ({ className }) => (
   />
 );
 
-const Global66Logo = ({ className }) => (
+const Global66Logo = ({ className = '' }) => (
   <img 
-    src="https://www.global66.com/fav.png?v3" 
+    src={getImageSrc(global66Logo)} 
     alt="Global 66 Colombia - Cuenta Global de ahorro en pesos y dólares" 
     width="48"
     height="48"
@@ -97,9 +114,9 @@ const Global66Logo = ({ className }) => (
   />
 );
 
-const DaleLogo = ({ className }) => (
+const DaleLogo = ({ className = '' }) => (
   <img 
-    src="https://dale.com.co/sites/default/files/Logo.svg" 
+    src={getImageSrc(daleLogo)} 
     alt="dale! Grupo Aval - Alcancías digitales con rendimiento 10.5% E.A." 
     width="48"
     height="48"

@@ -29,9 +29,9 @@ const faqs = [
 
 <section class="space-y-8 sm:space-y-12 border-t border-slate-200/60 pt-6 sm:pt-8">
   <!-- Key Factors for Savers -->
-  <div class="bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+  <div class="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
     <div class="relative z-10 space-y-6">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-indigo-200 text-xs font-semibold backdrop-blur-sm">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-200 text-xs font-semibold backdrop-blur-sm">
         <span>💡</span> Claves para maximizar tus ganancias
       </div>
       <h2 class="text-xl sm:text-3xl font-bold tracking-tight">
@@ -39,21 +39,21 @@ const faqs = [
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
         <div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm space-y-2">
-          <h3 class="font-bold text-base text-indigo-300">1. Exención del 4x1.000</h3>
+          <h3 class="font-bold text-base text-emerald-400">1. Exención del 4x1.000</h3>
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
             Conforme al Art. 879 del Estatuto Tributario, puedes tener una cuenta de ahorros exenta del Gravamen a los Movimientos Financieros (4x1.000) hasta por 350 UVT mensuales ($18.330.550 COP en 2026). Márcala como exenta para no perder rentabilidad al retirar.
           </p>
         </div>
         <div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm space-y-2">
-          <h3 class="font-bold text-base text-indigo-300">2. Cuidado con los Topes</h3>
+          <h3 class="font-bold text-base text-emerald-400">2. Cuidado con los Topes</h3>
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Las cuentas de bajo monto tienen un límite de saldo de 210,5 UVT ($11.024.727 COP en 2026 fijado por la DIAN). Si planeas ahorrar montos mayores, solicita que tu cuenta pase a categoría ordinaria. Conoce todos los detalles en nuestra <a href="/topes/" class="text-indigo-300 hover:text-white underline font-semibold transition-colors">guía de topes y 4x1.000</a>.
+            Las cuentas de bajo monto tienen un límite de saldo de 210,5 UVT ($11.024.727 COP en 2026 fijado por la DIAN). Si planeas ahorrar montos mayores, solicita que tu cuenta pase a categoría ordinaria. Conoce todos los detalles en nuestra <a href="/topes/" class="text-emerald-300 hover:text-white underline font-semibold transition-colors">guía de topes y 4x1.000</a>.
           </p>
         </div>
         <div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm space-y-2">
-          <h3 class="font-bold text-base text-indigo-300">3. Seguro de Fogafín</h3>
+          <h3 class="font-bold text-base text-emerald-400">3. Seguro de Fogafín</h3>
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Asegúrate de que la entidad esté vigilada por la <a href="https://www.superfinanciera.gov.co/" target="_blank" rel="noopener noreferrer" class="text-indigo-300 hover:underline">Superintendencia Financiera de Colombia</a>. El Seguro de Depósitos de <a href="https://www.fogafin.gov.co/" target="_blank" rel="noopener noreferrer" class="text-indigo-300 hover:underline">Fogafín</a> cubre hasta $50.000.000 COP por persona y banco.
+            Asegúrate de que la entidad esté vigilada por la <a href="https://www.superfinanciera.gov.co/" target="_blank" rel="noopener noreferrer" class="text-emerald-300 hover:underline">Superintendencia Financiera de Colombia</a>. El Seguro de Depósitos de <a href="https://www.fogafin.gov.co/" target="_blank" rel="noopener noreferrer" class="text-emerald-300 hover:underline">Fogafín</a> cubre hasta $50.000.000 COP por persona y banco.
           </p>
         </div>
       </div>
@@ -73,10 +73,10 @@ const faqs = [
 
     <div class="max-w-3xl mx-auto space-y-3">
       {faqs.map((faq, index) => (
-        <details class="group bg-white rounded-2xl border border-slate-200 p-5 open:shadow-sm open:border-indigo-200 transition-[border-color,box-shadow] duration-150 ease-out">
+        <details class="group bg-white rounded-2xl border border-slate-200 p-5 open:shadow-sm open:border-blue-200 transition-[border-color,box-shadow] duration-150 ease-out">
           <summary class="flex justify-between items-center font-bold text-slate-900 cursor-pointer list-none text-sm sm:text-base select-none gap-4">
             <span class="flex items-center gap-2.5">
-              <span class="text-indigo-600 text-xs font-black bg-indigo-50 px-2 py-0.5 rounded-md">Q{index + 1}</span>
+              <span class="text-blue-700 text-xs font-black bg-blue-50 px-2 py-0.5 rounded-md">Q{index + 1}</span>
               {faq.q}
             </span>
             <span class="text-slate-400 group-open:rotate-180 transition-transform flex-shrink-0">
@@ -91,7 +91,7 @@ const faqs = [
     </div>
 
     <div class="text-center pt-2">
-      <a href="/explicacion/" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors">
+      <a href="/explicacion/" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-700 hover:text-blue-900 transition-colors">
         Ver desglose detallado con fórmulas matemáticas y ejemplos
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>

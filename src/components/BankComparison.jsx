@@ -82,8 +82,8 @@ export default function BankComparison() {
       >
         <div className="bg-gradient-to-r from-slate-50 to-white px-4 sm:px-8 py-4 sm:py-5 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="bg-indigo-100 p-2 rounded-xl">
-              <TrendingUp className="w-5 h-5 text-indigo-600" />
+            <div className="bg-blue-100 p-2 rounded-xl">
+              <TrendingUp className="w-5 h-5 text-blue-700" />
             </div>
             <h3 className="text-base sm:text-xl font-bold text-slate-800 tracking-tight">
               Ranking de Tasas Vigentes <span className="text-slate-400 font-medium text-sm sm:text-base ml-1">(E.A.)</span>
@@ -129,13 +129,13 @@ export default function BankComparison() {
                       setActiveKey(isActive ? null : banco.key);
                     }
                   }}
-                  className={`group cursor-pointer px-2.5 py-2.5 sm:px-6 sm:py-4 rounded-2xl border transition-[background-color,border-color,box-shadow] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+                  className={`group cursor-pointer px-2.5 py-2.5 sm:px-6 sm:py-4 rounded-2xl border transition-[background-color,border-color,box-shadow] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                     isActive
-                      ? 'bg-indigo-50/70 border-indigo-300 shadow-sm'
+                      ? 'bg-blue-50/70 border-blue-300 shadow-sm'
                       : index === 0 
                         ? 'bg-gradient-to-r from-emerald-50/80 to-white border-emerald-200/90 shadow-sm shadow-emerald-500/5 hover:border-emerald-300 hover:bg-emerald-50/90' 
                         : index < 3 
-                          ? 'bg-gradient-to-r from-indigo-50/40 to-white border-indigo-100/60 hover:bg-indigo-50/70 hover:border-indigo-200' 
+                          ? 'bg-gradient-to-r from-blue-50/40 to-white border-blue-100/60 hover:bg-blue-50/70 hover:border-blue-200' 
                           : 'bg-white border-slate-100 hover:border-slate-300 hover:bg-slate-50/70'
                   }`}
                 >
@@ -166,7 +166,7 @@ export default function BankComparison() {
                     <span className={`inline-flex items-center justify-center px-2.5 py-1 rounded-xl text-sm sm:text-base font-black tabular-nums shadow-sm flex-shrink-0 ${
                       index === 0 ? 'bg-emerald-600 text-white shadow-emerald-600/20' : 
                       index === 1 ? 'bg-emerald-100/80 text-emerald-700 border border-emerald-200/50' : 
-                      index === 2 ? 'bg-indigo-50 text-indigo-700 border border-indigo-100/50' : 
+                      index === 2 ? 'bg-blue-50 text-blue-700 border border-blue-100/50' : 
                       'bg-slate-100 text-slate-700'
                     }`}>
                       {(banco.tasaEA * 100).toFixed(2)}%
@@ -181,7 +181,7 @@ export default function BankComparison() {
                       </div>
                       <div className="flex flex-col items-start gap-1">
                         <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors flex items-center gap-1">
+                          <span className="font-bold text-slate-800 group-hover:text-blue-700 transition-colors flex items-center gap-1">
                             {banco.nombre}
                             <ExternalLink className="w-3 h-3 text-slate-400 opacity-0 -ml-1 group-hover:opacity-100 group-hover:ml-0 transition-[opacity,margin] duration-150 ease-out" />
                           </span>
@@ -204,7 +204,7 @@ export default function BankComparison() {
                       <span className={`inline-flex items-center justify-center px-4 py-1.5 rounded-xl text-lg font-black tabular-nums shadow-sm ${
                         index === 0 ? 'bg-emerald-600 text-white shadow-emerald-600/20' : 
                         index === 1 ? 'bg-emerald-100/80 text-emerald-700 border border-emerald-200/50' : 
-                        index === 2 ? 'bg-indigo-50 text-indigo-700 border border-indigo-100/50' : 
+                        index === 2 ? 'bg-blue-50 text-blue-700 border border-blue-100/50' : 
                         'bg-slate-100 text-slate-700'
                       }`}>
                         {(banco.tasaEA * 100).toFixed(2)}%
@@ -220,11 +220,11 @@ export default function BankComparison() {
                   {/* Fast, GPU-accelerated CSS Grid drawer (Zero JS jank) */}
                   <div 
                     className={`grid transition-[grid-template-rows,opacity] duration-200 ease-out ${
-                      isActive ? 'grid-rows-[1fr] opacity-100 pt-3 mt-3 border-t border-indigo-100' : 'grid-rows-[0fr] opacity-0'
+                      isActive ? 'grid-rows-[1fr] opacity-100 pt-3 mt-3 border-t border-slate-200' : 'grid-rows-[0fr] opacity-0'
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs bg-white/90 p-3.5 rounded-xl border border-indigo-100 shadow-sm">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs bg-white/90 p-3.5 rounded-xl border border-slate-200 shadow-sm">
                         <div className="flex-1 space-y-1.5">
                           {banco.isBajoMonto && (
                             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200/80 text-[11px] font-bold">
@@ -241,7 +241,7 @@ export default function BankComparison() {
                             <a
                               href={`/bancos/${slugMap[banco.key]}/`}
                               onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-1 font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200/80 px-3 py-1.5 rounded-lg transition-colors text-xs"
+                              className="inline-flex items-center gap-1 font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200/80 px-3 py-1.5 rounded-lg transition-colors text-xs"
                             >
                               <span>Simulador {banco.nombre.split(' ')[0]}</span>
                               <ChevronRight className="w-3.5 h-3.5" />

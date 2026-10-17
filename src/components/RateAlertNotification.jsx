@@ -30,12 +30,12 @@ export default function RateAlertNotification() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.96 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 z-50 max-w-sm sm:max-w-md w-auto bg-white/95 backdrop-blur-xl border border-indigo-100 shadow-[0_20px_50px_rgba(79,70,229,0.15)] rounded-2xl p-4 sm:p-5 overflow-hidden"
+            className="fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 z-50 max-w-sm sm:max-w-md w-auto bg-white/95 backdrop-blur-xl border border-slate-200 shadow-[0_20px_50px_rgba(15,23,42,0.15)] rounded-2xl p-4 sm:p-5 overflow-hidden"
           >
             {/* Header */}
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-2.5">
-                <div className="bg-indigo-600 text-white p-2 rounded-xl shadow-md shadow-indigo-600/20 shrink-0">
+                <div className="bg-blue-700 text-white p-2 rounded-xl shadow-md shadow-blue-700/20 shrink-0">
                   <Bell className="w-5 h-5" />
                 </div>
                 <div>
@@ -54,7 +54,7 @@ export default function RateAlertNotification() {
                 type="button"
                 onClick={dismissAlert}
                 aria-label="Cerrar aviso de actualización de tasas"
-                className="text-slate-400 hover:text-slate-700 hover:bg-slate-100 p-1.5 rounded-lg transition-colors duration-150 motion-safe:enabled:active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                className="text-slate-400 hover:text-slate-700 hover:bg-slate-100 p-1.5 rounded-lg transition-colors duration-150 motion-safe:enabled:active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -111,14 +111,14 @@ export default function RateAlertNotification() {
               'Notification' in window &&
               notificationPermission === 'default' &&
               !notifRequested && (
-                <div className="mt-3 p-2.5 rounded-xl bg-indigo-50/80 border border-indigo-100/80 flex items-center justify-between gap-2 text-xs">
-                  <span className="text-indigo-900 font-medium leading-snug">
+                <div className="mt-3 p-2.5 rounded-xl bg-blue-50/80 border border-blue-100/80 flex items-center justify-between gap-2 text-xs">
+                  <span className="text-blue-900 font-medium leading-snug">
                     ¿Quieres recibir avisos en tu navegador?
                   </span>
                   <button
                     type="button"
                     onClick={handleEnableNotifications}
-                    className="shrink-0 bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-2.5 py-1 rounded-lg transition-colors duration-150 motion-safe:enabled:active:scale-[0.96]"
+                    className="shrink-0 bg-blue-700 hover:bg-blue-800 text-white font-bold px-2.5 py-1 rounded-lg transition-colors duration-150 motion-safe:enabled:active:scale-[0.96]"
                   >
                     Activar
                   </button>
@@ -130,7 +130,7 @@ export default function RateAlertNotification() {
               <a
                 href="/#ranking-bancos"
                 onClick={dismissAlert}
-                className="text-xs font-bold text-indigo-700 hover:text-indigo-900 hover:underline transition-colors py-1"
+                className="text-xs font-bold text-blue-700 hover:text-blue-900 hover:underline transition-colors py-1"
               >
                 Ver comparativa completa →
               </a>

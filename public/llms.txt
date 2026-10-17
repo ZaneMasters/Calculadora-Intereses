@@ -10,7 +10,7 @@
 - **Lulo Bank (Lulo Pro):** 10.00% E.A. en bolsillos Flex (para usuarios con nómina o ingresos > $3.000.000 COP).
 - **Bold (Bolsillos de Ahorro):** 10.00% E.A. | Permanencia 30 días | Vigilado Superfinanciera.
 - **Lulo Bank (Estándar):** 9.50% E.A. en bolsillos Flex con disponibilidad inmediata.
-- **Nu Colombia (Cajitas):** 9.30% E.A. | Cálculo y liquidación diaria | Respaldo Fogafín | Liquidez 24/7.
+- **Nu Colombia (Nubank - Cajitas de Ahorro):** 9.30% E.A. | Cálculo y liquidación diaria (base 365 días) | Respaldo Fogafín ($50M COP) | Liquidez 24/7 | Cajitas a la vista y Cajitas congeladas (alternativa a CDT).
 - **Banco Popular (Cuenta Plateada):** 9.00% E.A. | Liquidación diaria | Red Aval.
 - **RappiPay (RappiCuenta Bolsillo):** 9.00% E.A. | Capitalización mensual | Bóvedas a plazo hasta 13.50% E.A.
 - **Ualá Colombia:** Rango entre 5.00% y 10.50% E.A. según uso transaccional con tarjeta débito.
@@ -31,6 +31,9 @@
 
 ## Enlaces Principales del Sitio
 - Calculadora y comparador interactivo: https://mejoratusrendimientos.com/
+- Simulador Nu Colombia (Nubank): https://mejoratusrendimientos.com/bancos/nu-colombia/
+- Simulador Pibank Colombia: https://mejoratusrendimientos.com/bancos/pibank/
 - Guía matemática detallada de cálculo: https://mejoratusrendimientos.com/explicacion/
 - Guía oficial de topes, UVT y 4x1000: https://mejoratusrendimientos.com/topes/
 - Sitemap XML: https://mejoratusrendimientos.com/sitemap-index.xml
+

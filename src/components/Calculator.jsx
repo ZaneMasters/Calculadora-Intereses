@@ -87,18 +87,18 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
       transition={{ duration: 0.6 }}
       className="bg-white/90 backdrop-blur-md shadow-[0_20px_50px_rgb(0,0,0,0.05)] rounded-3xl w-full max-w-4xl mx-auto border border-white/50 overflow-hidden"
     >
-      <div className="bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-600 p-5 sm:p-10 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 p-5 sm:p-10 relative overflow-hidden">
         {/* Decorative subtle pattern and ambient logo */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
         <div className="absolute -right-8 -bottom-8 w-40 h-40 sm:w-48 sm:h-48 pointer-events-none opacity-15 select-none transform rotate-12">
           <img src="/logo.png" alt="" className="w-full h-full object-contain rounded-3xl" />
         </div>
         <div className="relative z-10 flex flex-col items-center">
-          <div className="bg-white/20 p-2.5 sm:p-3 rounded-2xl mb-3 sm:mb-4 backdrop-blur-sm border border-white/20">
-            <CalcIcon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+          <div className="bg-white/10 p-2.5 sm:p-3 rounded-2xl mb-3 sm:mb-4 backdrop-blur-sm border border-white/20 text-emerald-400">
+            <CalcIcon className="w-7 h-7 sm:w-8 sm:h-8" />
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white text-center mb-2 tracking-tight">Potencia tu Ahorro</h2>
-          <p className="text-indigo-100 text-center text-xs sm:text-base max-w-lg">Ingresa tus datos y descubre la opción que hará crecer tu dinero más rápido.</p>
+          <p className="text-slate-300 text-center text-xs sm:text-base max-w-lg">Ingresa tus datos y descubre la opción que hará crecer tu dinero más rápido.</p>
         </div>
       </div>
 
@@ -114,7 +114,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                 checked={inputs.usarTasaPersonalizada}
                 onChange={toggleTasaPersonalizada}
               />
-              <div className="relative w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-transform after:duration-200 peer-checked:bg-indigo-600 transition-colors duration-200"></div>
+              <div className="relative w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-transform after:duration-200 peer-checked:bg-emerald-600 transition-colors duration-200"></div>
               <span className="ms-3 text-sm font-medium text-slate-700">Usar tasa personalizada</span>
             </label>
           </div>
@@ -125,7 +125,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                 htmlFor={inputs.usarTasaPersonalizada ? "tasa-input" : undefined}
                 className="flex items-center gap-2 text-sm font-bold text-slate-700 cursor-pointer"
               >
-                {inputs.usarTasaPersonalizada ? <Percent className="w-4 h-4 text-indigo-500" /> : <Building2 className="w-4 h-4 text-indigo-500" />}
+                {inputs.usarTasaPersonalizada ? <Percent className="w-4 h-4 text-blue-700" /> : <Building2 className="w-4 h-4 text-blue-700" />}
                 {inputs.usarTasaPersonalizada ? 'Tasa E.A. Anual (%)' : 'Selecciona tu Banco'}
               </label>
               
@@ -137,7 +137,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                         name="tasaPersonalizada"
                         type="text"
                         inputMode="decimal"
-                        className="w-full bg-slate-50 border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 py-3.5 px-4 rounded-xl font-medium placeholder-slate-400 outline-none transition-[border-color,box-shadow] duration-150 ease-out shadow-sm hover:border-slate-300"
+                        className="w-full bg-slate-50 border-2 border-slate-200 focus:border-blue-600 focus:ring-4 focus:ring-blue-600/10 text-slate-800 py-3.5 px-4 rounded-xl font-medium placeholder-slate-400 outline-none transition-[border-color,box-shadow] duration-150 ease-out shadow-sm hover:border-slate-300"
                         value={inputs.tasaPersonalizada}
                         onChange={(e) => {
                           const val = e.target.value.replace(/%/g, '');
@@ -161,8 +161,8 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                    </div>
                    <label className="flex items-center gap-2 cursor-pointer mt-2 text-sm text-slate-600 font-medium hover:text-slate-800 transition-colors">
                      <input 
-                       type="checkbox"
-                       className="w-4 h-4 accent-indigo-600 cursor-pointer"
+                       type="checkbox" 
+                       className="w-4 h-4 accent-emerald-600 cursor-pointer"
                        checked={inputs.capitalizacionDiariaPersonalizada}
                        onChange={(e) => handleInputChange('capitalizacionDiariaPersonalizada', e.target.checked)}
                      />
@@ -174,7 +174,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                     <button
                       type="button"
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                      className="w-full flex items-center justify-between bg-slate-50 border-2 border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 py-3.5 px-4 rounded-xl font-medium outline-none transition-[border-color,box-shadow] duration-150 ease-out shadow-sm hover:border-slate-300"
+                      className="w-full flex items-center justify-between bg-slate-50 border-2 border-slate-200 focus:border-blue-600 focus:ring-4 focus:ring-blue-600/10 text-slate-800 py-3.5 px-4 rounded-xl font-medium outline-none transition-[border-color,box-shadow] duration-150 ease-out shadow-sm hover:border-slate-300"
                     >
                       <span className="truncate pr-4">
                         {bankOptions[inputs.banco] ? bankOptions[inputs.banco].nombre : 'Selecciona un banco'}
@@ -200,10 +200,10 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                                   handleInputChange('banco', key);
                                   setIsDropdownOpen(false);
                                 }}
-                                className={`w-full text-left px-4 py-3 flex items-center justify-between hover:bg-indigo-50 transition-colors ${inputs.banco === key ? 'bg-indigo-50/50 text-indigo-700 font-bold' : 'text-slate-700 font-medium'}`}
+                                className={`w-full text-left px-4 py-3 flex items-center justify-between hover:bg-blue-50 transition-colors ${inputs.banco === key ? 'bg-blue-50/70 text-blue-800 font-bold' : 'text-slate-700 font-medium'}`}
                               >
                                 <span>{val.nombre}</span>
-                                {inputs.banco === key && <Check className="w-4 h-4 text-indigo-600" />}
+                                {inputs.banco === key && <Check className="w-4 h-4 text-emerald-600" />}
                               </button>
                             ))}
                           </div>
@@ -213,7 +213,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
 
                     {bankOptions[inputs.banco]?.nota && (
                       <div className="absolute -top-8 right-0 group cursor-help flex items-center">
-                         <Info className="w-4 h-4 text-indigo-400 hover:text-indigo-600 transition-colors" />
+                         <Info className="w-4 h-4 text-blue-500 hover:text-blue-700 transition-colors" />
                          <div className="absolute right-0 bottom-full mb-1 w-56 p-2.5 bg-slate-800/95 backdrop-blur-sm text-white text-xs rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 text-center font-medium">
                            {bankOptions[inputs.banco].nota}
                            <div className="absolute top-full right-2 border-4 border-transparent border-t-slate-800/95"></div>
@@ -226,7 +226,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
 
             <div className="space-y-3">
               <label htmlFor="monto-input" className="flex items-center gap-2 text-sm font-bold text-slate-700 cursor-pointer">
-                <DollarSign className="w-4 h-4 text-indigo-500" />
+                <DollarSign className="w-4 h-4 text-emerald-600" />
                 Monto a Invertir ($)
               </label>
               <div className="relative">
@@ -237,7 +237,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                   type="text"
                   inputMode="numeric"
                   autoComplete="off"
-                  className={`w-full bg-slate-50 border-2 ${errorMonto ? 'border-red-400 focus:ring-red-500/20' : 'border-slate-200 focus:border-indigo-500 focus:ring-indigo-500/10'} text-slate-800 py-3.5 pl-8 pr-4 rounded-xl font-medium outline-none transition-[border-color,box-shadow] duration-150 ease-out shadow-sm hover:border-slate-300 focus:ring-4`}
+                  className={`w-full bg-slate-50 border-2 ${errorMonto ? 'border-red-400 focus:ring-red-500/20' : 'border-slate-200 focus:border-blue-600 focus:ring-blue-600/10'} text-slate-800 py-3.5 pl-8 pr-4 rounded-xl font-medium outline-none transition-[border-color,box-shadow] duration-150 ease-out shadow-sm hover:border-slate-300 focus:ring-4`}
                   value={inputs.monto}
                   onChange={(e) => handleInputChange('monto', e.target.value)}
                   placeholder="Ej: 1,000,000"
@@ -262,7 +262,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
           <div className="space-y-4 pt-2">
             <div className="flex items-center justify-between">
               <label htmlFor="meses-input" className="flex items-center gap-2 text-sm font-bold text-slate-700 cursor-pointer">
-                <CalendarDays className="w-4 h-4 text-indigo-500" />
+                <CalendarDays className="w-4 h-4 text-blue-700" />
                 Plazo de la inversión
               </label>
               <div className="flex items-center gap-2">
@@ -270,7 +270,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                   id="meses-input"
                   name="meses"
                   type="number"
-                  className="w-16 bg-indigo-50 border border-indigo-200 text-indigo-900 py-1.5 px-2 rounded-lg text-center font-bold text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-16 bg-blue-50 border border-blue-200 text-blue-900 py-1.5 px-2 rounded-lg text-center font-bold text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
                   min={1}
                   max={60}
                   value={inputs.meses}
@@ -288,7 +288,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                 aria-label="Ajustar plazo de inversión en meses"
                 value={inputs.meses}
                 onChange={(e) => handleInputChange('meses', e.target.value)}
-                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-colors duration-150 ease-out hover:bg-slate-300"
+                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-colors duration-150 ease-out hover:bg-slate-300"
               />
               <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium px-1">
                 <span>1 mes</span>
@@ -304,7 +304,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
             <button
               type="submit"
               aria-label="Calcular rendimientos e intereses de cuenta de ahorro en Colombia"
-              className="flex-1 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-indigo-500/40 transition-[background-color,box-shadow,transform] duration-150 ease-out motion-safe:enabled:active:scale-[0.96] group"
+              className="flex-1 flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-emerald-500/30 transition-[background-color,box-shadow,transform] duration-150 ease-out motion-safe:enabled:active:scale-[0.96] group"
             >
               <CalcIcon className="w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
               <span>Calcular Rendimiento</span>
@@ -336,19 +336,19 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                 <div className="w-full border-t-2 border-dashed border-slate-200"></div>
               </div>
               <div className="relative flex justify-center">
-                <span className="px-4 bg-white text-sm font-bold text-indigo-600 uppercase tracking-widest border-2 border-slate-100 rounded-full py-1 shadow-sm">Tus Resultados</span>
+                <span className="px-4 bg-white text-sm font-bold text-blue-800 uppercase tracking-widest border-2 border-slate-100 rounded-full py-1 shadow-sm">Tus Resultados</span>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 mb-4 sm:mb-5">
                  {/* Card Tasa */}
-                 <div className="bg-gradient-to-br from-indigo-50 to-blue-50 p-3.5 sm:p-5 rounded-2xl border border-indigo-100 shadow-sm relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-2xl -mr-10 -mt-10" aria-hidden="true"></div>
+                 <div className="bg-gradient-to-br from-blue-50 to-slate-50 p-3.5 sm:p-5 rounded-2xl border border-blue-100 shadow-sm relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl -mr-10 -mt-10" aria-hidden="true"></div>
                     <div className="flex items-center gap-2 mb-2">
-                      <Percent className="w-4 h-4 text-indigo-500 shrink-0" />
-                      <p className="text-xs sm:text-sm text-indigo-700 font-semibold">{inputs.usarTasaPersonalizada ? 'Tasa Personalizada (E.A.)' : 'Tasa Efectiva Anual'}</p>
+                      <Percent className="w-4 h-4 text-blue-700 shrink-0" />
+                      <p className="text-xs sm:text-sm text-blue-800 font-semibold">{inputs.usarTasaPersonalizada ? 'Tasa Personalizada (E.A.)' : 'Tasa Efectiva Anual'}</p>
                     </div>
-                    <p className="text-xl sm:text-2xl md:text-3xl font-extrabold text-indigo-900 drop-shadow-sm tabular-nums">{resultados.tasaEA ? `${(resultados.tasaEA * 100).toFixed(2)}%` : '---'}</p>
+                    <p className="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-950 drop-shadow-sm tabular-nums">{resultados.tasaEA ? `${(resultados.tasaEA * 100).toFixed(2)}%` : '---'}</p>
                  </div>
                  {/* Card Ganancia Total */}
                  <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-3.5 sm:p-5 rounded-2xl border border-emerald-100 shadow-sm relative overflow-hidden group">

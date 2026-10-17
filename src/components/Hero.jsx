@@ -20,10 +20,10 @@ export default function Hero() {
         >
           <h1 className="tracking-tight mb-3 sm:mb-8 leading-tight">
             {/* Minimalist badge on mobile, full on desktop */}
-            <span className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-4 sm:py-2 rounded-full bg-indigo-50/90 border border-indigo-100 text-indigo-700 text-[11px] sm:text-sm font-semibold mb-2.5 sm:mb-5 shadow-xs max-w-full">
+            <span className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-4 sm:py-2 rounded-full bg-blue-50/90 border border-blue-100 text-blue-800 text-[11px] sm:text-sm font-semibold mb-2.5 sm:mb-5 shadow-xs max-w-full">
               <span className="flex h-1.5 w-1.5 sm:h-2 sm:w-2 relative shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-indigo-600"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-emerald-600"></span>
               </span>
               <span className="sm:hidden">Tasas Colombia 2026</span>
               <span className="hidden sm:inline">Calculadora de Rendimientos Cuentas de Ahorro Colombia 2026</span>
@@ -31,7 +31,7 @@ export default function Hero() {
 
             <span className="text-2xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 block">
               Haz que tu dinero <br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-800 to-emerald-600">
                 trabaje para ti
               </span>
             </span>
@@ -46,15 +46,15 @@ export default function Hero() {
         {/* Mobile: Ultra-minimalist row of pills */}
         <div className="flex sm:hidden items-center justify-center gap-1.5 flex-wrap mt-3 mb-2">
           <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/80 border border-slate-200/60 text-[10px] font-medium text-slate-600 shadow-xs">
-            <TrendingUp className="w-3 h-3 text-indigo-600 shrink-0" />
+            <TrendingUp className="w-3 h-3 text-emerald-600 shrink-0" />
             <span>Tasas al día</span>
           </div>
           <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/80 border border-slate-200/60 text-[10px] font-medium text-slate-600 shadow-xs">
-            <ShieldCheck className="w-3 h-3 text-indigo-600 shrink-0" />
+            <ShieldCheck className="w-3 h-3 text-blue-700 shrink-0" />
             <span>Topes 2026</span>
           </div>
           <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/80 border border-slate-200/60 text-[10px] font-medium text-slate-600 shadow-xs">
-            <Wallet className="w-3 h-3 text-indigo-600 shrink-0" />
+            <Wallet className="w-3 h-3 text-emerald-600 shrink-0" />
             <span>Simulador real</span>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function Hero() {
             { tag: "Interactivo", title: "Simulación Real", icon: Wallet, desc: "Resultados mensuales y totales con herramientas de slider fáciles." }
           ].map((feature, i) => (
             <div key={i} className="bg-white/60 backdrop-blur-md border border-white p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] text-left hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-[transform,box-shadow] duration-200 ease-out motion-safe:hover:-translate-y-1.5 group flex flex-col items-start">
-              <div className="bg-indigo-100/50 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-indigo-600 motion-safe:group-hover:scale-110 transition-transform duration-200 ease-out shrink-0">
+              <div className="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-blue-700 motion-safe:group-hover:scale-110 transition-transform duration-200 ease-out shrink-0">
                 <feature.icon className="w-6 h-6" />
               </div>
               <div className="min-w-0 flex-1">
