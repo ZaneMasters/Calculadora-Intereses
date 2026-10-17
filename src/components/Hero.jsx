@@ -5,9 +5,20 @@ export default function Hero() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="relative pt-6 pb-8 sm:pt-20 sm:pb-24 lg:pb-32 overflow-hidden">
-      {/* Decorative ambient brand icon in hero background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-[460px] sm:h-[460px] -z-10 pointer-events-none opacity-[0.05] sm:opacity-[0.08] select-none transform rotate-6">
-        <img src="/logo.png" alt="" className="w-full h-full object-contain rounded-3xl" />
+        {/* High-impact dynamic wealth growth backdrop */}
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none select-none flex items-center justify-center">
+        {/* Ambient atmospheric aura */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] lg:w-[1100px] h-[340px] sm:h-[460px] bg-gradient-to-tr from-emerald-400/20 via-blue-600/10 to-transparent blur-3xl rounded-full" />
+        
+        {/* Vibrant SVG Illustration with gentle floating aura (shown on sm+ screens to perfectly frame the headline) */}
+        <div className="hidden sm:block w-full max-w-7xl h-full max-h-[520px] px-4 lg:px-6 opacity-100 transition-opacity duration-700">
+          <img 
+            src="/illustrations/hero-wealth-dynamics.svg" 
+            alt="Crecimiento de rendimientos e interés compuesto" 
+            className="w-full h-full object-contain filter drop-shadow-sm"
+            loading="eager"
+          />
+        </div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

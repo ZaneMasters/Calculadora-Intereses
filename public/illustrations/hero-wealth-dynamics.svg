@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 560" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Background subtle grid -->
+    <pattern id="heroGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#059669" stroke-width="0.65" stroke-opacity="0.07" />
+      <circle cx="48" cy="48" r="1.5" fill="#10b981" fill-opacity="0.12" />
+    </pattern>
+
+    <!-- Glowing Filters -->
+    <filter id="heroGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0f172a" flood-opacity="0.12" />
+    </filter>
+
+    <filter id="coinGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="glow" />
+      <feMerge>
+        <feMergeNode in="glow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Gradients -->
+    <radialGradient id="centerAura" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.15" />
+      <stop offset="45%" stop-color="#1e3a8a" stop-opacity="0.06" />
+      <stop offset="85%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.22" />
+      <stop offset="60%" stop-color="#059669" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.01" />
+    </linearGradient>
+
+    <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.1" />
+      <stop offset="25%" stop-color="#10b981" stop-opacity="0.6" />
+      <stop offset="70%" stop-color="#34d399" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.4" />
+    </linearGradient>
+
+    <linearGradient id="goldCoinGrad" x1="20%" y1="10%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7" />
+      <stop offset="35%" stop-color="#fbbf24" />
+      <stop offset="75%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.96" />
+      <stop offset="100%" stop-color="#f0fdf4" stop-opacity="0.90" />
+    </linearGradient>
+  </defs>
+
+  <!-- Ambient Light Backdrop -->
+  <rect x="0" y="0" width="1360" height="560" fill="url(#centerAura)" />
+  <rect x="30" y="20" width="1300" height="520" fill="url(#heroGrid)" rx="36" />
+
+  <!-- Smooth Ascending Growth Waves (Keeps Center Subtle & Open) -->
+  <path d="M 40 480 Q 320 460 680 390 T 1120 220 T 1320 140 L 1320 540 L 40 540 Z" fill="url(#waveGrad1)" />
+  
+  <path d="M 40 480 Q 320 460 680 390 T 1120 220 T 1320 140" 
+        stroke="url(#waveGrad2)" 
+        stroke-width="4" 
+        stroke-linecap="round" 
+        stroke-dasharray="8 6" 
+        filter="url(#heroGlow)" />
+
+  <path d="M 60 510 Q 360 490 700 420 T 1150 280 T 1330 200" 
+        stroke="#10b981" 
+        stroke-width="2" 
+        stroke-opacity="0.35" 
+        stroke-linecap="round" />
+
+  <!-- Outer Trajectory Nodes -->
+  <g filter="url(#heroGlow)">
+    <circle cx="280" cy="450" r="5" fill="#10b981" stroke="#ffffff" stroke-width="1.5" />
+    <circle cx="1120" cy="220" r="8" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+    <circle cx="1260" cy="165" r="9" fill="#34d399" stroke="#ffffff" stroke-width="2" />
+  </g>
+
+  <!-- ================= LEFT FLANK (Framing Headline) ================= -->
+  <!-- Left: Floating 3D Gold Coin Stack -->
+  <g transform="translate(45, 175)" filter="url(#softShadow)">
+    <!-- Base Shadow -->
+    <ellipse cx="65" cy="140" rx="55" ry="16" fill="#0f172a" fill-opacity="0.1" />
+    
+    <!-- Coin 1 (bottom) -->
+    <g transform="translate(20, 80)">
+      <path d="M 10 26 C 10 40, 80 40, 80 26 L 80 38 C 80 52, 10 52, 10 38 Z" fill="#b45309" />
+      <ellipse cx="45" cy="26" rx="35" ry="13" fill="url(#goldCoinGrad)" stroke="#fef3c7" stroke-width="1.5" />
+    </g>
+
+    <!-- Coin 2 (middle) -->
+    <g transform="translate(20, 60)">
+      <path d="M 10 26 C 10 40, 80 40, 80 26 L 80 38 C 80 52, 10 52, 10 38 Z" fill="#b45309" />
+      <ellipse cx="45" cy="26" rx="35" ry="13" fill="url(#goldCoinGrad)" stroke="#fef3c7" stroke-width="1.5" />
+    </g>
+
+    <!-- Floating Top Coin with Sparkle -->
+    <g transform="translate(22, 0)" filter="url(#coinGlow)">
+      <circle cx="45" cy="35" r="32" fill="url(#goldCoinGrad)" stroke="#ffffff" stroke-width="2.5" />
+      <circle cx="45" cy="35" r="26" fill="none" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4 3" />
+      <text x="45" y="44" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#78350f" text-anchor="middle">$</text>
+      <!-- Specular shine -->
+      <path d="M 28 20 A 24 24 0 0 1 54 12" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+    </g>
+  </g>
+
+  <!-- Left: Floating Pill "Interés Compuesto" (Shifted to Left Edge) -->
+  <g transform="translate(40, 85)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="180" height="42" rx="21" fill="url(#glassGrad)" stroke="#10b981" stroke-width="1.5" />
+    <circle cx="22" cy="21" r="11" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5" />
+    <path d="M 17 21 L 21 25 L 28 17" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="42" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="800" fill="#065f46">Interés Compuesto</text>
+  </g>
+
+  <!-- Left: Dynamic Star -->
+  <g transform="translate(210, 50)" filter="url(#heroGlow)">
+    <path d="M 0 -10 Q 0 0 10 0 Q 0 0 0 10 Q 0 0 -10 0 Q 0 0 0 -10 Z" fill="#fbbf24" />
+    <circle cx="0" cy="0" r="2.5" fill="#ffffff" />
+  </g>
+
+
+  <!-- ================= RIGHT FLANK (Framing Headline) ================= -->
+  <!-- Right: Glassmorphic Rate Card (+11.0% E.A.) shifted far right -->
+  <g transform="translate(1110, 70)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="195" height="104" rx="22" fill="#ffffff" stroke="#10b981" stroke-width="2" />
+    
+    <rect x="18" y="14" width="82" height="20" rx="10" fill="#ecfdf5" />
+    <text x="59" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="800" fill="#059669" text-anchor="middle">TASA LÍDER</text>
+    
+    <text x="18" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" fill="#0f172a">+11.0%</text>
+    <text x="124" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="800" fill="#059669">E.A.</text>
+    
+    <text x="18" y="86" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#64748b">Liquidación cada 24h</text>
+  </g>
+
+  <!-- Right: Floating Fogafín Pill shifted to right side -->
+  <g transform="translate(1090, 225)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="210" height="46" rx="23" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+    <circle cx="25" cy="23" r="13" fill="#059669" />
+    <!-- Shield path -->
+    <path d="M 25 16 L 31 19.5 V 24 C 31 27.5 25 30 25 30 C 25 30 19 27.5 19 24 V 19.5 Z" fill="#ffffff" />
+    <text x="48" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#f8fafc">Seguro Fogafín $50M</text>
+  </g>
+
+  <!-- Right: Dynamic Star -->
+  <g transform="translate(1080, 40)" filter="url(#heroGlow)">
+    <path d="M 0 -13 Q 0 0 13 0 Q 0 0 0 13 Q 0 0 -13 0 Q 0 0 0 -13 Z" fill="#10b981" />
+    <circle cx="0" cy="0" r="3" fill="#ffffff" />
+  </g>
+
+  <!-- Fine Floating Particle Dots -->
+  <circle cx="280" cy="110" r="3" fill="#10b981" fill-opacity="0.4" />
+  <circle cx="1060" cy="140" r="3.5" fill="#10b981" fill-opacity="0.4" />
+</svg>
