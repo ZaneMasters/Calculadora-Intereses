@@ -58,6 +58,19 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
     calcularResultados();
   };
 
+  const scrollToResults = () => {
+    if (!resultsRef.current) return;
+    // Clearance for sticky navbar on mobile and desktop
+    const headerOffset = typeof window !== 'undefined' && window.innerWidth < 640 ? 65 : 85;
+    const elementPosition = resultsRef.current.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: Math.max(0, offsetPosition),
+      behavior: 'smooth'
+    });
+  };
+
   const handleLimpiar = () => {
     limpiar();
     setErrorMonto('');
@@ -68,15 +81,18 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
   };
 
   useEffect(() => {
-    if (resultados && onResult) {
-      onResult(resultados);
-      setShowResults(false);
-      setTimeout(() => {
-        setShowResults(true);
-        setTimeout(() => {
-          resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }, 50);
+    if (resultados) {
+      if (onResult) {
+        onResult(resultados);
+      }
+      setShowResults(true);
+
+      // Smooth scroll after DOM renders with comfortable breathing room
+      const timer = setTimeout(() => {
+        scrollToResults();
+      }, 120);
+
+      return () => clearTimeout(timer);
     }
   }, [resultados, onResult]);
 
@@ -335,7 +351,7 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
             animate={{ opacity: 1, height: 'auto', scale: 1 }}
             exit={{ opacity: 0, height: 0, scale: 0.96 }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 pt-8"
+            className="mt-10 pt-8 scroll-mt-20 sm:scroll-mt-28"
           >
             <div className="relative mb-8">
               <div className="absolute inset-0 flex items-center" aria-hidden="true">
@@ -401,26 +417,27 @@ export default function Calculator({ onResult, initialBank = 'Nu' }) {
                   )}
                </div>
 
-               {/* Banner Visual Ilustrado de Interés Compuesto - Compacto en mobile, completo en desktop */}
-               <div className="mt-4 sm:mt-5 p-3.5 sm:p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-5 border border-slate-800">
-                 <div className="space-y-1 text-center md:text-left z-10 flex-1">
-                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] sm:text-xs font-bold border border-emerald-500/30">
+               {/* Banner de Interés Compuesto con Ilustración de Fondo con Opacidad */}
+               <div className="mt-4 sm:mt-5 p-4 sm:p-7 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white shadow-xl relative overflow-hidden border border-slate-800">
+                 {/* Imagen de fondo con opacidad */}
+                 <div className="absolute right-0 bottom-0 top-0 w-72 sm:w-96 pointer-events-none opacity-15 sm:opacity-20 select-none overflow-hidden -mr-4 -mb-4 flex items-center justify-end">
+                   <img 
+                     src="/illustrations/compound-interest-growth.svg" 
+                     alt="" 
+                     className="w-full h-full object-contain filter drop-shadow" 
+                     loading="lazy" 
+                   />
+                 </div>
+
+                 <div className="relative z-10 space-y-1.5 sm:space-y-2 max-w-xl text-left">
+                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] sm:text-xs font-bold border border-emerald-500/30">
                      <span>📈</span> Proyección Exponencial
                    </span>
                    <h4 className="font-extrabold text-sm sm:text-xl text-white tracking-tight">Así crece tu dinero en el tiempo</h4>
-                   <p className="hidden sm:block text-xs sm:text-sm text-slate-300 leading-relaxed max-w-md">
-                     Al no retirar tus intereses, cada día el banco calcula rendimientos sobre una base más grande. El interés compuesto multiplica tu ahorro.
+                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                     <span className="sm:hidden">El interés compuesto reinvierte tus ganancias diarias sobre una base cada vez mayor.</span>
+                     <span className="hidden sm:inline">Al no retirar tus intereses, cada día el banco calcula rendimientos sobre una base más grande. El efecto del interés compuesto multiplica tu ahorro exponencialmente.</span>
                    </p>
-                 </div>
-                 <div className="hidden sm:block w-full sm:w-64 md:w-72 shrink-0 z-10">
-                   <img 
-                     src="/illustrations/compound-interest-growth.svg" 
-                     alt="Gráfica ilustrada de interés compuesto y crecimiento exponencial" 
-                     className="w-full h-auto object-contain rounded-xl shadow-lg motion-safe:hover:scale-[1.03] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" 
-                     width="300"
-                     height="220"
-                     loading="lazy" 
-                   />
                  </div>
                </div>
             </div>
